@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import ThreeScene from './ThreeScene'
+import PixelGrid from './PixelGrid'
 
 export default function HeroSection() {
   const [visitorCount, setVisitorCount] = useState(55715)
@@ -27,13 +27,11 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative h-[70vh] overflow-hidden bg-hero-gradient animate-gradient-shift bg-[length:400%_400%]">
+    <section className="relative h-[70vh] overflow-hidden bg-hero-gradient animate-gradient-shift bg-[length:400%_400%] font-satoshi">
       <div className="absolute inset-0 bg-black/20" />
       
-      {/* Three.js Background */}
-      <div className="absolute inset-0 opacity-30">
-        <ThreeScene />
-      </div>
+      {/* Pixel Grid Background */}
+      <PixelGrid />
       
       <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center">
         <div className="max-w-4xl">
