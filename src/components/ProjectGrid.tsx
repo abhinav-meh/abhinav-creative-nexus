@@ -5,91 +5,91 @@ import { Button } from "@/components/ui/button"
 const projects = [
   {
     title: 'Zori',
-    description: 'Founding designer at the startup where we help people find professionals by recommendation',
+    description: 'Finding professionals by recommendation',
     category: 'Product' as const,
     icon: '🔍'
   },
   {
     title: 'Sapera',
-    description: 'Lead the design of a project management platform',
+    description: 'Project management platform design',
     category: 'Product' as const,
     icon: '📊'
   },
   {
     title: '2+ items in an order at OLX',
-    description: 'Designed a way to purchase up to 5 items per deal on a platform that historically supported just 1',
+    description: 'Multi-item purchase feature design',
     category: 'Feature' as const,
     icon: '🛒'
   },
   {
     title: 'Style Setuper',
-    description: 'Created a Figma plugin that scans your frame and suggests better text styles',
+    description: 'Figma text styles plugin',
     category: 'Product' as const,
     icon: '🎨'
   },
   {
     title: 'thePenTool',
-    description: 'Founded thePenTool – online shop of UI design assets for designers that value their time',
+    description: 'UI design assets shop',
     category: 'Website' as const,
     icon: '✏️'
   },
   {
     title: 'companies.tools 22 recap',
-    description: 'Designed and shipped a yearly recap for companies.tools',
+    description: 'Yearly recap website design',
     category: 'Website' as const,
     icon: '📈'
   },
   {
     title: 'Obviously AI',
-    description: 'Designed a multi page marketing website for AI data prediction tool',
+    description: 'AI prediction marketing website',
     category: 'Website' as const,
     icon: '🤖'
   },
   {
     title: 'Better File Thumbnails',
-    description: 'Created a macOS plugin that generates thumbnails to make it easier to find projects in the file browser',
+    description: 'macOS file browser plugin',
     category: 'Product' as const,
     icon: '📁'
   },
   {
     title: 'Buyer acceptance rate at OLX',
-    description: 'Designed a fix for a problem of sellers rejecting purchases with no payment in the post office',
+    description: 'Payment rejection problem solution',
     category: 'Feature' as const,
     icon: '✅'
   },
   {
     title: 'CureRate',
-    description: 'Designed a platform for people with chronic conditions to find and review products that helped',
+    description: 'Chronic conditions review platform',
     category: 'Website' as const,
     icon: '💊'
   },
   {
     title: 'New deal confirmation experience at OLX',
-    description: 'Redesigned the legacy flow, making it simpler for buyers to confirm a deal by selling it online',
+    description: 'Simplified deal confirmation flow',
     category: 'Feature' as const,
     icon: '🤝'
   },
   {
     title: 'Handy Components',
-    description: 'Created a Figma plugin that scans your file and inserts components matching the style of your UI',
+    description: 'Figma component matching plugin',
     category: 'Product' as const,
     icon: '🧩'
   },
   {
     title: 'Neural Network Visualization',
-    description: 'Interactive 3D visualization of machine learning models using Three.js and D3',
+    description: 'Interactive machine learning visualization',
     category: 'Research' as const,
     icon: '🧠'
   },
   {
     title: 'Generative Art Gallery',
-    description: 'Algorithmic art pieces created using p5.js and creative coding techniques',
+    description: 'Algorithmic art using code',
     category: 'Experiment' as const,
     icon: '🎭'
   },
   {
     title: 'IoT Home Automation',
-    description: 'Arduino-based smart home system with custom mobile interface',
+    description: 'Arduino smart home system',
     category: 'Experiment' as const,
     icon: '🏠'
   }
