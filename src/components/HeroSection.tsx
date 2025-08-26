@@ -44,8 +44,8 @@ export default function HeroSection() {
           </h1>
           
           <div className="text-xl md:text-2xl text-foreground/90 font-light mb-8 animate-slide-up [animation-delay:0.2s]">
-            <span className="text-primary">Creative Technologist</span> • 
-            <span className="text-accent"> Product Designer</span> • 
+            <span className="text-primary">Creative Technologist</span> <span className="text-accent">•</span> 
+            <span className="text-accent"> Product Designer</span> <span className="text-category-research">•</span> 
             <span className="text-category-research"> Researcher</span>
           </div>
           
