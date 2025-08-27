@@ -1,0 +1,133 @@
+import { useEffect, useRef, useState } from 'react'
+import p5 from 'p5'
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { toast } from 'sonner'
+
+interface P5EditorProps {
+  initialCode?: string
+}
+
+const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
+  const sketchRef = useRef<HTMLDivElement>(null)
+  const p5InstanceRef = useRef<p5 | null>(null)
+  const [code, setCode] = useState(initialCode)
+  const [error, setError] = useState<string | null>(null)
+
+  const runSketch = () => {
+    // Remove existing sketch
+    if (p5InstanceRef.current) {
+      p5InstanceRef.current.remove()
+      p5InstanceRef.current = null
+    }
+
+    if (!sketchRef.current) return
+
+    try {
+      // Create a new sketch function from the code
+      const sketchFunction = new Function('p', `
+        with(p) {
+          ${code}
+        }
+      `)
+
+      // Create new p5 instance
+      p5InstanceRef.current = new p5((p: p5) => {
+        try {
+          sketchFunction(p)
+        } catch (err) {
+          console.error('Sketch runtime error:', err)
+          setError(`Runtime error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+        }
+      }, sketchRef.current)
+
+      setError(null)
+      toast.success('Sketch updated successfully!')
+    } catch (err) {
+      console.error('Sketch compilation error:', err)
+      setError(`Compilation error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+      toast.error('Failed to compile sketch')
+    }
+  }
+
+  const stopSketch = () => {
+    if (p5InstanceRef.current) {
+      p5InstanceRef.current.remove()
+      p5InstanceRef.current = null
+      toast.info('Sketch stopped')
+    }
+  }
+
+  useEffect(() => {
+    setCode(initialCode)
+  }, [initialCode])
+
+  useEffect(() => {
+    if (code.trim()) {
+      runSketch()
+    }
+
+    return () => {
+      if (p5InstanceRef.current) {
+        p5InstanceRef.current.remove()
+      }
+    }
+  }, [])
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Code Editor */}
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between">
+          <CardTitle>Code Editor</CardTitle>
+          <div className="flex gap-2">
+            <Button onClick={runSketch} size="sm">
+              Run
+            </Button>
+            <Button onClick={stopSketch} variant="outline" size="sm">
+              Stop
+            </Button>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <Textarea
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            className="font-mono text-sm min-h-[400px] resize-none"
+            placeholder="Write your p5.js code here..."
+          />
+          {error && (
+            <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+              <p className="text-sm text-destructive font-mono">{error}</p>
+            </div>
+          )}
+          <div className="mt-4 text-xs text-muted-foreground">
+            <p>Tips:</p>
+            <ul className="list-disc list-inside space-y-1 mt-1">
+              <li>Use setup() and draw() functions</li>
+              <li>Press "Run" to execute your code</li>
+              <li>Check the console for errors</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Canvas Preview */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Live Preview</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div 
+            ref={sketchRef} 
+            className="w-full border border-border rounded-md overflow-hidden bg-card"
+            style={{ minHeight: '400px' }}
+          />
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+export default P5Editor
