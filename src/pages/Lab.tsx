@@ -1,160 +1,101 @@
 import { useState } from 'react'
-import P5Editor from '@/components/P5Editor'
+import FabricEditor from '@/components/FabricEditor'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Navigation from '@/components/Navigation'
 import InteractiveGrid from '@/components/InteractiveGrid'
 
-const defaultSketch = `function setup() {
-  createCanvas(400, 400);
-  background(220);
-}
+const defaultSketch = `// Create some basic shapes
+ctx.setBackgroundColor('#f0f0f0');
 
-function draw() {
-  fill(255, 0, 150);
-  ellipse(mouseX, mouseY, 80, 80);
-}`
+// Add a blue rectangle
+ctx.addRectangle(50, 50, 100, 80, '#3b82f6');
+
+// Add a red circle
+ctx.addCircle(200, 100, 40, '#ef4444');
+
+// Add a green square
+ctx.addRectangle(300, 50, 80, 80, '#22c55e');`
 
 const exampleProjects = [
   {
-    id: 'particle-system',
-    title: 'Particle System',
-    description: 'Interactive particle effects that follow your mouse',
-    code: `let particles = [];
+    id: 'animated-shapes',
+    title: 'Animated Shapes',
+    description: 'Create and animate colorful geometric shapes',
+    code: `// Clear canvas and set background
+ctx.clear();
+ctx.setBackgroundColor('#1a1a2e');
 
-function setup() {
-  createCanvas(800, 600);
-  colorMode(HSB, 360, 100, 100, 100);
-}
+// Create animated circles
+for (let i = 0; i < 5; i++) {
+  const x = 100 + i * 120;
+  const y = 200;
+  const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7'];
+  
+  const circle = ctx.addCircle(x, y, 30, colors[i]);
+  
+  // Animate the circle
+  ctx.animate(circle, 'top', y + Math.sin(i) * 50, 2000);
+}`
+  },
+  {
+    id: 'gradient-gallery',
+    title: 'Gradient Gallery',
+    description: 'Beautiful gradient backgrounds with floating shapes',
+    code: `// Set a gradient-like background
+ctx.setBackgroundColor('#667eea');
 
-function draw() {
-  background(220, 20, 15, 20);
+// Create a pattern of rectangles with varying colors
+const colors = ['#f093fb', '#f5576c', '#4facfe', '#00f2fe', '#43e97b'];
+
+for (let i = 0; i < 15; i++) {
+  const x = (i % 5) * 150 + 50;
+  const y = Math.floor(i / 5) * 150 + 50;
+  const size = 60 + Math.random() * 40;
   
-  // Add new particle at mouse position
-  if (mouseIsPressed) {
-    particles.push(new Particle(mouseX, mouseY));
-  }
+  const rect = ctx.addRectangle(x, y, size, size, colors[i % colors.length]);
   
-  // Update and display particles
-  for (let i = particles.length - 1; i >= 0; i--) {
-    particles[i].update();
-    particles[i].display();
+  // Add some random animation
+  setTimeout(() => {
+    ctx.animate(rect, 'angle', Math.random() * 360, 3000);
+  }, i * 200);
+}`
+  },
+  {
+    id: 'interactive-art',
+    title: 'Interactive Art',
+    description: 'Click-responsive artwork with dynamic elements',
+    code: `// Clear and prepare canvas
+ctx.clear();
+ctx.setBackgroundColor('#2c3e50');
+
+// Create a grid of interactive elements
+const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6'];
+
+for (let row = 0; row < 3; row++) {
+  for (let col = 0; col < 4; col++) {
+    const x = col * 180 + 90;
+    const y = row * 150 + 100;
+    const colorIndex = (row + col) % colors.length;
     
-    if (particles[i].isDead()) {
-      particles.splice(i, 1);
+    // Alternate between circles and rectangles
+    if ((row + col) % 2 === 0) {
+      const circle = ctx.addCircle(x, y, 40, colors[colorIndex]);
+      
+      // Add pulsing animation
+      setInterval(() => {
+        ctx.animate(circle, 'radius', 40 + Math.random() * 20, 1000);
+      }, 2000 + Math.random() * 1000);
+    } else {
+      const rect = ctx.addRectangle(x - 30, y - 30, 60, 60, colors[colorIndex]);
+      
+      // Add rotation animation
+      setInterval(() => {
+        ctx.animate(rect, 'angle', Math.random() * 360, 1500);
+      }, 1500 + Math.random() * 1000);
     }
   }
-}
-
-class Particle {
-  constructor(x, y) {
-    this.pos = createVector(x, y);
-    this.vel = p5.Vector.random2D();
-    this.vel.mult(random(1, 5));
-    this.acc = createVector(0, 0.1);
-    this.life = 255;
-    this.hue = random(280, 320);
-  }
-  
-  update() {
-    this.vel.add(this.acc);
-    this.pos.add(this.vel);
-    this.life -= 3;
-  }
-  
-  display() {
-    stroke(this.hue, 80, 90, this.life);
-    strokeWeight(4);
-    point(this.pos.x, this.pos.y);
-  }
-  
-  isDead() {
-    return this.life <= 0;
-  }
-}`
-  },
-  {
-    id: 'generative-art',
-    title: 'Generative Art',
-    description: 'Dynamic patterns that evolve over time',
-    code: `let time = 0;
-
-function setup() {
-  createCanvas(800, 600);
-  colorMode(HSB, 360, 100, 100);
-  noFill();
-}
-
-function draw() {
-  background(220, 20, 10);
-  
-  translate(width / 2, height / 2);
-  
-  for (let i = 0; i < 100; i++) {
-    let radius = map(i, 0, 100, 10, 200);
-    let hue = map(i, 0, 100, 180, 300);
-    
-    stroke(hue, 80, 90);
-    strokeWeight(2);
-    
-    let x = cos(time + i * 0.1) * radius;
-    let y = sin(time + i * 0.05) * radius;
-    
-    ellipse(x, y, 20, 20);
-  }
-  
-  time += 0.02;
-}`
-  },
-  {
-    id: 'wave-simulation',
-    title: 'Wave Simulation',
-    description: 'Beautiful sine wave patterns with interactive controls',
-    code: `let time = 0;
-let amplitude = 100;
-let frequency = 0.01;
-
-function setup() {
-  createCanvas(800, 400);
-  colorMode(HSB, 360, 100, 100);
-}
-
-function draw() {
-  background(220, 30, 20);
-  
-  // Map mouse position to control parameters
-  amplitude = map(mouseY, 0, height, 20, 150);
-  frequency = map(mouseX, 0, width, 0.005, 0.03);
-  
-  stroke(280, 80, 90);
-  strokeWeight(3);
-  noFill();
-  
-  beginShape();
-  for (let x = 0; x <= width; x += 5) {
-    let y = height / 2 + sin(x * frequency + time) * amplitude;
-    vertex(x, y);
-  }
-  endShape();
-  
-  // Secondary wave
-  stroke(320, 60, 80);
-  strokeWeight(2);
-  beginShape();
-  for (let x = 0; x <= width; x += 5) {
-    let y = height / 2 + sin(x * frequency * 2 + time * 1.5) * amplitude * 0.5;
-    vertex(x, y);
-  }
-  endShape();
-  
-  time += 0.05;
-  
-  // Instructions
-  fill(0, 0, 100);
-  textAlign(LEFT);
-  textSize(16);
-  text("Move mouse to control waves", 20, 30);
 }`
   }
 ]
@@ -191,7 +132,7 @@ const Lab = () => {
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-4">Creative Lab</h1>
           <p className="text-lg text-muted-foreground">
-            Experiment with interactive p5.js projects. Edit the code and see your changes in real-time.
+            Experiment with interactive Fabric.js projects. Create drawings and animations with code.
           </p>
         </div>
 
@@ -213,7 +154,7 @@ const Lab = () => {
               )}
             </div>
             
-            <P5Editor initialCode={currentCode} />
+            <FabricEditor initialCode={currentCode} />
           </TabsContent>
 
           <TabsContent value="gallery" className="space-y-6">
