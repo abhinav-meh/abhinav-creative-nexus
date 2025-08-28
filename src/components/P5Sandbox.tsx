@@ -23,7 +23,8 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
   const [colorMode, setColorMode] = useState('rainbow')
   const [objectType, setObjectType] = useState('circles')
   const [animationSpeed, setAnimationSpeed] = useState([1])
-  const [backgroundType, setBacgroundType] = useState('gradient')
+  const [isCanvasReady, setIsCanvasReady] = useState(false)
+  const [backgroundType, setBackgroundType] = useState('gradient')
 
   // Animation state
   const animationStateRef = useRef({
@@ -34,7 +35,10 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
   })
 
   const generateObjects = () => {
-    if (!p5InstanceRef.current) return
+    if (!p5InstanceRef.current || !isCanvasReady) {
+      console.log('Canvas not ready, skipping generateObjects')
+      return
+    }
     
     const p = p5InstanceRef.current
     const state = animationStateRef.current
@@ -60,7 +64,10 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
   }
 
   const generateWaves = () => {
-    if (!p5InstanceRef.current) return
+    if (!p5InstanceRef.current || !isCanvasReady) {
+      console.log('Canvas not ready, skipping generateWaves')
+      return
+    }
     
     const p = p5InstanceRef.current
     const state = animationStateRef.current
@@ -122,11 +129,15 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
         p.createCanvas(800, 600)
         p.colorMode(p.HSB, 360, 100, 100, 100)
         
-        // Initialize with some default objects and waves
+        // Mark canvas as ready
+        setIsCanvasReady(true)
+        
+        // Initialize with some default objects and waves after a short delay
         setTimeout(() => {
+          console.log('Canvas ready, generating initial content')
           generateObjects()
           generateWaves()
-        }, 100)
+        }, 200)
       }
 
       p.draw = () => {
@@ -261,14 +272,18 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
 
   // Update effects when controls change
   useEffect(() => {
-    if (objectCount[0] !== animationStateRef.current.objects.length) {
+    if (isCanvasReady && objectCount[0] !== animationStateRef.current.objects.length) {
+      console.log('Regenerating objects due to control change')
       generateObjects()
     }
-  }, [objectCount, objectType, colorMode])
+  }, [objectCount, objectType, colorMode, isCanvasReady])
 
   useEffect(() => {
-    generateWaves()
-  }, [waveAmplitude, waveFrequency, colorMode])
+    if (isCanvasReady) {
+      console.log('Regenerating waves due to control change')
+      generateWaves()
+    }
+  }, [waveAmplitude, waveFrequency, colorMode, isCanvasReady])
 
   return (
     <div className={`grid grid-cols-1 lg:grid-cols-3 gap-6 ${className}`}>
@@ -381,7 +396,7 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
 
             <div>
               <Label>Background</Label>
-              <Select value={backgroundType} onValueChange={setBacgroundType}>
+              <Select value={backgroundType} onValueChange={setBackgroundType}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
