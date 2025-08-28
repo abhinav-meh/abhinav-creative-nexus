@@ -49,16 +49,18 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
             }
           });
           
-          // Also bind common p5 constants and variables
-          (window as any).width = p.width;
-          (window as any).height = p.height;
-          (window as any).mouseX = p.mouseX;
-          (window as any).mouseY = p.mouseY;
-          (window as any).mouseIsPressed = p.mouseIsPressed;
-          (window as any).frameCount = p.frameCount;
+          // Bind p5 constants
           (window as any).PI = p.PI;
           (window as any).TWO_PI = p.TWO_PI;
           (window as any).HALF_PI = p.HALF_PI;
+          
+          // Create dynamic getters for properties that change
+          Object.defineProperty(window, 'width', { get: () => p.width });
+          Object.defineProperty(window, 'height', { get: () => p.height });
+          Object.defineProperty(window, 'mouseX', { get: () => p.mouseX });
+          Object.defineProperty(window, 'mouseY', { get: () => p.mouseY });
+          Object.defineProperty(window, 'mouseIsPressed', { get: () => p.mouseIsPressed });
+          Object.defineProperty(window, 'frameCount', { get: () => p.frameCount });
           
           // Execute the user code
           eval(code);
