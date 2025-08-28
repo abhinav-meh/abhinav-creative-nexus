@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Navigation from '@/components/Navigation'
+import InteractiveGrid from '@/components/InteractiveGrid'
 
 const defaultSketch = `function setup() {
   createCanvas(400, 400);
@@ -181,17 +182,7 @@ const Lab = () => {
       ></div>
       
       {/* Interactive Grid Overlay */}
-      <div 
-        className="absolute inset-0 grid grid-cols-[repeat(auto-fit,64px)] grid-rows-[repeat(auto-fit,64px)] pointer-events-none"
-        style={{gridTemplateColumns: 'repeat(auto-fit, 64px)', gridTemplateRows: 'repeat(auto-fit, 64px)'}}
-      >
-        {Array.from({ length: Math.ceil(window.innerWidth / 64) * Math.ceil(window.innerHeight / 64) }).map((_, i) => (
-          <div
-            key={i}
-            className="border border-transparent hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 pointer-events-auto"
-          />
-        ))}
-      </div>
+      <InteractiveGrid />
       
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
       
