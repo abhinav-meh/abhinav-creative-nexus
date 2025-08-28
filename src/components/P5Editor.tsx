@@ -54,13 +54,19 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
           (window as any).TWO_PI = p.TWO_PI;
           (window as any).HALF_PI = p.HALF_PI;
           
-          // Create dynamic getters for properties that change
-          Object.defineProperty(window, 'width', { get: () => p.width });
-          Object.defineProperty(window, 'height', { get: () => p.height });
-          Object.defineProperty(window, 'mouseX', { get: () => p.mouseX });
-          Object.defineProperty(window, 'mouseY', { get: () => p.mouseY });
-          Object.defineProperty(window, 'mouseIsPressed', { get: () => p.mouseIsPressed });
-          Object.defineProperty(window, 'frameCount', { get: () => p.frameCount });
+          // Safely create getters for p5 dynamic properties
+          const props = ['width', 'height', 'mouseX', 'mouseY', 'mouseIsPressed', 'frameCount'];
+          props.forEach(prop => {
+            try {
+              Object.defineProperty(window, prop, { 
+                get: () => (p as any)[prop],
+                configurable: true 
+              });
+            } catch (e) {
+              // Property already exists, just assign it
+              (window as any)[prop] = (p as any)[prop];
+            }
+          });
           
           // Execute the user code
           eval(code);
