@@ -25,16 +25,19 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
     if (!sketchRef.current) return
 
     try {
+      // Clear any previous errors
+      setError(null)
+      
       // Create a new sketch function from the code
       const sketchFunction = new Function('p', `
-        with(p) {
-          ${code}
-        }
+        ${code}
       `)
 
       // Create new p5 instance
       p5InstanceRef.current = new p5((p: p5) => {
         try {
+          // Make p5 functions available globally for the sketch
+          Object.assign(window, p)
           sketchFunction(p)
         } catch (err) {
           console.error('Sketch runtime error:', err)
@@ -42,8 +45,7 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
         }
       }, sketchRef.current)
 
-      setError(null)
-      toast.success('Sketch updated successfully!')
+      toast.success('Sketch updated!')
     } catch (err) {
       console.error('Sketch compilation error:', err)
       setError(`Compilation error: ${err instanceof Error ? err.message : 'Unknown error'}`)
@@ -61,19 +63,27 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
 
   useEffect(() => {
     setCode(initialCode)
+    if (initialCode.trim()) {
+      // Small delay to ensure the component is mounted
+      setTimeout(() => runSketch(), 100)
+    }
   }, [initialCode])
 
   useEffect(() => {
-    if (code.trim()) {
-      runSketch()
-    }
+    // Auto-run when code changes (with debounce)
+    const timeoutId = setTimeout(() => {
+      if (code.trim()) {
+        runSketch()
+      }
+    }, 1000) // 1 second debounce
 
     return () => {
+      clearTimeout(timeoutId)
       if (p5InstanceRef.current) {
         p5InstanceRef.current.remove()
       }
     }
-  }, [])
+  }, [code])
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
