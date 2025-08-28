@@ -173,8 +173,16 @@ const Lab = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-background relative">
+      {/* Grid Pattern Background */}
+      <div 
+        className="absolute inset-0 bg-grid-pattern" 
+        style={{backgroundSize: '64px 64px'}}
+      ></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
+      
+      <div className="relative z-10">
+        <div className="container mx-auto px-4 py-16">
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-4">Creative Lab</h1>
           <p className="text-lg text-muted-foreground">
@@ -224,6 +232,7 @@ const Lab = () => {
             </div>
           </TabsContent>
         </Tabs>
+        </div>
       </div>
       
       <Navigation />

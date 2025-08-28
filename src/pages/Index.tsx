@@ -8,7 +8,7 @@ const Index = () => {
       {/* Grid Pattern Background */}
       <div 
         className="absolute inset-0 bg-grid-pattern" 
-        style={{backgroundSize: '32px 32px'}}
+        style={{backgroundSize: '64px 64px'}}
       ></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
       
