@@ -16,6 +16,8 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
   const [error, setError] = useState<string | null>(null)
 
   const runSketch = () => {
+    console.log('runSketch called with code:', code)
+    console.log('sketchRef.current:', sketchRef.current)
     // Remove existing sketch
     if (p5InstanceRef.current) {
       p5InstanceRef.current.remove()
@@ -62,17 +64,24 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
   }
 
   useEffect(() => {
+    console.log('P5Editor mounted with initialCode:', initialCode)
     setCode(initialCode)
     if (initialCode.trim()) {
+      console.log('Setting timeout to run sketch')
       // Small delay to ensure the component is mounted
-      setTimeout(() => runSketch(), 100)
+      setTimeout(() => {
+        console.log('Timeout expired, calling runSketch')
+        runSketch()
+      }, 100)
     }
   }, [initialCode])
 
   useEffect(() => {
+    console.log('Code changed:', code)
     // Auto-run when code changes (with debounce)
     const timeoutId = setTimeout(() => {
       if (code.trim()) {
+        console.log('Auto-running sketch due to code change')
         runSketch()
       }
     }, 1000) // 1 second debounce
