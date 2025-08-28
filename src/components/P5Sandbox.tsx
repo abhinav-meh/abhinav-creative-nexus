@@ -25,6 +25,11 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
   const [animationSpeed, setAnimationSpeed] = useState([1])
   const [isCanvasReady, setIsCanvasReady] = useState(false)
   const [backgroundType, setBackgroundType] = useState('gradient')
+  
+  // Use refs for values that need to be accessed in p5 draw loop
+  const backgroundTypeRef = useRef(backgroundType)
+  const animationSpeedRef = useRef(animationSpeed[0])
+  const colorModeRef = useRef(colorMode)
 
   // Animation state
   const animationStateRef = useRef({
@@ -91,7 +96,8 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
   }
 
   const getRandomColor = (p: p5, index: number) => {
-    switch (colorMode) {
+    const currentColorMode = colorModeRef.current
+    switch (currentColorMode) {
       case 'rainbow':
         return p.color(p.map(index, 0, 10, 0, 360), 80, 90)
       case 'ocean':
@@ -112,6 +118,13 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
     state.mouseHistory = []
     toast.info('Canvas cleared!')
   }
+
+  useEffect(() => {
+    // Update refs when state changes
+    backgroundTypeRef.current = backgroundType
+    animationSpeedRef.current = animationSpeed[0]
+    colorModeRef.current = colorMode
+  }, [backgroundType, animationSpeed, colorMode])
 
   useEffect(() => {
     if (!sketchRef.current) return
@@ -141,21 +154,21 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
       }
 
       p.draw = () => {
-        // Background
-        if (backgroundType === 'gradient') {
+        // Background - use ref to get current value
+        if (backgroundTypeRef.current === 'gradient') {
           for (let y = 0; y < p.height; y++) {
             const alpha = p.map(y, 0, p.height, 0, 100)
             p.stroke(220, 30, 20 + alpha * 0.3)
             p.line(0, y, p.width, y)
           }
-        } else if (backgroundType === 'particles') {
+        } else if (backgroundTypeRef.current === 'particles') {
           p.background(220, 20, 10, 10)
         } else {
           p.background(220, 20, 15)
         }
 
-        // Update time
-        state.time += 0.01 * animationSpeed[0]
+        // Update time - use ref to get current animation speed
+        state.time += 0.01 * animationSpeedRef.current
 
         // Track mouse history for trails
         if (p.frameCount % 3 === 0) {
@@ -263,12 +276,13 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
     }, sketchRef.current)
 
     return () => {
+      setIsCanvasReady(false)
       if (p5InstanceRef.current) {
         p5InstanceRef.current.remove()
         p5InstanceRef.current = null
       }
     }
-  }, [])
+  }, []) // Remove dependencies to prevent recreation
 
   // Update effects when controls change
   useEffect(() => {
