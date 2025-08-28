@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react'
 import p5 from 'p5'
 import { Textarea } from '@/components/ui/textarea'
@@ -17,7 +18,6 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
 
   const runSketch = () => {
     console.log('runSketch called with code:', code)
-    console.log('sketchRef.current:', sketchRef.current)
     // Remove existing sketch
     if (p5InstanceRef.current) {
       p5InstanceRef.current.remove()
@@ -31,20 +31,42 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
       setError(null)
       console.log('About to create p5 instance')
       
-      // Create new p5 instance using instance mode - the correct way
+      // Create new p5 instance using global mode simulation
       p5InstanceRef.current = new p5((p: p5) => {
         console.log('p5 instance callback called')
         
         try {
-          // In p5.js instance mode, we need to call functions on the p object
-          // We'll execute the user code in a way that makes p5 functions available
-          const executeCode = new Function('p', `
-            with(p) {
-              ${code}
-            }
-          `);
+          // Make all p5 functions available globally
+          const originalSetup = (window as any).setup;
+          const originalDraw = (window as any).draw;
           
-          executeCode(p);
+          // Bind all p5 functions to global scope
+          Object.getOwnPropertyNames(p).forEach(key => {
+            if (typeof (p as any)[key] === 'function') {
+              (window as any)[key] = (p as any)[key].bind(p);
+            } else {
+              (window as any)[key] = (p as any)[key];
+            }
+          });
+          
+          // Also bind common p5 constants and variables
+          (window as any).width = p.width;
+          (window as any).height = p.height;
+          (window as any).mouseX = p.mouseX;
+          (window as any).mouseY = p.mouseY;
+          (window as any).mouseIsPressed = p.mouseIsPressed;
+          (window as any).frameCount = p.frameCount;
+          (window as any).PI = p.PI;
+          (window as any).TWO_PI = p.TWO_PI;
+          (window as any).HALF_PI = p.HALF_PI;
+          
+          // Execute the user code
+          eval(code);
+          
+          // Restore original functions if they existed
+          if (originalSetup) (window as any).setup = originalSetup;
+          if (originalDraw) (window as any).draw = originalDraw;
+          
           console.log('Code executed successfully')
         } catch (err) {
           console.error('Sketch execution error:', err)
