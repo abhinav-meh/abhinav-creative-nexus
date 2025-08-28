@@ -19,8 +19,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				mono: ['ui-monospace', 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'monospace'],
+				'space-mono': ['Space Mono', 'monospace'],
+				sans: ['Space Mono', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				mono: ['Space Mono', 'ui-monospace', 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -67,7 +68,7 @@ export default {
 			backgroundImage: {
 				'hero-gradient': 'linear-gradient(135deg, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-via)), hsl(var(--hero-gradient-to)))',
 				'card-gradient': 'linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%)',
-				'grid-pattern': 'linear-gradient(to right, hsl(var(--grid-color)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--grid-color)) 1px, transparent 1px)',
+				'grid-pattern': `url("data:image/svg+xml,%3csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M0 0h32v1H0zM0 0v32h1V0z' fill='%23374151' stroke='%23374151' stroke-width='0.5' stroke-dasharray='2,2' opacity='0.2'/%3e%3c/svg%3e")`,
 				'dot-pattern': 'radial-gradient(circle, hsl(var(--grid-color)) 1px, transparent 1px)'
 			},
 			boxShadow: {
