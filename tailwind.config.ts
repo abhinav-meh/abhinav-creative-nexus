@@ -66,7 +66,9 @@ export default {
 			},
 			backgroundImage: {
 				'hero-gradient': 'linear-gradient(135deg, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-via)), hsl(var(--hero-gradient-to)))',
-				'card-gradient': 'linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%)'
+				'card-gradient': 'linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%)',
+				'grid-pattern': 'linear-gradient(to right, hsl(var(--grid-color)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--grid-color)) 1px, transparent 1px)',
+				'dot-pattern': 'radial-gradient(circle, hsl(var(--grid-color)) 1px, transparent 1px)'
 			},
 			boxShadow: {
 				'card': 'var(--shadow-card)',
