@@ -31,49 +31,92 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
       setError(null)
       console.log('About to create p5 instance')
       
-      // Create new p5 instance using global mode simulation
+      // Create new p5 instance using instance mode properly
       p5InstanceRef.current = new p5((p: p5) => {
         console.log('p5 instance callback called')
         
         try {
-          // Make all p5 functions available globally
-          const originalSetup = (window as any).setup;
-          const originalDraw = (window as any).draw;
+          // Store user's setup and draw functions
+          let userSetup: (() => void) | null = null;
+          let userDraw: (() => void) | null = null;
           
-          // Bind all p5 functions to global scope
-          Object.getOwnPropertyNames(p).forEach(key => {
-            if (typeof (p as any)[key] === 'function') {
-              (window as any)[key] = (p as any)[key].bind(p);
-            } else {
-              (window as any)[key] = (p as any)[key];
+          // Create a context with all p5 functions bound
+          const p5Context = {
+            // Core functions
+            createCanvas: p.createCanvas.bind(p),
+            background: p.background.bind(p),
+            fill: p.fill.bind(p),
+            stroke: p.stroke.bind(p),
+            noStroke: p.noStroke.bind(p),
+            noFill: p.noFill.bind(p),
+            ellipse: p.ellipse.bind(p),
+            rect: p.rect.bind(p),
+            line: p.line.bind(p),
+            point: p.point.bind(p),
+            triangle: p.triangle.bind(p),
+            quad: p.quad.bind(p),
+            arc: p.arc.bind(p),
+            circle: p.circle.bind(p),
+            square: p.square.bind(p),
+            
+            // Transform functions
+            translate: p.translate.bind(p),
+            rotate: p.rotate.bind(p),
+            scale: p.scale.bind(p),
+            push: p.push.bind(p),
+            pop: p.pop.bind(p),
+            
+            // Math and random
+            random: p.random.bind(p),
+            noise: p.noise.bind(p),
+            map: p.map.bind(p),
+            constrain: p.constrain.bind(p),
+            lerp: p.lerp.bind(p),
+            sin: p.sin.bind(p),
+            cos: p.cos.bind(p),
+            tan: p.tan.bind(p),
+            
+            // Colors
+            color: p.color.bind(p),
+            red: p.red.bind(p),
+            green: p.green.bind(p),
+            blue: p.blue.bind(p),
+            alpha: p.alpha.bind(p),
+            
+            // Constants and dynamic properties
+            get width() { return p.width; },
+            get height() { return p.height; },
+            get mouseX() { return p.mouseX; },
+            get mouseY() { return p.mouseY; },
+            get mouseIsPressed() { return p.mouseIsPressed; },
+            get frameCount() { return p.frameCount; },
+            PI: p.PI,
+            TWO_PI: p.TWO_PI,
+            HALF_PI: p.HALF_PI,
+            
+            // Special functions to capture user setup/draw
+            setup: (fn: () => void) => { userSetup = fn; },
+            draw: (fn: () => void) => { userDraw = fn; }
+          };
+          
+          // Execute user code with p5 context
+          const userCode = `
+            with (p5Context) {
+              ${code}
             }
-          });
+          `;
           
-          // Bind p5 constants
-          (window as any).PI = p.PI;
-          (window as any).TWO_PI = p.TWO_PI;
-          (window as any).HALF_PI = p.HALF_PI;
+          const executeCode = new Function('p5Context', userCode);
+          executeCode(p5Context);
           
-          // Safely create getters for p5 dynamic properties
-          const props = ['width', 'height', 'mouseX', 'mouseY', 'mouseIsPressed', 'frameCount'];
-          props.forEach(prop => {
-            try {
-              Object.defineProperty(window, prop, { 
-                get: () => (p as any)[prop],
-                configurable: true 
-              });
-            } catch (e) {
-              // Property already exists, just assign it
-              (window as any)[prop] = (p as any)[prop];
-            }
-          });
+          // Set up p5 lifecycle
+          p.setup = () => {
+            if (userSetup) userSetup();
+          };
           
-          // Execute the user code
-          eval(code);
-          
-          // Restore original functions if they existed
-          if (originalSetup) (window as any).setup = originalSetup;
-          if (originalDraw) (window as any).draw = originalDraw;
+          p.draw = () => {
+            if (userDraw) userDraw();
+          };
           
           console.log('Code executed successfully')
         } catch (err) {
