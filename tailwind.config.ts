@@ -19,7 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'space-mono': ['Space Mono', 'monospace'],
+				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				mono: ['ui-monospace', 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -65,7 +66,7 @@ export default {
 			},
 			backgroundImage: {
 				'hero-gradient': 'linear-gradient(135deg, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-via)), hsl(var(--hero-gradient-to)))',
-				'card-gradient': 'linear-gradient(145deg, hsl(var(--card)) 0%, hsl(220 26% 10%) 100%)'
+				'card-gradient': 'linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%)'
 			},
 			boxShadow: {
 				'card': 'var(--shadow-card)',

@@ -8,55 +8,85 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark Portfolio Theme */
-    --background: 220 26% 6%;
-    --foreground: 210 40% 98%;
+    /* Light Tailwind-inspired Theme */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-    --card: 220 26% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 220 26% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 142 76% 36%;
-    --primary-foreground: 220 26% 6%;
+    --primary: 188 100% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 26% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 4.9%;
 
-    --muted: 220 26% 12%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 	351, 100% , 85.7%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 222.2 84% 4.9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 26% 15%;
-    --input: 220 26% 12%;
-    --ring: 142 76% 36%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 188 100% 45%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Portfolio Specific Colors */
-    --hero-gradient-from: 265 83% 57%;
-    --hero-gradient-via: 292 84% 61%;
-    --hero-gradient-to: 142 76% 36%;
+    --hero-gradient-from: 0 0% 100%;
+    --hero-gradient-via: 210 40% 98%;
+    --hero-gradient-to: 220 14% 96%;
     
-    --category-product: 142 76% 36%;
-    --category-website: 265 83% 57%;
+    --category-product: 188 100% 45%;
+    --category-website: 142 76% 36%;
     --category-feature: 338 86% 56%;
     --category-research: 46 87% 58%;
-    --category-experiment: 220 92% 59%;
+    --category-experiment: 265 83% 57%;
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     /* Shadows */
-    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    --shadow-hero: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-hero: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 188 100% 45%;
+    --primary-foreground: 222.2 84% 4.9%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 188 100% 45%;
   }
 }
 
@@ -66,6 +96,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-space-mono;
+    @apply bg-background text-foreground;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 }
