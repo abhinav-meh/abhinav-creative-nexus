@@ -29,29 +29,51 @@ const P5Editor = ({ initialCode = '' }: P5EditorProps) => {
     try {
       // Clear any previous errors
       setError(null)
+      console.log('About to create p5 instance')
       
-      // Create a new sketch function from the code
-      const sketchFunction = new Function('p', `
-        ${code}
-      `)
-
-      // Create new p5 instance
-      p5InstanceRef.current = new p5((p: p5) => {
+      // Create new p5 instance using instance mode
+      p5InstanceRef.current = new p5((sketch: p5) => {
+        console.log('p5 instance callback called')
+        
+        // Use eval to execute the code with sketch as context
+        // This is the most reliable way for p5.js instance mode
         try {
-          // Make p5 functions available globally for the sketch
-          Object.assign(window, p)
-          sketchFunction(p)
+          const codeWithSetup = `
+            (function(sketch) {
+              const {
+                createCanvas, background, ellipse, rect, line, point, fill, stroke, noFill, noStroke,
+                width, height, mouseX, mouseY, mouseIsPressed, frameCount, random, map, sin, cos,
+                translate, rotate, scale, push, pop, createVector, colorMode, strokeWeight,
+                textAlign, textSize, text, beginShape, endShape, vertex, bezier, bezierVertex,
+                HSB, RGB, CENTER, LEFT, RIGHT, TOP, BOTTOM, CORNER, CORNERS, RADIUS,
+                PI, TWO_PI, HALF_PI, QUARTER_PI, TAU, millis, second, minute, hour, day, month, year,
+                abs, ceil, constrain, dist, exp, floor, lerp, log, mag, max, min, norm, pow, round, sq, sqrt,
+                acos, asin, atan, atan2, degrees, radians, noise, noiseDetail, noiseSeed,
+                append, arrayCopy, concat, reverse, shorten, shuffle, sort, splice, subset,
+                join, nf, nfc, nfp, nfs, split, trim, str, boolean, byte, char, unchar, hex, unhex,
+                red, green, blue, alpha, brightness, hue, saturation, lerpColor,
+                loadImage, image, tint, noTint, imageMode
+              } = sketch;
+              
+              ${code}
+            })(this);
+          `;
+          
+          console.log('About to evaluate code:', codeWithSetup)
+          eval(codeWithSetup);
+          console.log('Code evaluation completed')
         } catch (err) {
-          console.error('Sketch runtime error:', err)
-          setError(`Runtime error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+          console.error('Sketch execution error:', err)
+          setError(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`)
         }
       }, sketchRef.current)
 
+      console.log('p5 instance created successfully')
       toast.success('Sketch updated!')
     } catch (err) {
-      console.error('Sketch compilation error:', err)
-      setError(`Compilation error: ${err instanceof Error ? err.message : 'Unknown error'}`)
-      toast.error('Failed to compile sketch')
+      console.error('Sketch creation error:', err)
+      setError(`Creation error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+      toast.error('Failed to create sketch')
     }
   }
 
