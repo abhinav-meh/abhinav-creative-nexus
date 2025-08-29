@@ -15,7 +15,7 @@ export default function HeroSection() {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'e' || e.key === 'E') {
         setShowEmail(true)
-        setTimeout(() => setShowEmail(false), 3000)
+        setTimeout(() => setShowEmail(false), 5000)
       }
     }
 
@@ -62,7 +62,7 @@ export default function HeroSection() {
           
           {showEmail && (
             <div className="mt-8 text-lg font-mono text-primary animate-fade-in">
-              abhinav.comms@gmail.com
+              hello@abhinavmehrotra.com
             </div>
           )}
         </div>
