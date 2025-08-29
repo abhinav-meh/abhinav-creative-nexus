@@ -27,7 +27,7 @@ export default function ProjectCard({ title, description, category, icon }: Proj
         
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3 mb-3">
-            <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors truncate">
+            <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors">
               {title}
             </h3>
             <Badge 
