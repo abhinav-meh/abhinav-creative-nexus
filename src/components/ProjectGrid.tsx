@@ -6,96 +6,102 @@ const projects = [
   {
     title: 'Zori',
     description: 'Finding professionals by recommendation',
-    category: 'Product' as const,
+    category: 'Design' as const,
     icon: '🔍'
   },
   {
     title: 'Sapera',
     description: 'Project management platform design',
-    category: 'Product' as const,
+    category: 'Design' as const,
     icon: '📊'
   },
   {
     title: '2+ items in an order at OLX',
     description: 'Multi-item purchase feature design',
-    category: 'Feature' as const,
+    category: 'Design' as const,
     icon: '🛒'
   },
   {
     title: 'Style Setuper',
     description: 'Figma text styles plugin',
-    category: 'Product' as const,
+    category: 'Development' as const,
     icon: '🎨'
   },
   {
     title: 'thePenTool',
     description: 'UI design assets shop',
-    category: 'Website' as const,
+    category: 'Design' as const,
     icon: '✏️'
   },
   {
     title: 'companies.tools 22 recap',
     description: 'Yearly recap website design',
-    category: 'Website' as const,
+    category: 'Development' as const,
     icon: '📈'
   },
   {
     title: 'Obviously AI',
     description: 'AI prediction marketing website',
-    category: 'Website' as const,
+    category: 'Development' as const,
     icon: '🤖'
   },
   {
     title: 'Better File Thumbnails',
     description: 'macOS file browser plugin',
-    category: 'Product' as const,
+    category: 'Development' as const,
     icon: '📁'
   },
   {
     title: 'Buyer acceptance rate at OLX',
     description: 'Payment rejection problem solution',
-    category: 'Feature' as const,
+    category: 'Design' as const,
     icon: '✅'
   },
   {
     title: 'CureRate',
     description: 'Chronic conditions review platform',
-    category: 'Website' as const,
+    category: 'Development' as const,
     icon: '💊'
   },
   {
     title: 'New deal confirmation experience at OLX',
     description: 'Simplified deal confirmation flow',
-    category: 'Feature' as const,
+    category: 'Design' as const,
     icon: '🤝'
   },
   {
     title: 'Handy Components',
     description: 'Figma component matching plugin',
-    category: 'Product' as const,
+    category: 'Development' as const,
     icon: '🧩'
   },
   {
     title: 'Neural Network Visualization',
     description: 'Interactive machine learning visualization',
-    category: 'Research' as const,
+    category: 'Development' as const,
     icon: '🧠'
   },
   {
     title: 'Generative Art Gallery',
     description: 'Algorithmic art using code',
-    category: 'Experiment' as const,
+    category: 'Development' as const,
     icon: '🎭'
   },
   {
     title: 'IoT Home Automation',
     description: 'Arduino smart home system',
-    category: 'Experiment' as const,
+    category: 'Development' as const,
     icon: '🏠'
+  },
+  {
+    title: 'Amazeballs',
+    description: 'Unity-powered game with custom wearable controller',
+    category: 'Game Dev' as const,
+    icon: '🎮'
   }
 ]
 
-const categories = ['All', 'Product', 'Website', 'Feature', 'Research', 'Experiment'] as const
+const categories = ['All', 'Design', 'Development', 'Game Dev'] as const
 
 export default function ProjectGrid() {
   const [selectedCategory, setSelectedCategory] = useState<typeof categories[number]>('All')
