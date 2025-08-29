@@ -15,7 +15,7 @@ const About = () => {
       
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
       
-      <div className="relative z-10">
+      <div className="relative z-10 pb-24">
         <div className="container mx-auto px-6 py-20 max-w-4xl">
           {/* Header */}
           <header className="mb-16">
