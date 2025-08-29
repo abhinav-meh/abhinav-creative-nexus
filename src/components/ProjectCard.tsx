@@ -3,14 +3,14 @@ import { Badge } from "@/components/ui/badge"
 interface ProjectCardProps {
   title: string
   description: string
-  category: 'Design' | 'Development' | 'Game Development' | 'Research'
+  category: 'Design' | 'Development' | 'Game Dev' | 'Research'
   icon?: string
 }
 
 const categoryStyles = {
   Design: 'bg-category-design/20 text-category-design border-category-design/30',
   Development: 'bg-category-developer/20 text-category-developer border-category-developer/30',
-  'Game Development': 'bg-category-experiment/20 text-category-experiment border-category-experiment/30',
+  'Game Dev': 'bg-category-experiment/20 text-category-experiment border-category-experiment/30',
   Research: 'bg-category-research/20 text-category-research border-category-research/30'
 }
 
