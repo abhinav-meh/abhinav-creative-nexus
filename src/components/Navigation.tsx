@@ -16,7 +16,7 @@ export default function Navigation() {
         <div className="flex items-center gap-6">
           {navItems.map((item) => {
             const isActive = item.href === location.pathname || 
-                           (item.href.startsWith('#') && location.pathname === '/')
+                           (item.href.startsWith('#') && location.pathname === '/' && location.hash === item.href)
             
             return item.href.startsWith('#') ? (
               <a
