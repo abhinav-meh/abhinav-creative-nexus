@@ -17,15 +17,15 @@ const categoryStyles = {
 
 export default function ProjectCard({ title, description, category, icon }: ProjectCardProps) {
   return (
-    <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-6 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in h-[180px] flex flex-col">
-      <div className="flex items-start gap-4 flex-1">
+    <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-4 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in">
+      <div className="flex items-start gap-4">
         {icon && (
           <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
             {icon}
           </div>
         )}
         
-        <div className="flex-1 min-w-0 flex flex-col h-full">
+        <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3 mb-3">
             <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors truncate">
               {title}
@@ -38,10 +38,8 @@ export default function ProjectCard({ title, description, category, icon }: Proj
             </Badge>
           </div>
           
-          <p className="text-sm text-muted-foreground leading-relaxed flex-1 overflow-hidden">
-            <span className="line-clamp-4">
-              {description}
-            </span>
+          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+            {description}
           </p>
         </div>
       </div>
