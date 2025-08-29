@@ -78,7 +78,7 @@ const projects = [
   {
     title: 'Neural Network Visualization',
     description: 'Interactive machine learning visualization',
-    category: 'Development' as const,
+    category: 'Research' as const,
     icon: '🧠'
   },
   {
@@ -101,7 +101,7 @@ const projects = [
   }
 ]
 
-const categories = ['All', 'Design', 'Development', 'Game Dev'] as const
+const categories = ['All', 'Design', 'Development', 'Game Dev', 'Research'] as const
 
 export default function ProjectGrid() {
   const [selectedCategory, setSelectedCategory] = useState<typeof categories[number]>('All')
