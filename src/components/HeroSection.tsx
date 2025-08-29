@@ -27,7 +27,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative h-[70vh] overflow-hidden bg-hero-gradient animate-gradient-shift bg-[length:400%_400%] font-space-mono">
+    <section className="relative h-[50vh] overflow-hidden bg-hero-gradient animate-gradient-shift bg-[length:400%_400%] font-space-mono">
       <div className="absolute inset-0 bg-black/20" />
       
       {/* Pixel Grid Background */}
