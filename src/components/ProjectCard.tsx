@@ -17,7 +17,7 @@ const categoryStyles = {
 
 export default function ProjectCard({ title, description, category, icon }: ProjectCardProps) {
   return (
-    <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-4 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in">
+    <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-4 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in h-[140px]">
       <div className="flex items-start gap-4">
         {icon && (
           <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
