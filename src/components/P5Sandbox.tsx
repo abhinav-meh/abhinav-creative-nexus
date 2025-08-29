@@ -65,7 +65,7 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
       state.objects.push(obj)
     }
     
-    toast.success(`Generated ${objectCount[0]} ${objectType}!`)
+    //toast.success(`Generated ${objectCount[0]} ${objectType}!`)
   }
 
   const generateWaves = () => {
@@ -92,7 +92,7 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
       state.waves.push(wave)
     }
     
-    toast.success(`Generated ${waveCount} waves!`)
+   // toast.success(`Generated ${waveCount} waves!`)
   }
 
   const getRandomColor = (p: p5, index: number) => {
@@ -116,7 +116,7 @@ const P5Sandbox = ({ className }: P5SandboxProps) => {
     state.objects = []
     state.waves = []
     state.mouseHistory = []
-    toast.info('Canvas cleared!')
+    //toast.info('Canvas cleared!')
   }
 
   useEffect(() => {
