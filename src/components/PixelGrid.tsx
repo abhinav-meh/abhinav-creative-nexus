@@ -18,7 +18,7 @@ export default function PixelGrid() {
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
-    const gridSize = 20
+    const gridSize = 12
     const cols = Math.ceil(canvas.width / gridSize)
     const rows = Math.ceil(canvas.height / gridSize)
     
@@ -28,7 +28,7 @@ export default function PixelGrid() {
     for (let i = 0; i < rows; i++) {
       pixels[i] = []
       for (let j = 0; j < cols; j++) {
-        pixels[i][j] = Math.random() > 0.8 ? 1 : 0
+        pixels[i][j] = Math.random() > 0.6 ? 1 : 0
       }
     }
 
@@ -39,10 +39,10 @@ export default function PixelGrid() {
     const animate = (currentTime: number) => {
       if (currentTime - lastTime >= interval) {
         // Update random pixels
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 6; i++) {
           const row = Math.floor(Math.random() * rows)
           const col = Math.floor(Math.random() * cols)
-          pixels[row][col] = pixels[row][col] === 1 ? 0 : Math.random() > 0.7 ? 1 : 0
+          pixels[row][col] = pixels[row][col] === 1 ? 0 : Math.random() > 0.5 ? 1 : 0
         }
 
         // Clear canvas
