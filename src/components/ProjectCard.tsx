@@ -1,10 +1,19 @@
 import { Badge } from "@/components/ui/badge"
+import { Link } from "react-router-dom"
 
 interface ProjectCardProps {
   title: string
   description: string
   category: 'Design' | 'Development' | 'Game Dev' | 'Research'
   icon?: string
+}
+
+const getProjectSlug = (title: string) => {
+  return title.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-|-$/g, '')
 }
 
 const categoryStyles = {
@@ -15,33 +24,37 @@ const categoryStyles = {
 }
 
 export default function ProjectCard({ title, description, category, icon }: ProjectCardProps) {
+  const slug = getProjectSlug(title)
+  
   return (
-    <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-4 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in h-[140px]">
-      <div className="flex items-start gap-4">
-        {icon && (
-          <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
-            {icon}
-          </div>
-        )}
-        
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-3 mb-3">
-            <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors">
-              {title}
-            </h3>
-            <Badge 
-              variant="outline" 
-              className={`${categoryStyles[category]} shrink-0 text-xs`}
-            >
-              {category}
-            </Badge>
-          </div>
+    <Link to={`/projects/${slug}`}>
+      <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-4 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in h-[140px]">
+        <div className="flex items-start gap-4">
+          {icon && (
+            <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+              {icon}
+            </div>
+          )}
           
-          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-            {description}
-          </p>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-3 mb-3">
+              <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors">
+                {title}
+              </h3>
+              <Badge 
+                variant="outline" 
+                className={`${categoryStyles[category]} shrink-0 text-xs`}
+              >
+                {category}
+              </Badge>
+            </div>
+            
+            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+              {description}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
