@@ -44,9 +44,9 @@ All colors MUST be HSL.
     --stroke-color: 216 34% 17%;
     
     /* Portfolio Specific Colors */
-    --hero-gradient-from: 203 23% 4%;
-    --hero-gradient-via: 215 28% 17%;
-    --hero-gradient-to: 224 71% 4%;
+    --hero-gradient-from: 25 95% 53%;  /* Orange */
+    --hero-gradient-via: 280 87% 82%;  /* Light Purple */
+    --hero-gradient-to: 220 91% 65%;   /* Blue */
     
     --category-product: 199 89% 48%;
     --category-website: 142 69% 58%;
