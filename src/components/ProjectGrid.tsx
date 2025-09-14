@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button"
 
 const projects = [
   {
-    title: 'Zori',
-    description: 'Finding professionals by recommendation',
+    title: 'Begig',
+    description: 'Freelancing platform connecting clients with talented professionals',
     category: 'Design' as const,
     icon: '/src/assets/begig-logo.svg'
   },
