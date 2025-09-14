@@ -88,46 +88,46 @@ const Zori = () => {
               <div className="mb-16">
                 <h2 className="text-3xl font-semibold mb-8 text-foreground">Client Experience</h2>
                 
-                <div className="mb-12">
+                <div className="mb-16">
                   <img 
                     src={clientSignup} 
                     alt="Client signup with tech skills selection"
-                    className="w-full rounded-lg border border-border mb-4"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                   />
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Clients can specify exactly what tech skills they're hiring for during the onboarding process
                   </p>
                 </div>
 
-                <div className="mb-12">
+                <div className="mb-16">
                   <img 
                     src={clientGigPosting} 
                     alt="Comprehensive gig posting form"
-                    className="w-full rounded-lg border border-border mb-4"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                   />
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Detailed gig posting form allows clients to specify requirements, budget, timeline, and project scope
                   </p>
                 </div>
 
-                <div className="mb-12">
+                <div className="mb-16">
                   <img 
                     src={clientDashboard} 
                     alt="Client dashboard showing project overview"
-                    className="w-full rounded-lg border border-border mb-4"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                   />
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Main dashboard provides overview of all posted gigs, received proposals, and ongoing projects
                   </p>
                 </div>
 
-                <div className="mb-12">
+                <div className="mb-16">
                   <img 
                     src={clientGigDetails} 
                     alt="Detailed gig management interface"
-                    className="w-full rounded-lg border border-border mb-4"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                   />
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Each gig has a dedicated management interface for tracking progress, managing proposals, and communication
                   </p>
                 </div>
@@ -137,46 +137,46 @@ const Zori = () => {
               <div className="mb-16">
                 <h2 className="text-3xl font-semibold mb-8 text-foreground">Freelancer Experience</h2>
                 
-                <div className="mb-12">
+                <div className="mb-16">
                   <img 
                     src={freelancerSignup} 
                     alt="Freelancer onboarding with skills and experience"
-                    className="w-full rounded-lg border border-border mb-4"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                   />
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Comprehensive freelancer onboarding captures skills, experience levels, and portfolio information
                   </p>
                 </div>
 
-                <div className="mb-12">
+                <div className="mb-16">
                   <img 
                     src={freelancerDashboard} 
                     alt="Freelancer dashboard with recommended gigs"
-                    className="w-full rounded-lg border border-border mb-4"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                   />
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Personalized dashboard shows recommended gigs, earnings tracking, and project management tools
                   </p>
                 </div>
 
-                <div className="mb-12">
+                <div className="mb-16">
                   <img 
                     src={freelancerProposal} 
                     alt="Proposal creation interface with milestones"
-                    className="w-full rounded-lg border border-border mb-4"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                   />
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Structured proposal system allows freelancers to break down projects into deliverables and milestones
                   </p>
                 </div>
 
-                <div className="mb-12">
+                <div className="mb-16">
                   <img 
                     src={freelancerPayment} 
                     alt="Payment expectation setting interface"
-                    className="w-full rounded-lg border border-border mb-4"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                   />
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Transparent rate setting system helps freelancers communicate their expectations and availability
                   </p>
                 </div>
