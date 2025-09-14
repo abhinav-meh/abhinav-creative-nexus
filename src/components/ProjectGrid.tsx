@@ -7,7 +7,7 @@ const projects = [
     title: 'Zori',
     description: 'Finding professionals by recommendation',
     category: 'Design' as const,
-    icon: '🔍'
+    icon: '/src/assets/begig-logo.svg'
   },
   {
     title: 'Sapera',
