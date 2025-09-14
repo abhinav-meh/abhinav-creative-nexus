@@ -34,12 +34,12 @@ const Zori = () => {
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-4xl">
-                🔍
+                💼
               </div>
               <div>
-                <h1 className="text-4xl font-bold text-foreground mb-2">Zori</h1>
+                <h1 className="text-4xl font-bold text-foreground mb-2">BeGig</h1>
                 <p className="text-lg text-muted-foreground">
-                  Finding professionals by recommendation
+                  Tech freelancing marketplace
                 </p>
               </div>
             </div>
