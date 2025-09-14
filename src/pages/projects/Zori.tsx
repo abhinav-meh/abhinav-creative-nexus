@@ -43,8 +43,8 @@ const Zori = () => {
           
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-4xl">
-                💼
+              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
+                <img src="/src/assets/begig-logo.svg" alt="BeGig logo" className="w-12 h-12" />
               </div>
               <div>
                 <h1 className="text-4xl font-bold text-foreground mb-2">BeGig</h1>
