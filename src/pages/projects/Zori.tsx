@@ -86,7 +86,7 @@ const Zori = () => {
 
               {/* Client Experience Section */}
               <div className="mb-16">
-                <h2 className="text-3xl font-semibold mb-8 text-foreground">Client Experience</h2>
+                <h2 className="text-3xl font-semibold mb-8 text-foreground text-center">Client Experience</h2>
                 
                 <div className="mb-16">
                   <img 
@@ -135,7 +135,7 @@ const Zori = () => {
 
               {/* Freelancer Experience Section */}
               <div className="mb-16">
-                <h2 className="text-3xl font-semibold mb-8 text-foreground">Freelancer Experience</h2>
+                <h2 className="text-3xl font-semibold mb-8 text-foreground text-center">Freelancer Experience</h2>
                 
                 <div className="mb-16">
                   <img 
