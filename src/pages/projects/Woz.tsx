@@ -80,7 +80,7 @@ const Woz = () => {
               </div>
 
               <div className="mb-12">
-                <h2 className="text-3xl font-semibold mb-8">Platform Overview</h2>
+                <h2 className="text-3xl font-semibold mb-8 text-center">Platform Overview</h2>
                 <img 
                   src={wozOverview} 
                   alt="WOZ.AI Dashboard Overview showing analytics, active users, and conversation metrics"
@@ -92,7 +92,7 @@ const Woz = () => {
               </div>
 
               <div className="mb-12">
-                <h2 className="text-3xl font-semibold mb-8">Product Management</h2>
+                <h2 className="text-3xl font-semibold mb-8 text-center">Product Management</h2>
                 <img 
                   src={wozAccountSelect} 
                   alt="Product selection interface showing different chatbots for Nike products with user and conversation counts"
@@ -104,7 +104,7 @@ const Woz = () => {
               </div>
 
               <div className="mb-12">
-                <h2 className="text-3xl font-semibold mb-8">Conversation Analytics</h2>
+                <h2 className="text-3xl font-semibold mb-8 text-center">Conversation Analytics</h2>
                 <img 
                   src={wozConversationAnalysis} 
                   alt="Detailed conversation analysis showing sentiment tracking, keyword clouds, and performance metrics"
@@ -116,7 +116,7 @@ const Woz = () => {
               </div>
 
               <div className="mb-12">
-                <h2 className="text-3xl font-semibold mb-8">Customer Insights</h2>
+                <h2 className="text-3xl font-semibold mb-8 text-center">Customer Insights</h2>
                 <img 
                   src={wozCustomerData} 
                   alt="Customer data table showing user information, ratings, and interaction history"
