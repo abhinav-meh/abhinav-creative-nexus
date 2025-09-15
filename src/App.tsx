@@ -7,7 +7,7 @@ import Index from "./pages/Index";
 import Lab from "./pages/Lab";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
-import Zori from "./pages/projects/Zori";
+import Begig from "./pages/projects/Begig";
 import Sapera from "./pages/projects/Sapera";
 import StyleSetuper from "./pages/projects/StyleSetuper";
 import Amazeballs from "./pages/projects/Amazeballs";
@@ -25,8 +25,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/lab" element={<Lab />} />
-            <Route path="/projects/begig" element={<Zori />} />
-            <Route path="/projects/zori" element={<Zori />} />
+            <Route path="/projects/begig" element={<Begig />} />
+            <Route path="/projects/zori" element={<Begig />} />
             <Route path="/projects/sapera" element={<Sapera />} />
             <Route path="/projects/style-setuper" element={<StyleSetuper />} />
             <Route path="/projects/amazeballs" element={<Amazeballs />} />

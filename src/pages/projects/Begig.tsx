@@ -15,7 +15,7 @@ import freelancerPayment from '@/assets/begig-freelancer-payment.jpg'
 import freelancerProposal from '@/assets/begig-freelancer-proposal.jpg'
 import freelancerSignup from '@/assets/begig-freelancer-signup.jpg'
 
-const Zori = () => {
+const Begig = () => {
   const navigate = useNavigate()
 
   return (
@@ -224,4 +224,4 @@ const Zori = () => {
   )
 }
 
-export default Zori
+export default Begig
