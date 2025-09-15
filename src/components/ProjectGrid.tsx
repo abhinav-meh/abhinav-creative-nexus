@@ -10,7 +10,7 @@ const projects = [
     icon: '/src/assets/begig-logo.svg'
   },
   {
-    title: 'Sapera',
+    title: 'Woz',
     description: 'Project management platform design',
     category: 'Design' as const,
     icon: '📊'

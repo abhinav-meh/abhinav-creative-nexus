@@ -8,7 +8,7 @@ import Lab from "./pages/Lab";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Begig from "./pages/projects/Begig";
-import Sapera from "./pages/projects/Sapera";
+import Woz from "./pages/projects/Woz";
 import StyleSetuper from "./pages/projects/StyleSetuper";
 import Amazeballs from "./pages/projects/Amazeballs";
 
@@ -27,7 +27,7 @@ const App = () => (
             <Route path="/lab" element={<Lab />} />
             <Route path="/projects/begig" element={<Begig />} />
             <Route path="/projects/zori" element={<Begig />} />
-            <Route path="/projects/sapera" element={<Sapera />} />
+            <Route path="/projects/woz" element={<Woz />} />
             <Route path="/projects/style-setuper" element={<StyleSetuper />} />
             <Route path="/projects/amazeballs" element={<Amazeballs />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

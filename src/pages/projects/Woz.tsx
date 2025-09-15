@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
-const Sapera = () => {
+const Woz = () => {
   const navigate = useNavigate()
 
   return (
@@ -37,7 +37,7 @@ const Sapera = () => {
                 📊
               </div>
               <div>
-                <h1 className="text-4xl font-bold text-foreground mb-2">Sapera</h1>
+                <h1 className="text-4xl font-bold text-foreground mb-2">Woz</h1>
                 <p className="text-lg text-muted-foreground">
                   Project management platform design
                 </p>
@@ -52,7 +52,7 @@ const Sapera = () => {
               <div className="bg-card/50 rounded-lg p-8 border border-border">
                 <h2 className="text-2xl font-semibold mb-4">Project Overview</h2>
                 <p className="text-muted-foreground">
-                  Content about the Sapera project will be added here.
+                  Content about the Woz project will be added here.
                 </p>
               </div>
             </div>
@@ -65,4 +65,4 @@ const Sapera = () => {
   )
 }
 
-export default Sapera
+export default Woz
