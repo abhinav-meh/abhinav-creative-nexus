@@ -13,7 +13,7 @@ const projects = [
     title: 'Woz',
     description: "Agentic AI to empower your customer success",
     category: 'Design' as const,
-    icon: '📊'
+    icon: '/src/assets/woz-logo.svg'
   },
   {
     title: '2+ items in an order at OLX',
