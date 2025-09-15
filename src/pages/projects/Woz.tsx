@@ -76,13 +76,11 @@ const Woz = () => {
 
               <div className="mb-12">
                 <h2 className="text-3xl font-semibold mb-8">Platform Overview</h2>
-                <div className="bg-card/30 rounded-lg overflow-hidden border border-border mb-6">
-                  <img 
-                    src={wozOverview} 
-                    alt="WOZ.AI Dashboard Overview showing analytics, active users, and conversation metrics"
-                    className="w-full h-auto"
-                  />
-                </div>
+                <img 
+                  src={wozOverview} 
+                  alt="WOZ.AI Dashboard Overview showing analytics, active users, and conversation metrics"
+                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                />
                 <p className="text-muted-foreground mb-8">
                   The main dashboard provides a comprehensive view of chatbot performance with real-time metrics including QR code scans, conversation volumes, chatbot uptime, and user engagement analytics.
                 </p>
@@ -90,13 +88,11 @@ const Woz = () => {
 
               <div className="mb-12">
                 <h2 className="text-3xl font-semibold mb-8">Product Management</h2>
-                <div className="bg-card/30 rounded-lg overflow-hidden border border-border mb-6">
-                  <img 
-                    src={wozAccountSelect} 
-                    alt="Product selection interface showing different chatbots for Nike products with user and conversation counts"
-                    className="w-full h-auto"
-                  />
-                </div>
+                <img 
+                  src={wozAccountSelect} 
+                  alt="Product selection interface showing different chatbots for Nike products with user and conversation counts"
+                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                />
                 <p className="text-muted-foreground mb-8">
                   The platform enables management of multiple product-specific chatbots, each with detailed user engagement metrics and conversation tracking for different product lines.
                 </p>
@@ -104,13 +100,11 @@ const Woz = () => {
 
               <div className="mb-12">
                 <h2 className="text-3xl font-semibold mb-8">Conversation Analytics</h2>
-                <div className="bg-card/30 rounded-lg overflow-hidden border border-border mb-6">
-                  <img 
-                    src={wozConversationAnalysis} 
-                    alt="Detailed conversation analysis showing sentiment tracking, keyword clouds, and performance metrics"
-                    className="w-full h-auto"
-                  />
-                </div>
+                <img 
+                  src={wozConversationAnalysis} 
+                  alt="Detailed conversation analysis showing sentiment tracking, keyword clouds, and performance metrics"
+                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                />
                 <p className="text-muted-foreground mb-8">
                   Advanced sentiment analysis provides insights into customer satisfaction across different topics, with visual representations of sentiment trends and keyword frequency analysis.
                 </p>
@@ -118,13 +112,11 @@ const Woz = () => {
 
               <div className="mb-12">
                 <h2 className="text-3xl font-semibold mb-8">Customer Insights</h2>
-                <div className="bg-card/30 rounded-lg overflow-hidden border border-border mb-6">
-                  <img 
-                    src={wozCustomerData} 
-                    alt="Customer data table showing user information, ratings, and interaction history"
-                    className="w-full h-auto"
-                  />
-                </div>
+                <img 
+                  src={wozCustomerData} 
+                  alt="Customer data table showing user information, ratings, and interaction history"
+                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                />
                 <p className="text-muted-foreground mb-8">
                   Comprehensive customer data management with detailed user profiles, interaction history, and engagement ratings to help businesses understand their audience better.
                 </p>
