@@ -3,6 +3,7 @@ import InteractiveGrid from '@/components/InteractiveGrid'
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
+import begigLogo from '@/assets/begig-logo.svg'
 
 // Import BeGig screenshots
 import clientDashboard from '@/assets/begig-client-dashboard.jpg'
@@ -44,7 +45,7 @@ const Zori = () => {
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
-                <img src="/src/assets/begig-logo.svg" alt="BeGig logo" className="w-12 h-12" />
+                <img src={begigLogo} alt="BeGig logo" className="w-12 h-12" />
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-2">
