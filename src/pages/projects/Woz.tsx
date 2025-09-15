@@ -86,7 +86,7 @@ const Woz = () => {
                   alt="WOZ.AI Dashboard Overview showing analytics, active users, and conversation metrics"
                   className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                 />
-                <p className="text-muted-foreground mb-8">
+                <p className="text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
                   The main dashboard provides a comprehensive view of chatbot performance with real-time metrics including QR code scans, conversation volumes, chatbot uptime, and user engagement analytics.
                 </p>
               </div>
@@ -98,7 +98,7 @@ const Woz = () => {
                   alt="Product selection interface showing different chatbots for Nike products with user and conversation counts"
                   className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                 />
-                <p className="text-muted-foreground mb-8">
+                <p className="text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
                   The platform enables management of multiple product-specific chatbots, each with detailed user engagement metrics and conversation tracking for different product lines.
                 </p>
               </div>
@@ -110,7 +110,7 @@ const Woz = () => {
                   alt="Detailed conversation analysis showing sentiment tracking, keyword clouds, and performance metrics"
                   className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                 />
-                <p className="text-muted-foreground mb-8">
+                <p className="text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
                   Advanced sentiment analysis provides insights into customer satisfaction across different topics, with visual representations of sentiment trends and keyword frequency analysis.
                 </p>
               </div>
@@ -122,7 +122,7 @@ const Woz = () => {
                   alt="Customer data table showing user information, ratings, and interaction history"
                   className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
                 />
-                <p className="text-muted-foreground mb-8">
+                <p className="text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
                   Comprehensive customer data management with detailed user profiles, interaction history, and engagement ratings to help businesses understand their audience better.
                 </p>
               </div>
