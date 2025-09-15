@@ -11,7 +11,7 @@ const projects = [
   },
   {
     title: 'Woz',
-    description: 'Project management platform design',
+    description: "Agentic AI to empower your customer success",
     category: 'Design' as const,
     icon: '📊'
   },
