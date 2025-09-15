@@ -45,7 +45,16 @@ const Zori = () => {
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
-                <img src={begigLogo} alt="BeGig logo" className="w-12 h-12" />
+                <img 
+                  src={begigLogo} 
+                  alt="BeGig logo" 
+                  className="w-12 h-12" 
+                  onError={(e) => {
+                    console.error('Logo failed to load:', begigLogo);
+                    e.currentTarget.style.display = 'none';
+                  }}
+                  onLoad={() => console.log('Logo loaded successfully:', begigLogo)}
+                />
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-2">
