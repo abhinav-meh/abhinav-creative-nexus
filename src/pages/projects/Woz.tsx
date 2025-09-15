@@ -3,6 +3,7 @@ import InteractiveGrid from '@/components/InteractiveGrid'
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import wozLogo from '@/assets/woz-logo.svg'
 import wozOverview from '@/assets/woz-overview.jpg'
 import wozAccountSelect from '@/assets/woz-account-select.jpg'
 import wozConversationAnalysis from '@/assets/woz-conversation-analysis.jpg'
@@ -37,8 +38,12 @@ const Woz = () => {
           
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-4xl">
-                🤖
+              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
+                <img 
+                  src={wozLogo} 
+                  alt="WOZ.AI logo" 
+                  className="w-12 h-12" 
+                />
               </div>
               <div>
                 <h1 className="text-4xl font-bold text-foreground mb-2">WOZ.AI</h1>
