@@ -6,6 +6,7 @@ import Navigation from "@/components/Navigation"
 import xunoHero from "@/assets/xuno-hero.jpg"
 import xunoSection2 from "@/assets/xuno-section-2.jpg"
 import xunoSection3 from "@/assets/xuno-section-3.jpg"
+import xunoLogo from "@/assets/xuno-logo.svg"
 
 const Xuno = () => {
   const navigate = useNavigate()
@@ -36,8 +37,8 @@ const Xuno = () => {
           
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-4xl">
-                📊
+              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
+                <img src={xunoLogo} alt="XUNO Logo" className="w-12 h-12" />
               </div>
               <div>
                 <h1 className="text-4xl font-bold text-foreground mb-4">XUNO</h1>
