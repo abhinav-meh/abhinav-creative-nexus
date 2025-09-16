@@ -38,7 +38,7 @@ export default function ProjectCard({ title, description, category, icon }: Proj
         <div className="flex items-start gap-5">
           {icon && (
             <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
-              {typeof icon === 'string' && (icon.startsWith('/') || icon.includes('.svg')) ? (
+              {typeof icon === 'string' && icon.length > 10 ? (
                 <img src={icon} alt={`${title} icon`} className="w-10 h-10" />
               ) : (
                 <span>{icon}</span>
