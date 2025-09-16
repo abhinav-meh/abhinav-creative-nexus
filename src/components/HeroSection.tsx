@@ -62,7 +62,12 @@ export default function HeroSection() {
           
           {showEmail && (
             <div className="mt-8 text-lg font-mono text-white animate-fade-in">
-              hello@abhinavmehrotra.com
+              <a 
+                href="mailto:abhinav.comms@gmail.com" 
+                className="hover:text-primary transition-colors duration-200"
+              >
+                abhinav.comms@gmail.com
+              </a>
             </div>
           )}
         </div>
