@@ -33,22 +33,23 @@ const Xuno = () => {
             <div className="prose prose-invert max-w-none">
               <h2 className="text-2xl font-semibold mb-4">About the Project</h2>
               <p className="text-muted-foreground mb-6">
-                XUNO is a data-driven advertising platform that leverages advanced analytics and machine learning 
-                to optimize advertising campaigns and maximize ROI for businesses.
+                XUNO is a comprehensive web design project for a data-powered advertising platform. 
+                The design focuses on showcasing personalized e-commerce solutions and revenue optimization features 
+                through clean, modern interfaces and intuitive user experiences.
               </p>
               
-              <h3 className="text-xl font-semibold mb-3">Key Features</h3>
+              <h3 className="text-xl font-semibold mb-3">Design Features</h3>
               <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
-                <li>Real-time campaign performance analytics</li>
-                <li>AI-powered audience targeting</li>
-                <li>Cross-platform advertising management</li>
-                <li>Predictive ROI modeling</li>
-                <li>Automated bid optimization</li>
+                <li>Clean, modern interface design</li>
+                <li>Intuitive user experience flow</li>
+                <li>Mobile-responsive layouts</li>
+                <li>Professional color palette and typography</li>
+                <li>Clear information hierarchy and visual organization</li>
               </ul>
               
-              <h3 className="text-xl font-semibold mb-3">Technologies Used</h3>
+              <h3 className="text-xl font-semibold mb-3">Design Tools Used</h3>
               <div className="flex flex-wrap gap-2 mb-8">
-                {['React', 'TypeScript', 'Python', 'Machine Learning', 'Data Analytics', 'PostgreSQL'].map((tech) => (
+                {['Figma', 'Adobe XD', 'UI/UX Design', 'Responsive Design', 'Prototyping', 'Visual Design'].map((tech) => (
                   <span key={tech} className="px-3 py-1 bg-secondary rounded-full text-sm">
                     {tech}
                   </span>
