@@ -1,31 +1,36 @@
 import { useState } from 'react'
 import ProjectCard from './ProjectCard'
 import { Button } from "@/components/ui/button"
+import begigLogo from '@/assets/begig-logo.svg'
+import wozLogo from '@/assets/woz-logo.svg'
+import xunoLogo from '@/assets/xuno-logo.svg'
+import dithererThumbnail from '@/assets/ditherer-thumbnail.svg'
+import confluenceThumbnail from '@/assets/confluence-thumbnail.svg'
 
 const projects = [
   {
     title: 'Begig',
     description: 'Freelancing platform connecting clients with talented professionals',
     category: 'Design' as const,
-    icon: '/src/assets/begig-logo.svg'
+    icon: begigLogo
   },
   {
     title: 'Woz',
     description: "Agentic AI to empower your customer success",
     category: 'Design' as const,
-    icon: '/src/assets/woz-logo.svg'
+    icon: wozLogo
   },
   {
     title: 'XUNO',
     description: 'Data Powered Advertising',
     category: 'Design' as const,
-    icon: '/src/assets/xuno-logo.svg'
+    icon: xunoLogo
   },
   {
     title: 'Dither-er',
     description: 'Image dithering tool with customizable effects',
     category: 'Development' as const,
-    icon: '/src/assets/ditherer-thumbnail.svg'
+    icon: dithererThumbnail
   },
   {
     title: 'OOP Principles in Creative Coding',
@@ -43,7 +48,7 @@ const projects = [
     title: 'Confluence',
     description: 'Interactive digital water simulation built with TouchDesigner and controlled by accelerometer',
     category: 'Creative Tech' as const,
-    icon: '/src/assets/confluence-thumbnail.svg'
+    icon: confluenceThumbnail
   }
 ]
 
