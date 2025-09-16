@@ -82,6 +82,12 @@ const projects = [
     icon: '🧩'
   },
   {
+    title: 'OOP Principles in Creative Coding',
+    description: 'Exploring object-oriented programming concepts through interactive art and generative design',
+    category: 'Research' as const,
+    icon: '🔬'
+  },
+  {
     title: 'Neural Network Visualization',
     description: 'Interactive machine learning visualization',
     category: 'Research' as const,
