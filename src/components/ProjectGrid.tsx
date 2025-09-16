@@ -34,24 +34,6 @@ const projects = [
     icon: '🔬'
   },
   {
-    title: 'Neural Network Visualization',
-    description: 'Interactive machine learning visualization',
-    category: 'Research' as const,
-    icon: '🧠'
-  },
-  {
-    title: 'Generative Art Gallery',
-    description: 'Algorithmic art using code',
-    category: 'Development' as const,
-    icon: '🎭'
-  },
-  {
-    title: 'IoT Home Automation',
-    description: 'Arduino smart home system',
-    category: 'Development' as const,
-    icon: '🏠'
-  },
-  {
     title: 'Amazeballs',
     description: 'Unity-powered game with custom wearable controller',
     category: 'Game Dev' as const,
