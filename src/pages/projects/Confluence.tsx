@@ -1,12 +1,32 @@
 import ProjectLayout from '@/components/ProjectLayout'
+import { Button } from '@/components/ui/button'
+import { ExternalLink } from 'lucide-react'
 import confluenceThumbnail from '@/assets/confluence-thumbnail.svg'
 
 const Confluence = () => {
+  const buttons = (
+    <Button 
+      variant="outline" 
+      size="sm"
+      asChild
+    >
+      <a 
+        href="https://confluence-installation.netlify.app/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        <ExternalLink className="w-4 h-4 mr-2" />
+        Visit Website
+      </a>
+    </Button>
+  )
+
   return (
     <ProjectLayout
       title="Confluence"
       subtitle="Interactive digital water simulation with motion control"
       icon={confluenceThumbnail}
+      buttons={buttons}
     >
               <p className="text-lg text-muted-foreground mb-8">
                 Confluence is an immersive digital water simulation that brings fluid dynamics to life through TouchDesigner. 
