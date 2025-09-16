@@ -117,6 +117,14 @@ const Begig = () => {
                     src={clientSignup} 
                     alt="Client signup with tech skills selection"
                     className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
+                      e.currentTarget.style.minHeight = '400px';
+                      e.currentTarget.style.display = 'flex';
+                      e.currentTarget.style.alignItems = 'center';
+                      e.currentTarget.style.justifyContent = 'center';
+                      e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Client Signup Screenshot</span>';
+                    }}
                   />
                   <p className="text-muted-foreground text-center max-w-3xl mx-auto">
                     Clients can specify exactly what tech skills they're hiring for during the onboarding process

@@ -118,6 +118,14 @@ const Woz = () => {
                   src={wozOverview} 
                   alt="WOZ.AI Dashboard Overview showing analytics, active users, and conversation metrics"
                   className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                  onError={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
+                    e.currentTarget.style.minHeight = '400px';
+                    e.currentTarget.style.display = 'flex';
+                    e.currentTarget.style.alignItems = 'center';
+                    e.currentTarget.style.justifyContent = 'center';
+                    e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Platform Overview Screenshot</span>';
+                  }}
                 />
                 <p className="text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
                   The main dashboard provides a comprehensive view of chatbot performance with real-time metrics including QR code scans, conversation volumes, chatbot uptime, and user engagement analytics.
