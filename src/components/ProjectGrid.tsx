@@ -28,60 +28,6 @@ const projects = [
     icon: '/src/assets/ditherer-thumbnail.svg'
   },
   {
-    title: 'Style Setuper',
-    description: 'Figma text styles plugin',
-    category: 'Development' as const,
-    icon: '🎨'
-  },
-  {
-    title: 'thePenTool',
-    description: 'UI design assets shop',
-    category: 'Design' as const,
-    icon: '✏️'
-  },
-  {
-    title: 'companies.tools 22 recap',
-    description: 'Yearly recap website design',
-    category: 'Development' as const,
-    icon: '📈'
-  },
-  {
-    title: 'Obviously AI',
-    description: 'AI prediction marketing website',
-    category: 'Development' as const,
-    icon: '🤖'
-  },
-  {
-    title: 'Better File Thumbnails',
-    description: 'macOS file browser plugin',
-    category: 'Development' as const,
-    icon: '📁'
-  },
-  {
-    title: 'Buyer acceptance rate at OLX',
-    description: 'Payment rejection problem solution',
-    category: 'Design' as const,
-    icon: '✅'
-  },
-  {
-    title: 'CureRate',
-    description: 'Chronic conditions review platform',
-    category: 'Development' as const,
-    icon: '💊'
-  },
-  {
-    title: 'New deal confirmation experience at OLX',
-    description: 'Simplified deal confirmation flow',
-    category: 'Design' as const,
-    icon: '🤝'
-  },
-  {
-    title: 'Handy Components',
-    description: 'Figma component matching plugin',
-    category: 'Development' as const,
-    icon: '🧩'
-  },
-  {
     title: 'OOP Principles in Creative Coding',
     description: 'Exploring object-oriented programming concepts through interactive art and generative design',
     category: 'Research' as const,
