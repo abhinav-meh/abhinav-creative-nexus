@@ -62,9 +62,10 @@ const OOPCreativeCoding = () => {
                     asChild
                   >
                     <a 
-                      href="#" 
+                      href="/OOP_Principles_Creative_Coding_Paper.pdf" 
                       target="_blank" 
                       rel="noopener noreferrer"
+                      download="OOP_Principles_Creative_Coding_Paper.pdf"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Read Paper
