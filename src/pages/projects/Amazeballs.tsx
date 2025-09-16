@@ -140,7 +140,7 @@ const Amazeballs = () => {
                   <div>
                     <h4 className="font-semibold text-foreground mb-2">Hardware Components</h4>
                     <ul className="text-muted-foreground space-y-1">
-                      <li>• ESP32 microcontroller</li>
+                      <li>• Arduino Uno microcontroller</li>
                       <li>• Motion sensors (accelerometer/gyroscope)</li>
                       <li>• Wireless communication module</li>
                       <li>• Custom PCB design</li>
