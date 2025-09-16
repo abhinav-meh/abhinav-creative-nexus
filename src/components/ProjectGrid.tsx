@@ -19,7 +19,7 @@ const projects = [
     title: 'XUNO',
     description: 'Data Powered Advertising',
     category: 'Development' as const,
-    icon: '📊'
+    icon: '/src/assets/xuno-logo.svg'
   },
   {
     title: 'Style Setuper',
