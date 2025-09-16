@@ -58,24 +58,18 @@ const Confluence = () => {
           through their movements.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div>
-            <h3 className="text-lg font-semibold mb-3 text-foreground">Team Members</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><strong>Alex LaFontaine:</strong> Digital Media Photography & Graphic Design</li>
-              <li><strong>Shalimar Alvarado Cruz Hebbeler:</strong> Creative Technologist</li>
-              <li><strong>Klinger Abe:</strong> Audio, Visual & Design Production</li>
-              <li><strong>Abhinav Homer Mehrotra:</strong> Chief Fabricator, Creative Technologist, Web Developer, TouchDesigner Developer & Photographer</li>
-            </ul>
+            <strong className="text-foreground">Platform:</strong> TouchDesigner
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-3 text-foreground">Project Details</h3>
-            <div className="grid grid-cols-2 gap-2 text-sm">
-              <div><strong className="text-foreground">Platform:</strong> TouchDesigner</div>
-              <div><strong className="text-foreground">Type:</strong> Interactive Installation</div>
-              <div><strong className="text-foreground">Input:</strong> Motion Control</div>
-              <div><strong className="text-foreground">Output:</strong> Fluid Simulation & Lighting</div>
-            </div>
+            <strong className="text-foreground">Type:</strong> Interactive Installation
+          </div>
+          <div>
+            <strong className="text-foreground">Input:</strong> Motion Control
+          </div>
+          <div>
+            <strong className="text-foreground">Output:</strong> Fluid Simulation & Lighting
           </div>
         </div>
       </div>
