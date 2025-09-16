@@ -14,7 +14,7 @@ const Ditherer = () => {
         <section className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-8">
             <Badge variant="outline" className="mb-4">
-              Development • 2024
+              Development • 2025
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Dither-er
@@ -27,10 +27,6 @@ const Ditherer = () => {
               <Button size="lg" className="gap-2">
                 <ExternalLink className="w-4 h-4" />
                 Launch App
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2">
-                <Github className="w-4 h-4" />
-                View Code
               </Button>
             </div>
           </div>
