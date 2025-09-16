@@ -38,10 +38,10 @@ export default function ProjectCard({ title, description, category, icon }: Proj
         <div className="flex items-start gap-5">
           {icon && (
             <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
-              {icon.endsWith('.svg') ? (
+              {typeof icon === 'string' && (icon.startsWith('/') || icon.includes('.svg')) ? (
                 <img src={icon} alt={`${title} icon`} className="w-10 h-10" />
               ) : (
-                icon
+                <span>{icon}</span>
               )}
             </div>
           )}
