@@ -1,19 +1,45 @@
 import { Button } from "@/components/ui/button"
 import { ExternalLink, ArrowLeft } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import InteractiveGrid from "@/components/InteractiveGrid"
+import Navigation from "@/components/Navigation"
 import xunoHero from "@/assets/xuno-hero.jpg"
 import xunoSection2 from "@/assets/xuno-section-2.jpg"
 import xunoSection3 from "@/assets/xuno-section-3.jpg"
 
 const Xuno = () => {
+  const navigate = useNavigate()
+
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 py-12">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background Grid */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '20px 20px'
+        }}
+      />
+      
+      {/* Interactive Grid Overlay */}
+      <InteractiveGrid />
+      
+      {/* Navigation */}
+      <Navigation />
+      
+      <div className="relative z-10 container mx-auto px-6 py-12">
         <div className="mb-8">
-          <Link to="/" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-6">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate('/')}
+            className="mb-6 text-muted-foreground hover:text-primary"
+          >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Portfolio
-          </Link>
+            Back to Work
+          </Button>
           
           <div className="max-w-4xl">
             <div className="flex flex-col lg:flex-row gap-8 items-start mb-12">
