@@ -46,14 +46,56 @@ const Amazeballs = () => {
             
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-muted-foreground mb-8">
-                Project content and media will be updated here.
+                A Unity-powered maze game featuring custom wearable controller integration. Navigate through challenging levels while collecting items in this immersive gaming experience.
               </p>
               
-              <div className="bg-card/50 rounded-lg p-8 border border-border">
-                <h2 className="text-2xl font-semibold mb-4">Project Overview</h2>
-                <p className="text-muted-foreground">
-                  Content about the Amazeballs project will be added here.
-                </p>
+              <div className="bg-card/50 rounded-lg p-8 border border-border mb-8">
+                <h2 className="text-2xl font-semibold mb-4">Game Features</h2>
+                <ul className="text-muted-foreground space-y-2">
+                  <li>• Multiple difficulty levels (Easy, Mid, Hard)</li>
+                  <li>• Collectible system with progress tracking</li>
+                  <li>• Timer-based challenges</li>
+                  <li>• Custom wearable controller integration</li>
+                  <li>• Immersive space-themed environments</li>
+                </ul>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
+                  <img 
+                    src="/src/assets/amazeballs-main-menu.png" 
+                    alt="Amazeballs main menu with difficulty selection"
+                    className="w-full h-auto"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2">Main Menu</h3>
+                    <p className="text-sm text-muted-foreground">Choose your difficulty level and start your maze adventure</p>
+                  </div>
+                </div>
+
+                <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
+                  <img 
+                    src="/src/assets/amazeballs-level.png" 
+                    alt="Amazeballs game level showing maze layout"
+                    className="w-full h-auto"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2">Game Level</h3>
+                    <p className="text-sm text-muted-foreground">Navigate through intricate maze patterns</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
+                <img 
+                  src="/src/assets/amazeballs-level-2.png" 
+                  alt="Amazeballs gameplay with collectibles and timer"
+                  className="w-full h-auto"
+                />
+                <div className="p-4">
+                  <h3 className="font-semibold mb-2">Active Gameplay</h3>
+                  <p className="text-sm text-muted-foreground">Collect blue crystals while racing against time in this challenging maze environment</p>
+                </div>
               </div>
             </div>
           </div>
