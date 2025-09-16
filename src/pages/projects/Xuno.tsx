@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { ExternalLink, ArrowLeft } from "lucide-react"
 import { Link } from "react-router-dom"
+import xunoHero from "@/assets/xuno-hero.jpg"
+import xunoSection2 from "@/assets/xuno-section-2.jpg"
+import xunoSection3 from "@/assets/xuno-section-3.jpg"
 
 const Xuno = () => {
   return (
@@ -44,12 +47,74 @@ const Xuno = () => {
               </ul>
               
               <h3 className="text-xl font-semibold mb-3">Technologies Used</h3>
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-2 mb-8">
                 {['React', 'TypeScript', 'Python', 'Machine Learning', 'Data Analytics', 'PostgreSQL'].map((tech) => (
                   <span key={tech} className="px-3 py-1 bg-secondary rounded-full text-sm">
                     {tech}
                   </span>
                 ))}
+              </div>
+
+              <div className="space-y-12">
+                <div>
+                  <h3 className="text-xl font-semibold mb-6">Platform Overview</h3>
+                  <img 
+                    src={xunoHero} 
+                    alt="XUNO platform hero section showing personalized e-commerce solutions"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
+                      e.currentTarget.style.minHeight = '400px';
+                      e.currentTarget.style.display = 'flex';
+                      e.currentTarget.style.alignItems = 'center';
+                      e.currentTarget.style.justifyContent = 'center';
+                      e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Platform Overview Screenshot</span>';
+                    }}
+                  />
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
+                    XUNO's main platform showcasing personalized e-commerce solutions that increase revenue opportunities and strengthen customer relationships
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-6">Revenue Optimization Features</h3>
+                  <img 
+                    src={xunoSection2} 
+                    alt="XUNO revenue optimization features including personalized upsells and premium marketplace"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
+                      e.currentTarget.style.minHeight = '400px';
+                      e.currentTarget.style.display = 'flex';
+                      e.currentTarget.style.alignItems = 'center';
+                      e.currentTarget.style.justifyContent = 'center';
+                      e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Revenue Features Screenshot</span>';
+                    }}
+                  />
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
+                    Advanced features for e-commerce publishers including personalized upsells, premium marketplace integration, and tailored customer experiences
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-6">How XUNO Works</h3>
+                  <img 
+                    src={xunoSection3} 
+                    alt="XUNO workflow showing 4-step process and business benefits with machine learning capabilities"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
+                      e.currentTarget.style.minHeight = '400px';
+                      e.currentTarget.style.display = 'flex';
+                      e.currentTarget.style.alignItems = 'center';
+                      e.currentTarget.style.justifyContent = 'center';
+                      e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Workflow Diagram Screenshot</span>';
+                    }}
+                  />
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
+                    The complete XUNO workflow from customer interaction to personalized engagement, powered by cutting-edge machine learning and seamless integrations
+                  </p>
+                </div>
               </div>
             </div>
           </div>
