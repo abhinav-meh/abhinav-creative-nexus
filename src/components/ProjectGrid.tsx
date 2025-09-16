@@ -22,6 +22,12 @@ const projects = [
     icon: '/src/assets/xuno-logo.svg'
   },
   {
+    title: 'Dither-er',
+    description: 'Image dithering tool with customizable effects',
+    category: 'Development' as const,
+    icon: '🎨'
+  },
+  {
     title: 'Style Setuper',
     description: 'Figma text styles plugin',
     category: 'Development' as const,
