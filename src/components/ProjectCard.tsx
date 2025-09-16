@@ -33,12 +33,12 @@ export default function ProjectCard({ title, description, category, icon }: Proj
   
   return (
     <Link to={`/projects/${slug}`}>
-      <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-4 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in h-[140px]">
-        <div className="flex items-start gap-4">
+      <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-6 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in h-[180px]">
+        <div className="flex items-start gap-5">
           {icon && (
-            <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
               {icon.endsWith('.svg') ? (
-                <img src={icon} alt={`${title} icon`} className="w-8 h-8" />
+                <img src={icon} alt={`${title} icon`} className="w-10 h-10" />
               ) : (
                 icon
               )}
@@ -46,8 +46,8 @@ export default function ProjectCard({ title, description, category, icon }: Proj
           )}
           
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-3 mb-3">
-              <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors">
+            <div className="flex items-center gap-3 mb-4">
+              <h3 className="font-semibold text-lg text-card-foreground group-hover:text-primary transition-colors">
                 {title}
               </h3>
               <Badge 
@@ -58,7 +58,7 @@ export default function ProjectCard({ title, description, category, icon }: Proj
               </Badge>
             </div>
             
-            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+            <p className="text-base text-muted-foreground leading-relaxed line-clamp-4">
               {description}
             </p>
           </div>
