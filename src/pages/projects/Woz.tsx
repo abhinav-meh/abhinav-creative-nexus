@@ -68,7 +68,7 @@ const Woz = () => {
                     <strong className="text-foreground">Role:</strong> Product Designer & Developer
                   </div>
                   <div>
-                    <strong className="text-foreground">Timeline:</strong> 6 months
+                    <strong className="text-foreground">Timeline:</strong> 3 months
                   </div>
                   <div>
                     <strong className="text-foreground">Team:</strong> 4 engineers, 2 designers
