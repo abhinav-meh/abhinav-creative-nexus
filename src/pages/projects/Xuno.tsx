@@ -69,7 +69,7 @@ const Xuno = () => {
                     <strong className="text-foreground">Timeline:</strong> 2 months
                   </div>
                   <div>
-                    <strong className="text-foreground">Tools:</strong> Figma, Adobe XD
+                    <strong className="text-foreground">Tools:</strong> Figma
                   </div>
                   <div>
                     <strong className="text-foreground">Type:</strong> Web Design
