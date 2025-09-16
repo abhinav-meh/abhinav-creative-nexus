@@ -1,8 +1,6 @@
-import Navigation from '@/components/Navigation'
-import InteractiveGrid from '@/components/InteractiveGrid'
+import ProjectLayout from '@/components/ProjectLayout'
 import { Button } from '@/components/ui/button'
-import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import wozLogo from '@/assets/woz-logo.svg'
 import wozOverview from '@/assets/woz-overview.jpg'
 import wozAccountSelect from '@/assets/woz-account-select.jpg'
@@ -13,80 +11,46 @@ import wozChatbotVoice from '@/assets/woz-chatbot-voice.jpg'
 import wozChatbotProduct from '@/assets/woz-chatbot-product.jpg'
 
 const Woz = () => {
-  const navigate = useNavigate()
+  const buttons = (
+    <>
+      <Button 
+        variant="outline" 
+        size="sm"
+        asChild
+      >
+        <a 
+          href="https://www.woz.ai/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <ExternalLink className="w-4 h-4 mr-2" />
+          Visit Website
+        </a>
+      </Button>
+      <Button 
+        variant="outline" 
+        size="sm"
+        asChild
+      >
+        <a 
+          href="https://chat.woz.ai/nike" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <ExternalLink className="w-4 h-4 mr-2" />
+          Visit Chatbot
+        </a>
+      </Button>
+    </>
+  )
 
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Static Grid Pattern Background */}
-      <div 
-        className="absolute inset-0 bg-grid-pattern" 
-        style={{backgroundSize: '64px 64px'}}
-      ></div>
-      
-      {/* Interactive Grid Overlay */}
-      <InteractiveGrid />
-      
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
-      
-      <div className="relative z-10 pb-24">
-        <div className="container mx-auto px-4 py-16">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="mb-8 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Work
-          </Button>
-          
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
-                <img 
-                  src={wozLogo} 
-                  alt="WOZ.AI logo" 
-                  className="w-12 h-12" 
-                />
-              </div>
-              <div>
-                <h1 className="text-4xl font-bold text-foreground mb-4">WOZ.AI</h1>
-                <p className="text-lg text-muted-foreground mb-4">
-                  Conversational AI Analytics Platform
-                </p>
-                <div className="flex gap-3">
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    asChild
-                  >
-                    <a 
-                      href="https://www.woz.ai/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Visit Website
-                    </a>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    asChild
-                  >
-                    <a 
-                      href="https://chat.woz.ai/nike" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Visit Chatbot
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
-            
-            <div className="prose prose-invert max-w-none">
+    <ProjectLayout
+      title="WOZ.AI"
+      subtitle="Conversational AI Analytics Platform"
+      icon={wozLogo}
+      buttons={buttons}
+    >
               <p className="text-lg text-muted-foreground mb-8">
                 A comprehensive analytics platform for conversational AI, providing insights into chatbot performance, customer sentiment, and engagement metrics across multiple product lines.
               </p>
@@ -227,13 +191,7 @@ const Woz = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <Navigation />
-    </div>
+    </ProjectLayout>
   )
 }
 

@@ -1,8 +1,4 @@
-import Navigation from '@/components/Navigation'
-import InteractiveGrid from '@/components/InteractiveGrid'
-import { Button } from '@/components/ui/button'
-import { useNavigate } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import ProjectLayout from '@/components/ProjectLayout'
 import amazeballsMainMenu from '@/assets/amazeballs-main-menu.png'
 import amazeballsLevel from '@/assets/amazeballs-level.png'
 import amazeballsLevel2 from '@/assets/amazeballs-level-2.png'
@@ -10,46 +6,12 @@ import controllerDevelopment from '@/assets/amazeballs-controller-development.jp
 import wearableController from '@/assets/amazeballs-wearable-controller.jpg'
 
 const Amazeballs = () => {
-  const navigate = useNavigate()
-
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Static Grid Pattern Background */}
-      <div 
-        className="absolute inset-0 bg-grid-pattern" 
-        style={{backgroundSize: '64px 64px'}}
-      ></div>
-      
-      {/* Interactive Grid Overlay */}
-      <InteractiveGrid />
-      
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
-      
-      <div className="relative z-10 pb-24">
-        <div className="container mx-auto px-4 py-16">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="mb-8 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Work
-          </Button>
-          
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-4xl">
-                🎮
-              </div>
-              <div>
-                <h1 className="text-4xl font-bold text-foreground mb-2">Amazeballs</h1>
-                <p className="text-lg text-muted-foreground">
-                  Unity-powered game with custom wearable controller
-                </p>
-              </div>
-            </div>
-            
-            <div className="prose prose-invert max-w-none">
+    <ProjectLayout
+      title="Amazeballs"
+      subtitle="Unity-powered game with custom wearable controller"
+      icon="🎮"
+    >
               <p className="text-lg text-muted-foreground mb-8">
                 A Unity-powered maze game featuring custom wearable controller integration. Navigate through challenging levels while collecting items in this immersive gaming experience.
               </p>
@@ -166,13 +128,7 @@ const Amazeballs = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <Navigation />
-    </div>
+    </ProjectLayout>
   )
 }
 

@@ -1,8 +1,6 @@
-import Navigation from '@/components/Navigation'
-import InteractiveGrid from '@/components/InteractiveGrid'
+import ProjectLayout from '@/components/ProjectLayout'
 import { Button } from '@/components/ui/button'
-import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import begigLogo from '@/assets/begig-logo.svg'
 
 // Import BeGig screenshots
@@ -16,69 +14,30 @@ import freelancerProposal from '@/assets/begig-freelancer-proposal.jpg'
 import freelancerSignup from '@/assets/begig-freelancer-signup.jpg'
 
 const Begig = () => {
-  const navigate = useNavigate()
+  const buttons = (
+    <Button 
+      variant="outline" 
+      size="sm"
+      asChild
+    >
+      <a 
+        href="https://begig.io/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        <ExternalLink className="w-4 h-4 mr-2" />
+        Visit Website
+      </a>
+    </Button>
+  )
 
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Static Grid Pattern Background */}
-      <div 
-        className="absolute inset-0 bg-grid-pattern" 
-        style={{backgroundSize: '64px 64px'}}
-      ></div>
-      
-      {/* Interactive Grid Overlay */}
-      <InteractiveGrid />
-      
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
-      
-      <div className="relative z-10 pb-24">
-        <div className="container mx-auto px-4 py-16">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="mb-8 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Work
-          </Button>
-          
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
-                <img 
-                  src={begigLogo} 
-                  alt="BeGig logo" 
-                  className="w-12 h-12" 
-                  onError={(e) => {
-                    console.error('Logo failed to load:', begigLogo);
-                    e.currentTarget.style.display = 'none';
-                  }}
-                  onLoad={() => console.log('Logo loaded successfully:', begigLogo)}
-                />
-              </div>
-              <div>
-                <h1 className="text-4xl font-bold text-foreground mb-4">BeGig</h1>
-                <p className="text-lg text-muted-foreground mb-4">
-                  Tech freelancing marketplace
-                </p>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  asChild
-                >
-                  <a 
-                    href="https://begig.io/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Visit Website
-                  </a>
-                </Button>
-              </div>
-            </div>
-            
-            <div className="max-w-none">
+    <ProjectLayout
+      title="BeGig"
+      subtitle="Tech freelancing marketplace"
+      icon={begigLogo}
+      buttons={buttons}
+    >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div>
                   <h3 className="text-sm font-medium text-muted-foreground mb-2">Year</h3>
@@ -225,13 +184,7 @@ const Begig = () => {
                   <li>• Built-in communication and collaboration features</li>
                 </ul>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <Navigation />
-    </div>
+    </ProjectLayout>
   )
 }
 

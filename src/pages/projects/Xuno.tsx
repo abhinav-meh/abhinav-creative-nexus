@@ -1,54 +1,16 @@
-import { Button } from "@/components/ui/button"
-import { ExternalLink, ArrowLeft } from "lucide-react"
-import { Link, useNavigate } from "react-router-dom"
-import InteractiveGrid from "@/components/InteractiveGrid"
-import Navigation from "@/components/Navigation"
+import ProjectLayout from '@/components/ProjectLayout'
 import xunoHero from "@/assets/xuno-hero.jpg"
 import xunoSection2 from "@/assets/xuno-section-2.jpg"
 import xunoSection3 from "@/assets/xuno-section-3.jpg"
 import xunoLogo from "@/assets/xuno-logo.svg"
 
 const Xuno = () => {
-  const navigate = useNavigate()
-
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Static Grid Pattern Background */}
-      <div 
-        className="absolute inset-0 bg-grid-pattern" 
-        style={{backgroundSize: '64px 64px'}}
-      ></div>
-      
-      {/* Interactive Grid Overlay */}
-      <InteractiveGrid />
-      
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
-      
-      <div className="relative z-10 pb-24">
-        <div className="container mx-auto px-4 py-16">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="mb-8 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Work
-          </Button>
-          
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
-                <img src={xunoLogo} alt="XUNO Logo" className="w-12 h-12" />
-              </div>
-              <div>
-                <h1 className="text-4xl font-bold text-foreground mb-4">XUNO</h1>
-                <p className="text-lg text-muted-foreground mb-4">
-                  Data Powered Advertising
-                </p>
-              </div>
-            </div>
-            
-            <div className="prose prose-invert max-w-none">
+    <ProjectLayout
+      title="XUNO"
+      subtitle="Data Powered Advertising"
+      icon={xunoLogo}
+    >
               <p className="text-lg text-muted-foreground mb-8">
                 XUNO is a comprehensive web design project for a data-powered advertising platform. 
                 The design focuses on showcasing personalized e-commerce solutions and revenue optimization features 
@@ -158,13 +120,7 @@ const Xuno = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <Navigation />
-    </div>
+    </ProjectLayout>
   )
 }
 
