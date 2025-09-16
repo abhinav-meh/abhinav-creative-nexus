@@ -5,6 +5,9 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { useNavigate } from "react-router-dom"
 import { ExternalLink, Download, Upload, Palette, Zap, ArrowLeft, Lock, Smartphone } from "lucide-react"
+import dithererThumbnail from "@/assets/ditherer-thumbnail.svg"
+import dithererSection1 from "@/assets/dither-er-section-1.jpg"
+import dithererSection2 from "@/assets/dither-er-section-2.jpg"
 
 const Ditherer = () => {
   const navigate = useNavigate()
@@ -37,7 +40,7 @@ const Ditherer = () => {
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
                 <img 
-                  src="/src/assets/ditherer-thumbnail.svg" 
+                  src={dithererThumbnail} 
                   alt="Dither-er logo" 
                   className="w-12 h-12" 
                 />
@@ -145,7 +148,7 @@ const Ditherer = () => {
               <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <div className="space-y-4">
                   <img 
-                    src="/src/assets/dither-er-section-2.jpg" 
+                    src={dithererSection2} 
                     alt="Dither-er upload interface"
                     className="rounded-lg shadow-lg w-full"
                   />
@@ -155,7 +158,7 @@ const Ditherer = () => {
                 </div>
                 <div className="space-y-4">
                   <img 
-                    src="/src/assets/dither-er-section-1.jpg" 
+                    src={dithererSection1} 
                     alt="Dither-er processing interface"
                     className="rounded-lg shadow-lg w-full"
                   />

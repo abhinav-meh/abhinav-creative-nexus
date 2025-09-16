@@ -3,6 +3,9 @@ import InteractiveGrid from '@/components/InteractiveGrid'
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import amazeballsMainMenu from '@/assets/amazeballs-main-menu.png'
+import amazeballsLevel from '@/assets/amazeballs-level.png'
+import amazeballsLevel2 from '@/assets/amazeballs-level-2.png'
 
 const Amazeballs = () => {
   const navigate = useNavigate()
@@ -63,7 +66,7 @@ const Amazeballs = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
                   <img 
-                    src="/src/assets/amazeballs-main-menu.png" 
+                    src={amazeballsMainMenu} 
                     alt="Amazeballs main menu with difficulty selection"
                     className="w-full h-auto"
                   />
@@ -75,7 +78,7 @@ const Amazeballs = () => {
 
                 <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
                   <img 
-                    src="/src/assets/amazeballs-level.png" 
+                    src={amazeballsLevel} 
                     alt="Amazeballs game level showing maze layout"
                     className="w-full h-auto"
                   />
@@ -88,7 +91,7 @@ const Amazeballs = () => {
 
               <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
                 <img 
-                  src="/src/assets/amazeballs-level-2.png" 
+                  src={amazeballsLevel2} 
                   alt="Amazeballs gameplay with collectibles and timer"
                   className="w-full h-auto"
                 />
