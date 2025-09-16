@@ -57,21 +57,24 @@ const Begig = () => {
                 />
               </div>
               <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <h1 className="text-4xl font-bold text-foreground">BeGig</h1>
+                <h1 className="text-4xl font-bold text-foreground mb-4">BeGig</h1>
+                <p className="text-lg text-muted-foreground mb-4">
+                  Tech freelancing marketplace
+                </p>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  asChild
+                >
                   <a 
                     href="https://begig.io/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    title="Visit website"
                   >
-                    <ExternalLink className="w-6 h-6" />
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Visit Website
                   </a>
-                </div>
-                <p className="text-lg text-muted-foreground">
-                  Tech freelancing marketplace
-                </p>
+                </Button>
               </div>
             </div>
             
