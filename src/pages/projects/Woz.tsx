@@ -49,30 +49,40 @@ const Woz = () => {
                 />
               </div>
               <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <h1 className="text-4xl font-bold text-foreground">WOZ.AI</h1>
-                  <a 
-                    href="https://www.woz.ai/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    title="Visit website"
-                  >
-                    <ExternalLink className="w-6 h-6" />
-                  </a>
-                  <a 
-                    href="https://chat.woz.ai/nike" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    title="Try the chatbot"
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
-                </div>
-                <p className="text-lg text-muted-foreground">
+                <h1 className="text-4xl font-bold text-foreground mb-4">WOZ.AI</h1>
+                <p className="text-lg text-muted-foreground mb-4">
                   Conversational AI Analytics Platform
                 </p>
+                <div className="flex gap-3">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    asChild
+                  >
+                    <a 
+                      href="https://www.woz.ai/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Visit Website
+                    </a>
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    asChild
+                  >
+                    <a 
+                      href="https://chat.woz.ai/nike" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Visit Chatbot
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
             
