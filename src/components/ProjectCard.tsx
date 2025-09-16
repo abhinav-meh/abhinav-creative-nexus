@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 interface ProjectCardProps {
   title: string
   description: string
-  category: 'Design' | 'Development' | 'Game Dev' | 'Research'
+  category: 'Design' | 'Development' | 'Game Dev' | 'Research' | 'Creative Tech'
   icon?: string
 }
 
@@ -25,7 +25,8 @@ const categoryStyles = {
   Design: 'bg-category-design/20 text-category-design border-category-design/30',
   Development: 'bg-category-developer/20 text-category-developer border-category-developer/30',
   'Game Dev': 'bg-category-experiment/20 text-category-experiment border-category-experiment/30',
-  Research: 'bg-category-research/20 text-category-research border-category-research/30'
+  Research: 'bg-category-research/20 text-category-research border-category-research/30',
+  'Creative Tech': 'bg-primary/20 text-primary border-primary/30'
 }
 
 export default function ProjectCard({ title, description, category, icon }: ProjectCardProps) {

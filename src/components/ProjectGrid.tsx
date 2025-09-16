@@ -38,10 +38,16 @@ const projects = [
     description: 'Unity-powered game with custom wearable controller',
     category: 'Game Dev' as const,
     icon: '🎮'
+  },
+  {
+    title: 'Confluence',
+    description: 'Interactive digital water simulation built with TouchDesigner and controlled by accelerometer',
+    category: 'Creative Tech' as const,
+    icon: '🌊'
   }
 ]
 
-const categories = ['All', 'Design', 'Development', 'Game Dev', 'Research'] as const
+const categories = ['All', 'Design', 'Development', 'Game Dev', 'Research', 'Creative Tech'] as const
 
 export default function ProjectGrid() {
   const [selectedCategory, setSelectedCategory] = useState<typeof categories[number]>('All')
