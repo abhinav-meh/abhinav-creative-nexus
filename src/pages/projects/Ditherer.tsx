@@ -24,9 +24,11 @@ const Ditherer = () => {
               All processing happens in your browser - no uploads, complete privacy.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg" className="gap-2">
-                <ExternalLink className="w-4 h-4" />
-                Launch App
+              <Button size="lg" className="gap-2" asChild>
+                <a href="https://dither-craft.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-4 h-4" />
+                  Launch App
+                </a>
               </Button>
             </div>
           </div>
@@ -190,9 +192,11 @@ const Ditherer = () => {
             <p className="text-muted-foreground mb-8">
               Transform your images into beautiful bitmap art with this fast, privacy-focused dithering tool.
             </p>
-            <Button size="lg" className="gap-2">
-              <ExternalLink className="w-4 h-4" />
-              Launch Application
+            <Button size="lg" className="gap-2" asChild>
+              <a href="https://dither-craft.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-4 h-4" />
+                Launch Application
+              </a>
             </Button>
           </div>
         </section>
