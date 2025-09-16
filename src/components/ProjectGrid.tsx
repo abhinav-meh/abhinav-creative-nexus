@@ -43,7 +43,7 @@ const projects = [
     title: 'Confluence',
     description: 'Interactive digital water simulation built with TouchDesigner and controlled by accelerometer',
     category: 'Creative Tech' as const,
-    icon: '🌊'
+    icon: '/src/assets/confluence-thumbnail.svg'
   }
 ]
 
