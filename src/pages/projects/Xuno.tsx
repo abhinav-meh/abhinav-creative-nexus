@@ -166,6 +166,5 @@ const Xuno = () => {
     </div>
   )
 }
-}
 
 export default Xuno
