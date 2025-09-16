@@ -28,7 +28,22 @@ const Confluence = () => {
       icon={confluenceThumbnail}
       buttons={buttons}
     >
-              <p className="text-lg text-muted-foreground mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div>
+          <h3 className="text-sm font-medium text-muted-foreground mb-2">My Role</h3>
+          <p className="text-lg text-foreground">Brand & Web Designer, Creative Technologist</p>
+        </div>
+        <div>
+          <h3 className="text-sm font-medium text-muted-foreground mb-2">Platform</h3>
+          <p className="text-lg text-foreground">TouchDesigner</p>
+        </div>
+        <div>
+          <h3 className="text-sm font-medium text-muted-foreground mb-2">Type</h3>
+          <p className="text-lg text-foreground">Interactive Installation</p>
+        </div>
+      </div>
+
+      <p className="text-lg text-muted-foreground mb-8">
                 Confluence is an immersive digital water simulation that brings fluid dynamics to life through TouchDesigner. 
                 The installation responds to real-time accelerometer input, creating a dynamic and interactive experience where 
                 physical movement translates into digital water behavior.
