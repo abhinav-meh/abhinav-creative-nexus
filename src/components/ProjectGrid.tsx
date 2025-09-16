@@ -25,7 +25,7 @@ const projects = [
     title: 'Dither-er',
     description: 'Image dithering tool with customizable effects',
     category: 'Development' as const,
-    icon: '🎨'
+    icon: '/src/assets/ditherer-thumbnail.svg'
   },
   {
     title: 'Style Setuper',
