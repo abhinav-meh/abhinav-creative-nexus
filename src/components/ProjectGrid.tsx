@@ -16,10 +16,10 @@ const projects = [
     icon: '/src/assets/woz-logo.svg'
   },
   {
-    title: '2+ items in an order at OLX',
-    description: 'Multi-item purchase feature design',
-    category: 'Design' as const,
-    icon: '🛒'
+    title: 'XUNO',
+    description: 'Data Powered Advertising',
+    category: 'Development' as const,
+    icon: '📊'
   },
   {
     title: 'Style Setuper',
