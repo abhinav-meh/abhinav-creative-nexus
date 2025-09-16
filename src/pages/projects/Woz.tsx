@@ -8,6 +8,9 @@ import wozOverview from '@/assets/woz-overview.jpg'
 import wozAccountSelect from '@/assets/woz-account-select.jpg'
 import wozConversationAnalysis from '@/assets/woz-conversation-analysis.jpg'
 import wozCustomerData from '@/assets/woz-customer-data.jpg'
+import wozChatbotWelcome from '@/assets/woz-chatbot-welcome.jpg'
+import wozChatbotVoice from '@/assets/woz-chatbot-voice.jpg'
+import wozChatbotProduct from '@/assets/woz-chatbot-product.jpg'
 
 const Woz = () => {
   const navigate = useNavigate()
@@ -125,6 +128,44 @@ const Woz = () => {
                 <p className="text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
                   Comprehensive customer data management with detailed user profiles, interaction history, and engagement ratings to help businesses understand their audience better.
                 </p>
+              </div>
+
+              <div className="mb-12">
+                <h2 className="text-3xl font-semibold mb-8 text-center">Chatbot User Interface</h2>
+                
+                <div className="mb-8">
+                  <img 
+                    src={wozChatbotWelcome} 
+                    alt="Chatbot welcome interface with personalized Nike product recommendations and quick action cards"
+                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-4 shadow-lg"
+                  />
+                  <p className="text-muted-foreground text-center max-w-3xl mx-auto text-sm">
+                    Personalized welcome experience with contextual product recommendations and quick action buttons for common user queries.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <img 
+                      src={wozChatbotVoice} 
+                      alt="Voice interaction interface with circular progress indicator and clean typography"
+                      className="w-full rounded-lg border border-border mb-4 shadow-lg"
+                    />
+                    <p className="text-muted-foreground text-center text-sm">
+                      Voice-enabled interface with elegant loading states and seamless speech-to-text integration.
+                    </p>
+                  </div>
+                  <div>
+                    <img 
+                      src={wozChatbotProduct} 
+                      alt="Product showcase interface displaying Nike apparel with detailed descriptions and purchase options"
+                      className="w-full rounded-lg border border-border mb-4 shadow-lg"
+                    />
+                    <p className="text-muted-foreground text-center text-sm">
+                      Rich product displays with comprehensive details and integrated purchasing workflows.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div className="bg-card/50 rounded-lg p-8 border border-border">
