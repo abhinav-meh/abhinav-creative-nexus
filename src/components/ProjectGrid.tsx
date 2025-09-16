@@ -18,7 +18,7 @@ const projects = [
   {
     title: 'XUNO',
     description: 'Data Powered Advertising',
-    category: 'Development' as const,
+    category: 'Design' as const,
     icon: '/src/assets/xuno-logo.svg'
   },
   {
