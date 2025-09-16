@@ -11,6 +11,7 @@ import Begig from "./pages/projects/Begig";
 import Woz from "./pages/projects/Woz";
 import StyleSetuper from "./pages/projects/StyleSetuper";
 import Amazeballs from "./pages/projects/Amazeballs";
+import Ditherer from "./pages/projects/Ditherer";
 import Xuno from "./pages/projects/Xuno";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/projects/zori" element={<Begig />} />
             <Route path="/projects/woz" element={<Woz />} />
             <Route path="/projects/style-setuper" element={<StyleSetuper />} />
+            <Route path="/projects/dither-er" element={<Ditherer />} />
             <Route path="/projects/amazeballs" element={<Amazeballs />} />
             <Route path="/projects/xuno" element={<Xuno />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
