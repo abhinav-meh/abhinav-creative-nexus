@@ -9,6 +9,11 @@ interface ProjectCardProps {
 }
 
 const getProjectSlug = (title: string) => {
+  // Special case for specific project titles
+  if (title === 'OOP Principles in Creative Coding') {
+    return 'oop-creative-coding'
+  }
+  
   return title.toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/[^a-z0-9-]/g, '')

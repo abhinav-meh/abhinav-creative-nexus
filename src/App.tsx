@@ -13,6 +13,7 @@ import StyleSetuper from "./pages/projects/StyleSetuper";
 import Amazeballs from "./pages/projects/Amazeballs";
 import Ditherer from "./pages/projects/Ditherer";
 import Xuno from "./pages/projects/Xuno";
+import OOPCreativeCoding from "./pages/projects/OOPCreativeCoding";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/projects/dither-er" element={<Ditherer />} />
             <Route path="/projects/amazeballs" element={<Amazeballs />} />
             <Route path="/projects/xuno" element={<Xuno />} />
+            <Route path="/projects/oop-creative-coding" element={<OOPCreativeCoding />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
