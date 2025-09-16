@@ -188,7 +188,7 @@ const Ditherer = () => {
           <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold mb-4">Try Dither-er Today</h2>
             <p className="text-muted-foreground mb-8">
-              Transform your images into beautiful bitmap art with our fast, privacy-focused dithering tool.
+              Transform your images into beautiful bitmap art with this fast, privacy-focused dithering tool.
             </p>
             <Button size="lg" className="gap-2">
               <ExternalLink className="w-4 h-4" />
