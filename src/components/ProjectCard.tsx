@@ -34,32 +34,32 @@ export default function ProjectCard({ title, description, category, icon }: Proj
   
   return (
     <Link to={`/projects/${slug}`}>
-      <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-6 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in h-[180px]">
-        <div className="flex items-start gap-5">
+      <div className="group bg-transparent border-2 border-border hover:border-primary/50 rounded-lg p-4 sm:p-6 hover:shadow-card transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in min-h-[160px] sm:h-[180px]">
+        <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 h-full">
           {icon && (
-            <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-secondary rounded-lg flex items-center justify-center text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">
               {typeof icon === 'string' && icon.length > 10 ? (
-                <img src={icon} alt={`${title} icon`} className="w-10 h-10" />
+                <img src={icon} alt={`${title} icon`} className="w-8 h-8 sm:w-10 sm:h-10" />
               ) : (
                 <span>{icon}</span>
               )}
             </div>
           )}
           
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-3 mb-4">
-              <h3 className="font-semibold text-lg text-card-foreground group-hover:text-primary transition-colors">
+          <div className="flex-1 min-w-0 overflow-hidden">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <h3 className="font-semibold text-base sm:text-lg text-card-foreground group-hover:text-primary transition-colors truncate">
                 {title}
               </h3>
               <Badge 
                 variant="outline" 
-                className={`${categoryStyles[category]} shrink-0 text-xs`}
+                className={`${categoryStyles[category]} shrink-0 text-xs self-start sm:self-auto`}
               >
                 {category}
               </Badge>
             </div>
             
-            <p className="text-base text-muted-foreground leading-relaxed line-clamp-4">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed line-clamp-3 sm:line-clamp-4 overflow-hidden">
               {description}
             </p>
           </div>
