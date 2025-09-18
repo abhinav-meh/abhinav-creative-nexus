@@ -1,15 +1,33 @@
 import { useState, useEffect } from 'react'
 import PixelGrid from './PixelGrid'
+import { supabase } from '@/integrations/supabase/client'
 
 export default function HeroSection() {
-  const [visitorCount, setVisitorCount] = useState(55715)
+  const [visitorCount, setVisitorCount] = useState(40)
   const [showEmail, setShowEmail] = useState(false)
 
   useEffect(() => {
-    // Simulate visitor count increment
-    const timer = setTimeout(() => {
-      setVisitorCount(prev => prev + Math.floor(Math.random() * 3) + 1)
-    }, 2000)
+    // Fetch current visitor count and increment it
+    const incrementVisitorCount = async () => {
+      try {
+        // Call the increment function
+        const { data, error } = await supabase.rpc('increment_visitor_count')
+        
+        if (error) {
+          console.error('Error incrementing visitor count:', error)
+          return
+        }
+        
+        if (data) {
+          setVisitorCount(data)
+        }
+      } catch (error) {
+        console.error('Error calling increment function:', error)
+      }
+    }
+
+    // Increment visitor count on component mount
+    incrementVisitorCount()
 
     // Listen for 'e' key press to reveal email
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -21,7 +39,6 @@ export default function HeroSection() {
 
     window.addEventListener('keydown', handleKeyPress)
     return () => {
-      clearTimeout(timer)
       window.removeEventListener('keydown', handleKeyPress)
     }
   }, [])
