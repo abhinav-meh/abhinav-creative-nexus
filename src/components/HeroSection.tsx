@@ -7,32 +7,39 @@ export default function HeroSection() {
   const [showEmail, setShowEmail] = useState(false)
 
   useEffect(() => {
-    // Fetch current visitor count and increment it
-    const trackVisitor = async () => {
+    // Track unique visitor
+    const trackUniqueVisitor = async () => {
       try {
-        // First get current count
-        const { data, error } = await supabase
-          .from('visitor_stats')
-          .select('total_visitors')
-          .single()
-        
-        if (data && !error) {
-          setVisitorCount(data.total_visitors)
+        // Get or create unique visitor ID
+        let visitorId = localStorage.getItem('visitor_id')
+        if (!visitorId) {
+          visitorId = crypto.randomUUID()
+          localStorage.setItem('visitor_id', visitorId)
         }
 
-        // Then increment the count
-        const { data: incrementData, error: incrementError } = await supabase
-          .rpc('increment_visitor_count')
+        // Track visitor and get updated count
+        const { data: newCount, error } = await supabase
+          .rpc('track_unique_visitor', { visitor_uuid: visitorId })
         
-        if (incrementData && !incrementError) {
-          setVisitorCount(incrementData)
+        if (newCount && !error) {
+          setVisitorCount(newCount)
+        } else {
+          // Fallback: get current count
+          const { data, error: fetchError } = await supabase
+            .from('visitor_stats')
+            .select('total_visitors')
+            .single()
+          
+          if (data && !fetchError) {
+            setVisitorCount(data.total_visitors)
+          }
         }
       } catch (error) {
-        console.error('Error tracking visitor:', error)
+        console.error('Error tracking unique visitor:', error)
       }
     }
 
-    trackVisitor()
+    trackUniqueVisitor()
 
     // Listen for 'e' key press to reveal email
     const handleKeyPress = (e: KeyboardEvent) => {

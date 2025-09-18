@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      unique_visitors: {
+        Row: {
+          first_visit: string
+          id: string
+          last_visit: string
+          visitor_id: string
+        }
+        Insert: {
+          first_visit?: string
+          id?: string
+          last_visit?: string
+          visitor_id: string
+        }
+        Update: {
+          first_visit?: string
+          id?: string
+          last_visit?: string
+          visitor_id?: string
+        }
+        Relationships: []
+      }
       visitor_stats: {
         Row: {
           created_at: string
@@ -42,6 +63,10 @@ export type Database = {
     Functions: {
       increment_visitor_count: {
         Args: Record<PropertyKey, never>
+        Returns: number
+      }
+      track_unique_visitor: {
+        Args: { visitor_uuid: string }
         Returns: number
       }
     }
