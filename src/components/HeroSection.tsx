@@ -8,26 +8,31 @@ export default function HeroSection() {
 
   useEffect(() => {
     // Fetch current visitor count and increment it
-    const incrementVisitorCount = async () => {
+    const trackVisitor = async () => {
       try {
-        // Call the increment function
-        const { data, error } = await supabase.rpc('increment_visitor_count')
+        // First get current count
+        const { data, error } = await supabase
+          .from('visitor_stats')
+          .select('total_visitors')
+          .single()
         
-        if (error) {
-          console.error('Error incrementing visitor count:', error)
-          return
+        if (data && !error) {
+          setVisitorCount(data.total_visitors)
         }
+
+        // Then increment the count
+        const { data: incrementData, error: incrementError } = await supabase
+          .rpc('increment_visitor_count')
         
-        if (data) {
-          setVisitorCount(data)
+        if (incrementData && !incrementError) {
+          setVisitorCount(incrementData)
         }
       } catch (error) {
-        console.error('Error calling increment function:', error)
+        console.error('Error tracking visitor:', error)
       }
     }
 
-    // Increment visitor count on component mount
-    incrementVisitorCount()
+    trackVisitor()
 
     // Listen for 'e' key press to reveal email
     const handleKeyPress = (e: KeyboardEvent) => {
