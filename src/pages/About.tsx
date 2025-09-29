@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation'
 import InteractiveGrid from '@/components/InteractiveGrid'
+import { Github, Linkedin, FileText } from 'lucide-react'
 
 const About = () => {
   return (
@@ -20,9 +21,40 @@ const About = () => {
           {/* Header */}
           <header className="mb-16">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Abhinav Mehrotra</h1>
-            <div className="text-xl text-muted-foreground space-y-2">
+            <div className="text-xl text-muted-foreground space-y-2 mb-6">
               <p>MS-CTD Student, ATLAS Institute, CU Boulder</p>
               <p>Currently exploring the intersection of design, code, and creative technology.</p>
+            </div>
+            
+            {/* Social Links */}
+            <div className="flex gap-4">
+              <a
+                href="https://github.com/abhinav-mehrotra"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-card/50 border border-border rounded-lg hover:bg-card hover:scale-105 transition-all duration-300 group"
+                aria-label="GitHub Profile"
+              >
+                <Github className="w-5 h-5 text-foreground group-hover:text-primary transition-colors duration-200" />
+              </a>
+              <a
+                href="https://linkedin.com/in/abhinav-mehrotra-tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-card/50 border border-border rounded-lg hover:bg-card hover:scale-105 transition-all duration-300 group"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-5 h-5 text-foreground group-hover:text-primary transition-colors duration-200" />
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-card/50 border border-border rounded-lg hover:bg-card hover:scale-105 transition-all duration-300 group"
+                aria-label="View Resume"
+              >
+                <FileText className="w-5 h-5 text-foreground group-hover:text-primary transition-colors duration-200" />
+              </a>
             </div>
           </header>
 

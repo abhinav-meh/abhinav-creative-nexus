@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import PixelGrid from './PixelGrid'
 import { supabase } from '@/integrations/supabase/client'
-import { Github, Linkedin } from 'lucide-react'
+import { Github, Linkedin, FileText } from 'lucide-react'
 
 export default function HeroSection() {
   const [visitorCount, setVisitorCount] = useState(40)
@@ -120,6 +120,15 @@ export default function HeroSection() {
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
+              aria-label="View Resume"
+            >
+              <FileText className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
             </a>
           </div>
         </div>
