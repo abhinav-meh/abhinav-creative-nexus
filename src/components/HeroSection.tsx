@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PixelGrid from './PixelGrid'
 import { supabase } from '@/integrations/supabase/client'
+import { Github, Linkedin } from 'lucide-react'
 
 export default function HeroSection() {
   const [visitorCount, setVisitorCount] = useState(40)
@@ -99,6 +100,28 @@ export default function HeroSection() {
               </a>
             </div>
           )}
+          
+          {/* Social Links */}
+          <div className="mt-8 flex gap-4 animate-slide-up [animation-delay:0.8s]">
+            <a
+              href="https://github.com/abhinav-mehrotra"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
+              aria-label="GitHub Profile"
+            >
+              <Github className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
+            </a>
+            <a
+              href="https://linkedin.com/in/abhinav-mehrotra-tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
+            </a>
+          </div>
         </div>
       </div>
       
