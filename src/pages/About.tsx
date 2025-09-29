@@ -48,10 +48,9 @@ const About = () => {
               </a>
               <a
                 href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Abhinav-Mehrotra-Resume.pdf"
                 className="p-3 bg-card/50 border border-border rounded-lg hover:bg-card hover:scale-105 transition-all duration-300 group"
-                aria-label="View Resume"
+                aria-label="Download Resume"
               >
                 <FileText className="w-5 h-5 text-foreground group-hover:text-primary transition-colors duration-200" />
               </a>

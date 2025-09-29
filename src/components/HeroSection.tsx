@@ -123,10 +123,9 @@ export default function HeroSection() {
             </a>
             <a
               href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              download="Abhinav-Mehrotra-Resume.pdf"
               className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
-              aria-label="View Resume"
+              aria-label="Download Resume"
             >
               <FileText className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
             </a>
