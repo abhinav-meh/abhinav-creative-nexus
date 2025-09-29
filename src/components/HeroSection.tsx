@@ -104,7 +104,7 @@ export default function HeroSection() {
           {/* Social Links */}
           <div className="mt-8 flex gap-4 animate-slide-up [animation-delay:0.8s]">
             <a
-              href="https://github.com/abhinav-mehrotra"
+              href="https://github.com/abhinav-meh"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
@@ -113,7 +113,7 @@ export default function HeroSection() {
               <Github className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
             </a>
             <a
-              href="https://linkedin.com/in/abhinav-mehrotra-tech"
+              href="https://www.linkedin.com/in/abhinavux/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"

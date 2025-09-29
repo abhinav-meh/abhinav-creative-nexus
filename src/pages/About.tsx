@@ -29,7 +29,7 @@ const About = () => {
             {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://github.com/abhinav-mehrotra"
+                href="https://github.com/abhinav-meh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-card/50 border border-border rounded-lg hover:bg-card hover:scale-105 transition-all duration-300 group"
@@ -38,7 +38,7 @@ const About = () => {
                 <Github className="w-5 h-5 text-foreground group-hover:text-primary transition-colors duration-200" />
               </a>
               <a
-                href="https://linkedin.com/in/abhinav-mehrotra-tech"
+                href="https://www.linkedin.com/in/abhinavux/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-card/50 border border-border rounded-lg hover:bg-card hover:scale-105 transition-all duration-300 group"
