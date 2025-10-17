@@ -79,11 +79,15 @@ const Tempo = () => {
             <p className="text-lg leading-relaxed mb-4">
               Interview responses were synthesized through affinity mapping to identify patterns and themes across participants:
             </p>
-            <img 
-              src={tempoAffinityMap} 
-              alt="Affinity map showing categorized user research insights including time management struggles, work-induced stress, missed deadlines, productivity strategies, career aspirations, and support systems" 
-              className="rounded-lg w-full shadow-lg"
-            />
+            <div className="flex justify-center">
+              <div className="w-[90%] border-2 border-border rounded-lg p-4">
+                <img 
+                  src={tempoAffinityMap} 
+                  alt="Affinity map showing categorized user research insights including time management struggles, work-induced stress, missed deadlines, productivity strategies, career aspirations, and support systems" 
+                  className="rounded-lg w-full"
+                />
+              </div>
+            </div>
           </div>
           
           <div className="bg-secondary/30 rounded-lg p-6 space-y-4">
