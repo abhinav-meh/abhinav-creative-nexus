@@ -23,10 +23,10 @@ import tempoUiOnboarding6 from '@/assets/tempo-ui-onboarding-6.png'
 import tempoUiLoading from '@/assets/tempo-ui-loading.png'
 import tempoUiHome from '@/assets/tempo-ui-home.png'
 import tempoUiCalendar from '@/assets/tempo-ui-calendar.png'
-import tempoUiTasks from '@/assets/tempo-ui-tasks.webp'
-import tempoUiFocusStart from '@/assets/tempo-ui-focus-start.webp'
-import tempoUiFocusActive from '@/assets/tempo-ui-focus-active.webp'
-import tempoUiProfile from '@/assets/tempo-ui-profile.webp'
+import tempoUiTasks from '@/assets/tempo-ui-tasks.png'
+import tempoUiFocusStart from '@/assets/tempo-ui-focus-start.png'
+import tempoUiFocusActive from '@/assets/tempo-ui-focus-active.png'
+import tempoUiProfile from '@/assets/tempo-ui-profile.png'
 
 const Tempo = () => {
   return (
