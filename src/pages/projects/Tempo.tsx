@@ -1,6 +1,4 @@
 import ProjectLayout from '@/components/ProjectLayout'
-import tempoSection1 from '@/assets/tempo-section-1.jpg'
-import tempoSection2 from '@/assets/tempo-section-2.jpg'
 import tempoAffinityMap from '@/assets/tempo-affinity-map.jpg'
 import tempoWireframeWelcome from '@/assets/tempo-wireframe-welcome.webp'
 import tempoWireframe1 from '@/assets/tempo-wireframe-1.webp'
@@ -357,42 +355,6 @@ const Tempo = () => {
           </div>
         </section>
 
-
-        {/* Interactive Prototype */}
-        <section>
-          <h2 className="text-2xl font-semibold mb-6">Interactive Prototype</h2>
-          <p className="text-lg leading-relaxed mb-6">
-            Explore the full interactive prototype to experience Tempo's user flow and design details.
-          </p>
-          
-          {/* Mobile: Show link to open prototype */}
-          <div className="block md:hidden">
-            <a 
-              href="https://www.figma.com/proto/xwZtofEofTF0THBWoaG2yD/Tempo?page-id=1%3A2&node-id=112-5228&viewport=184%2C275%2C0.18&t=hmEWeccG2CaY2I3d-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=112%3A5228"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full bg-primary text-primary-foreground py-4 px-6 rounded-lg text-center font-semibold hover:bg-primary/90 transition-colors"
-            >
-              Open Interactive Prototype in New Tab
-            </a>
-            <p className="text-sm text-muted-foreground mt-3 text-center">
-              For the best experience on mobile, open the prototype in a new tab
-            </p>
-          </div>
-          
-          {/* Desktop: Show embedded iframe */}
-          <div className="hidden md:block w-full bg-secondary/20 rounded-lg overflow-hidden border border-border h-[700px] lg:h-[900px]">
-            <iframe 
-              style={{ border: 'none' }} 
-              width="100%" 
-              height="100%" 
-              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FxwZtofEofTF0THBWoaG2yD%2FTempo%3Fpage-id%3D1%253A2%26node-id%3D112-5228%26viewport%3D184%252C275%252C0.18%26t%3DhmEWeccG2CaY2I3d-1%26scaling%3Dmin-zoom%26content-scaling%3Dfixed%26starting-point-node-id%3D112%253A5228" 
-              allowFullScreen
-              title="Tempo Interactive Prototype"
-            />
-          </div>
-        </section>
-
         {/* UI Design */}
         <section>
           <h2 className="text-2xl font-semibold mb-6">UI Design</h2>
@@ -531,22 +493,41 @@ const Tempo = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Core Screens</h3>
-              <img 
-                src={tempoSection2} 
-                alt="Tempo core screens including dashboard, calendar, and task views" 
-                className="rounded-lg w-full shadow-lg mb-6"
-              />
-              <ul className="space-y-2 ml-6">
-                <li className="leading-relaxed list-disc"><strong>Home Dashboard:</strong> Snapshot of today's schedule, energy status, and tasks</li>
-                <li className="leading-relaxed list-disc"><strong>Calendar View:</strong> Weekly breakdown combining work, class, and focus blocks</li>
-                <li className="leading-relaxed list-disc"><strong>Tasks Tab:</strong> Categorized by 'Today / Tomorrow / This Week' with priority tags</li>
-                <li className="leading-relaxed list-disc"><strong>Focus Mode:</strong> Integrated Pomodoro timer for study bursts</li>
-                <li className="leading-relaxed list-disc"><strong>Profile Screen:</strong> Shows progress, energy trends, and linked calendars</li>
-              </ul>
-            </div>
+        {/* Interactive Prototype */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-6">Interactive Prototype</h2>
+          <p className="text-lg leading-relaxed mb-6">
+            Explore the full interactive prototype to experience Tempo's user flow and design details.
+          </p>
+          
+          {/* Mobile: Show link to open prototype */}
+          <div className="block md:hidden">
+            <a 
+              href="https://www.figma.com/proto/xwZtofEofTF0THBWoaG2yD/Tempo?page-id=1%3A2&node-id=112-5228&viewport=184%2C275%2C0.18&t=hmEWeccG2CaY2I3d-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=112%3A5228"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full bg-primary text-primary-foreground py-4 px-6 rounded-lg text-center font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Open Interactive Prototype in New Tab
+            </a>
+            <p className="text-sm text-muted-foreground mt-3 text-center">
+              For the best experience on mobile, open the prototype in a new tab
+            </p>
+          </div>
+          
+          {/* Desktop: Show embedded iframe */}
+          <div className="hidden md:block w-full bg-secondary/20 rounded-lg overflow-hidden border border-border h-[700px] lg:h-[900px]">
+            <iframe 
+              style={{ border: 'none' }} 
+              width="100%" 
+              height="100%" 
+              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FxwZtofEofTF0THBWoaG2yD%2FTempo%3Fpage-id%3D1%253A2%26node-id%3D112-5228%26viewport%3D184%252C275%252C0.18%26t%3DhmEWeccG2CaY2I3d-1%26scaling%3Dmin-zoom%26content-scaling%3Dfixed%26starting-point-node-id%3D112%253A5228" 
+              allowFullScreen
+              title="Tempo Interactive Prototype"
+            />
           </div>
         </section>
 
