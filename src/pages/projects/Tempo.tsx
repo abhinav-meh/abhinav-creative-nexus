@@ -1,6 +1,7 @@
 import ProjectLayout from '@/components/ProjectLayout'
 import tempoSection1 from '@/assets/tempo-section-1.jpg'
 import tempoSection2 from '@/assets/tempo-section-2.jpg'
+import tempoAffinityMap from '@/assets/tempo-affinity-map.jpg'
 
 const Tempo = () => {
   return (
@@ -53,6 +54,37 @@ const Tempo = () => {
           <p className="text-lg leading-relaxed mb-6">
             To ground the design in real user behavior, interviews were conducted with working students. Participants shared struggles balancing jobs, coursework, and personal commitments.
           </p>
+
+          <div className="bg-secondary/30 rounded-lg p-6 mb-8">
+            <h3 className="text-xl font-semibold mb-4">Primary Research Questions</h3>
+            <p className="leading-relaxed mb-4">
+              Participants were asked the following questions to understand their daily routines, challenges, and coping mechanisms:
+            </p>
+            <ol className="space-y-3 ml-6">
+              <li className="leading-relaxed list-decimal">Describe how an average Monday looks like for you?</li>
+              <li className="leading-relaxed list-decimal">How many hours do you work everyday?</li>
+              <li className="leading-relaxed list-decimal">Are you able to balance your school/job and schoolwork in a way that satisfies you?</li>
+              <li className="leading-relaxed list-decimal">I want you to think of a time where you started learning something new, all by yourself, could be for a job, school or just a hobby. How did that make you feel?</li>
+              <li className="leading-relaxed list-decimal">What motivates you to learn something new?</li>
+              <li className="leading-relaxed list-decimal">Do you have any existing methods/tools that you use to manage your time?</li>
+              <li className="leading-relaxed list-decimal">What is the most stressful part of balancing work and school for you?</li>
+              <li className="leading-relaxed list-decimal">Have you ever missed a deadline because of work? How did that make you feel?</li>
+              <li className="leading-relaxed list-decimal">How do you stay focused when you're exhausted from work or school?</li>
+              <li className="leading-relaxed list-decimal">Have you ever used any external help (like a tutor, mentor, study group) to manage your workload?</li>
+            </ol>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">Affinity Mapping</h3>
+            <p className="text-lg leading-relaxed mb-4">
+              Interview responses were synthesized through affinity mapping to identify patterns and themes across participants:
+            </p>
+            <img 
+              src={tempoAffinityMap} 
+              alt="Affinity map showing categorized user research insights including time management struggles, work-induced stress, missed deadlines, productivity strategies, career aspirations, and support systems" 
+              className="rounded-lg w-full shadow-lg"
+            />
+          </div>
           
           <div className="bg-secondary/30 rounded-lg p-6 space-y-4">
             <h3 className="text-xl font-semibold">Key Findings</h3>
