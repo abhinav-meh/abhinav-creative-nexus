@@ -9,6 +9,12 @@ import confluenceThumbnail from '@/assets/confluence-thumbnail.svg'
 
 const projects = [
   {
+    title: 'Tempo',
+    description: 'Time-management app helping working students balance studies, work, and energy levels',
+    category: 'Design' as const,
+    icon: '⏱️'
+  },
+  {
     title: 'Begig',
     description: 'Freelancing platform connecting clients with talented professionals',
     category: 'Design' as const,
@@ -25,12 +31,6 @@ const projects = [
     description: 'Data Powered Advertising',
     category: 'Design' as const,
     icon: xunoLogo
-  },
-  {
-    title: 'Tempo',
-    description: 'Time-management app helping working students balance studies, work, and energy levels',
-    category: 'Design' as const,
-    icon: '⏱️'
   },
   {
     title: 'Dither-er',
