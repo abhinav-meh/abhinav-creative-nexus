@@ -6,13 +6,14 @@ import wozLogo from '@/assets/woz-logo.svg'
 import xunoLogo from '@/assets/xuno-logo.svg'
 import dithererThumbnail from '@/assets/ditherer-thumbnail.svg'
 import confluenceThumbnail from '@/assets/confluence-thumbnail.svg'
+import tempoLogo from '@/assets/tempo-logo.svg'
 
 const projects = [
   {
     title: 'Tempo',
     description: 'Time-management app helping working students balance studies, work, and energy levels',
     category: 'Design' as const,
-    icon: '⏱️'
+    icon: tempoLogo
   },
   {
     title: 'Begig',
