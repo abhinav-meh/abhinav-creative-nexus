@@ -15,6 +15,16 @@ import tempoWireframe9 from '@/assets/tempo-wireframe-9.webp'
 import tempoWireframe10 from '@/assets/tempo-wireframe-10.webp'
 import tempoWireframe11 from '@/assets/tempo-wireframe-11.webp'
 import tempoWireframe12 from '@/assets/tempo-wireframe-12.webp'
+import tempoUiSplash from '@/assets/tempo-ui-splash.webp'
+import tempoUiOnboarding1 from '@/assets/tempo-ui-onboarding-1.webp'
+import tempoUiOnboarding2 from '@/assets/tempo-ui-onboarding-2.webp'
+import tempoUiOnboarding3 from '@/assets/tempo-ui-onboarding-3.webp'
+import tempoUiOnboarding4 from '@/assets/tempo-ui-onboarding-4.webp'
+import tempoUiOnboarding5 from '@/assets/tempo-ui-onboarding-5.webp'
+import tempoUiOnboarding6 from '@/assets/tempo-ui-onboarding-6.webp'
+import tempoUiLoading from '@/assets/tempo-ui-loading.webp'
+import tempoUiHome from '@/assets/tempo-ui-home.webp'
+import tempoUiCalendar from '@/assets/tempo-ui-calendar.webp'
 
 const Tempo = () => {
   return (
@@ -394,6 +404,96 @@ const Tempo = () => {
                 <li className="leading-relaxed list-disc"><strong>Typography:</strong> Clean sans-serif with ample white space to convey calmness</li>
                 <li className="leading-relaxed list-disc"><strong>Iconography:</strong> Soft, rounded edges that reinforce a friendly tone</li>
               </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4">UI Screens Gallery</h3>
+              <p className="text-lg leading-relaxed mb-6">
+                Below are the high-fidelity UI screens showing the complete user journey from onboarding to daily use:
+              </p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiSplash} 
+                    alt="Tempo splash screen with logo and tagline" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Splash Screen</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiOnboarding1} 
+                    alt="User name input onboarding screen" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Get Started</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiOnboarding2} 
+                    alt="Weekly schedule setup screen" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Schedule Setup</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiOnboarding3} 
+                    alt="Schedule with class and work blocks" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Schedule Details</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiOnboarding4} 
+                    alt="Goals setting screen" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Set Goals</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiOnboarding5} 
+                    alt="Time dedication slider" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Time Dedication</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiOnboarding6} 
+                    alt="Energy levels selection" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Energy Levels</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiLoading} 
+                    alt="Personalization loading screen" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Loading</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiHome} 
+                    alt="Home dashboard with tasks and schedule" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Home Dashboard</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiCalendar} 
+                    alt="Calendar view with time blocks" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Calendar View</p>
+                </div>
+              </div>
             </div>
 
             <div>
