@@ -115,7 +115,24 @@ const Tempo = () => {
           <p className="text-lg leading-relaxed mb-6">
             Explore the full interactive prototype to experience Tempo's user flow and design details.
           </p>
-          <div className="w-full bg-secondary/20 rounded-lg overflow-hidden border border-border h-[500px] sm:h-[700px] lg:h-[900px]">
+          
+          {/* Mobile: Show link to open prototype */}
+          <div className="block md:hidden">
+            <a 
+              href="https://www.figma.com/proto/xwZtofEofTF0THBWoaG2yD/Tempo?page-id=1%3A2&node-id=112-5228&viewport=184%2C275%2C0.18&t=hmEWeccG2CaY2I3d-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=112%3A5228"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full bg-primary text-primary-foreground py-4 px-6 rounded-lg text-center font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Open Interactive Prototype in New Tab
+            </a>
+            <p className="text-sm text-muted-foreground mt-3 text-center">
+              For the best experience on mobile, open the prototype in a new tab
+            </p>
+          </div>
+          
+          {/* Desktop: Show embedded iframe */}
+          <div className="hidden md:block w-full bg-secondary/20 rounded-lg overflow-hidden border border-border h-[700px] lg:h-[900px]">
             <iframe 
               style={{ border: 'none' }} 
               width="100%" 
