@@ -288,6 +288,7 @@ const Tempo = () => {
             <div className="bg-card border border-border rounded-lg p-6">
               <h3 className="font-semibold text-lg mb-3">Typography</h3>
               <ul className="space-y-2 text-sm">
+                <li><strong>Typeface:</strong> Plus Jakarta Sans</li>
                 <li><strong>Headings:</strong> Bold, clear hierarchy</li>
                 <li><strong>Body:</strong> Legible, comfortable reading</li>
                 <li><strong>Data:</strong> Tabular numbers for time/dates</li>
@@ -342,25 +343,6 @@ const Tempo = () => {
           </div>
         </section>
 
-        {/* Onboarding Experience */}
-        <section>
-          <h2 className="text-2xl font-semibold mb-6">Onboarding Experience</h2>
-          <p className="text-lg leading-relaxed mb-6">
-            The onboarding flow is central to Tempo's adaptive design. Users go through a guided setup where they:
-          </p>
-          <img 
-            src={tempoSection1} 
-            alt="Tempo onboarding flow showing user setup process" 
-            className="rounded-lg w-full shadow-lg mb-4"
-          />
-          <ol className="space-y-2 ml-6 mt-6">
-            <li className="text-lg leading-relaxed list-decimal">Enter basic info (study program, work type)</li>
-            <li className="text-lg leading-relaxed list-decimal">Share their weekly schedule (class + work)</li>
-            <li className="text-lg leading-relaxed list-decimal">Assess their energy levels across the day</li>
-            <li className="text-lg leading-relaxed list-decimal">Set weekly learning or wellness goals</li>
-            <li className="text-lg leading-relaxed list-decimal">Sync their school/work calendars for automatic updates</li>
-          </ol>
-        </section>
 
         {/* Interactive Prototype */}
         <section>
