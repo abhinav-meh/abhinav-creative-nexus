@@ -57,13 +57,13 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative h-[50vh] overflow-hidden bg-hero-gradient animate-gradient-shift bg-[length:400%_400%] font-space-mono pt-safe">
+    <section className="relative h-[50vh] overflow-hidden bg-hero-gradient animate-gradient-shift bg-[length:400%_400%] font-space-mono">
       <div className="absolute inset-0 bg-black/20" />
       
       {/* Pixel Grid Background */}
       <PixelGrid />
       
-      <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center pt-4 md:pt-0">
+      <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center pt-20 md:pt-0">
         <div className="max-w-4xl">
           <div className="mb-6 text-sm font-mono text-white animate-fade-in">
             Hello, visitor <span className="font-bold text-white">#{visitorCount.toLocaleString()}</span>
