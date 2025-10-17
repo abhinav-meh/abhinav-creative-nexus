@@ -12,9 +12,6 @@ import tempoWireframe6 from '@/assets/tempo-wireframe-6.webp'
 import tempoWireframe7 from '@/assets/tempo-wireframe-7.webp'
 import tempoWireframe8 from '@/assets/tempo-wireframe-8.webp'
 import tempoWireframe9 from '@/assets/tempo-wireframe-9.webp'
-import tempoWireframe10 from '@/assets/tempo-wireframe-10.webp'
-import tempoWireframe11 from '@/assets/tempo-wireframe-11.webp'
-import tempoWireframe12 from '@/assets/tempo-wireframe-12.webp'
 
 const Tempo = () => {
   return (
@@ -226,30 +223,6 @@ const Tempo = () => {
                   className="rounded w-full"
                 />
                 <p className="text-sm text-muted-foreground mt-2 text-center">Calendar</p>
-              </div>
-              <div className="border border-border rounded-lg p-3">
-                <img 
-                  src={tempoWireframe10} 
-                  alt="Tasks view wireframe" 
-                  className="rounded w-full"
-                />
-                <p className="text-sm text-muted-foreground mt-2 text-center">Tasks</p>
-              </div>
-              <div className="border border-border rounded-lg p-3">
-                <img 
-                  src={tempoWireframe11} 
-                  alt="Focus mode with Pomodoro timer wireframe" 
-                  className="rounded w-full"
-                />
-                <p className="text-sm text-muted-foreground mt-2 text-center">Focus Mode</p>
-              </div>
-              <div className="border border-border rounded-lg p-3">
-                <img 
-                  src={tempoWireframe12} 
-                  alt="Profile screen wireframe" 
-                  className="rounded w-full"
-                />
-                <p className="text-sm text-muted-foreground mt-2 text-center">Profile</p>
               </div>
             </div>
           </div>
