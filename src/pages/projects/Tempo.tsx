@@ -109,6 +109,24 @@ const Tempo = () => {
           </ol>
         </section>
 
+        {/* Interactive Prototype */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-6">Interactive Prototype</h2>
+          <p className="text-lg leading-relaxed mb-6">
+            Explore the full interactive prototype to experience Tempo's user flow and design details.
+          </p>
+          <div className="w-full bg-secondary/20 rounded-lg overflow-hidden border border-border" style={{ height: '600px' }}>
+            <iframe 
+              style={{ border: 'none' }} 
+              width="100%" 
+              height="100%" 
+              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FxwZtofEofTF0THBWoaG2yD%2FTempo%3Fpage-id%3D1%253A2%26node-id%3D112-5228%26viewport%3D184%252C275%252C0.18%26t%3DhmEWeccG2CaY2I3d-1%26scaling%3Dmin-zoom%26content-scaling%3Dfixed%26starting-point-node-id%3D112%253A5228" 
+              allowFullScreen
+              title="Tempo Interactive Prototype"
+            />
+          </div>
+        </section>
+
         {/* UI Design */}
         <section>
           <h2 className="text-2xl font-semibold mb-6">UI Design</h2>
