@@ -66,6 +66,97 @@ const Tempo = () => {
           </div>
         </section>
 
+        {/* Wireframing */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-6">Wireframing</h2>
+          <p className="text-lg leading-relaxed mb-6">
+            After identifying user needs, low-fidelity wireframes were created to map out the core user flows and information architecture. The wireframing process focused on:
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div className="space-y-3">
+              <h3 className="text-xl font-semibold">Initial Sketches</h3>
+              <ul className="space-y-2 ml-6">
+                <li className="leading-relaxed list-disc">Paper sketches exploring different navigation patterns</li>
+                <li className="leading-relaxed list-disc">Multiple iterations of the onboarding flow</li>
+                <li className="leading-relaxed list-disc">Dashboard layout explorations prioritizing quick access to tasks</li>
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-semibold">Digital Wireframes</h3>
+              <ul className="space-y-2 ml-6">
+                <li className="leading-relaxed list-disc">Task creation and editing flows</li>
+                <li className="leading-relaxed list-disc">Calendar integration patterns</li>
+                <li className="leading-relaxed list-disc">Energy tracking visualization concepts</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-secondary/30 rounded-lg p-6">
+            <h3 className="text-xl font-semibold mb-4">Key Design Decisions</h3>
+            <p className="leading-relaxed mb-3">
+              Through iterative wireframing, several critical decisions emerged:
+            </p>
+            <ul className="space-y-2">
+              <li className="leading-relaxed"><strong>Bottom Navigation:</strong> Prioritized for one-handed mobile use</li>
+              <li className="leading-relaxed"><strong>Card-Based Layout:</strong> Clear visual separation between tasks and calendar events</li>
+              <li className="leading-relaxed"><strong>Progressive Disclosure:</strong> Complex features hidden until needed to reduce cognitive load</li>
+              <li className="leading-relaxed"><strong>Gestural Interactions:</strong> Swipe actions for quick task management</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Design System */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-6">Design System</h2>
+          <p className="text-lg leading-relaxed mb-6">
+            A cohesive design system was established to maintain consistency across all screens and interactions:
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div className="bg-card border border-border rounded-lg p-6">
+              <h3 className="font-semibold text-lg mb-3">Color System</h3>
+              <ul className="space-y-2 text-sm">
+                <li><strong>Primary Blue:</strong> Trust and focus</li>
+                <li><strong>Warm Accents:</strong> Motivation and energy</li>
+                <li><strong>Neutral Grays:</strong> Calm background</li>
+                <li><strong>Status Colors:</strong> Clear task states</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-6">
+              <h3 className="font-semibold text-lg mb-3">Typography</h3>
+              <ul className="space-y-2 text-sm">
+                <li><strong>Headings:</strong> Bold, clear hierarchy</li>
+                <li><strong>Body:</strong> Legible, comfortable reading</li>
+                <li><strong>Data:</strong> Tabular numbers for time/dates</li>
+                <li><strong>Scale:</strong> 8pt base grid system</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-6">
+              <h3 className="font-semibold text-lg mb-3">Components</h3>
+              <ul className="space-y-2 text-sm">
+                <li><strong>Buttons:</strong> Clear CTAs with states</li>
+                <li><strong>Cards:</strong> Consistent padding and shadows</li>
+                <li><strong>Icons:</strong> Rounded, friendly aesthetic</li>
+                <li><strong>Forms:</strong> Minimal, contextual inputs</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-primary/5 rounded-lg p-6 border border-primary/20">
+            <h3 className="text-xl font-semibold mb-3">Accessibility Considerations</h3>
+            <p className="leading-relaxed mb-3">
+              The design prioritizes inclusivity through:
+            </p>
+            <ul className="space-y-2 ml-6">
+              <li className="leading-relaxed list-disc">WCAG AA contrast ratios for all text and interactive elements</li>
+              <li className="leading-relaxed list-disc">Large touch targets (minimum 44x44pt) for easy interaction</li>
+              <li className="leading-relaxed list-disc">Clear focus states for keyboard navigation</li>
+              <li className="leading-relaxed list-disc">Alternative text for all visual elements</li>
+            </ul>
+          </div>
+        </section>
+
         {/* Design Goals */}
         <section>
           <h2 className="text-2xl font-semibold mb-6">Design Goals</h2>
