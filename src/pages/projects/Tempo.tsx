@@ -1,5 +1,6 @@
 import ProjectLayout from '@/components/ProjectLayout'
 import tempoAffinityMap from '@/assets/tempo-affinity-map.jpg'
+import tempoLogo from '@/assets/tempo-logo.svg'
 import tempoWireframeWelcome from '@/assets/tempo-wireframe-welcome.webp'
 import tempoWireframe1 from '@/assets/tempo-wireframe-1.webp'
 import tempoWireframe2 from '@/assets/tempo-wireframe-2.webp'
@@ -33,7 +34,7 @@ const Tempo = () => {
     <ProjectLayout
       title="Tempo"
       subtitle="A Time-Management App for Working Students"
-      icon="⏱️"
+      icon={tempoLogo}
     >
       <div className="space-y-12">
         {/* Overview */}
