@@ -25,6 +25,10 @@ import tempoUiOnboarding6 from '@/assets/tempo-ui-onboarding-6.webp'
 import tempoUiLoading from '@/assets/tempo-ui-loading.webp'
 import tempoUiHome from '@/assets/tempo-ui-home.webp'
 import tempoUiCalendar from '@/assets/tempo-ui-calendar.webp'
+import tempoUiTasks from '@/assets/tempo-ui-tasks.webp'
+import tempoUiFocusStart from '@/assets/tempo-ui-focus-start.webp'
+import tempoUiFocusActive from '@/assets/tempo-ui-focus-active.webp'
+import tempoUiProfile from '@/assets/tempo-ui-profile.webp'
 
 const Tempo = () => {
   return (
@@ -492,6 +496,38 @@ const Tempo = () => {
                     className="rounded w-full"
                   />
                   <p className="text-sm text-muted-foreground mt-2 text-center">Calendar View</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiTasks} 
+                    alt="Tasks screen with To Do, Doing, and Done sections" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Tasks</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiFocusStart} 
+                    alt="Focus mode with Pomodoro timer ready to start" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Focus Mode</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiFocusActive} 
+                    alt="Focus mode with active Pomodoro timer" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Focus Active</p>
+                </div>
+                <div className="border border-border rounded-lg p-3">
+                  <img 
+                    src={tempoUiProfile} 
+                    alt="Profile screen with energy status and settings" 
+                    className="rounded w-full"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2 text-center">Profile</p>
                 </div>
               </div>
             </div>
