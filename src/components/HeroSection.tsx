@@ -5,7 +5,13 @@ import { Github, Linkedin, FileText } from 'lucide-react'
 
 export default function HeroSection() {
   const [visitorCount, setVisitorCount] = useState(40)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [showEmail, setShowEmail] = useState(false)
+
+  useEffect(() => {
+    // Check if device is touch-enabled
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  }, [])
 
   useEffect(() => {
     // Track unique visitor
@@ -84,14 +90,9 @@ export default function HeroSection() {
             <span className="text-white font-medium">Coding, no-coding, launching products by night.</span>
           </div>
           
-          {!showEmail && (
-            <div className="mt-8 text-sm text-white font-mono animate-slide-up [animation-delay:0.6s]">
-              Press <kbd className="px-2 py-1 bg-secondary rounded text-white">E</kbd> to reveal email
-            </div>
-          )}
-          
-          {showEmail && (
-            <div className="mt-8 text-lg font-mono text-white animate-fade-in">
+          {/* Show email directly on touch devices, hide behind 'E' key on desktop */}
+          {isTouchDevice ? (
+            <div className="mt-8 text-lg font-mono text-white animate-slide-up [animation-delay:0.6s]">
               <a 
                 href="mailto:abhinav.comms@gmail.com" 
                 className="hover:text-primary transition-colors duration-200"
@@ -99,6 +100,25 @@ export default function HeroSection() {
                 abhinav.comms@gmail.com
               </a>
             </div>
+          ) : (
+            <>
+              {!showEmail && (
+                <div className="mt-8 text-sm text-white font-mono animate-slide-up [animation-delay:0.6s]">
+                  Press <kbd className="px-2 py-1 bg-secondary rounded text-white">E</kbd> to reveal email
+                </div>
+              )}
+              
+              {showEmail && (
+                <div className="mt-8 text-lg font-mono text-white animate-fade-in">
+                  <a 
+                    href="mailto:abhinav.comms@gmail.com" 
+                    className="hover:text-primary transition-colors duration-200"
+                  >
+                    abhinav.comms@gmail.com
+                  </a>
+                </div>
+              )}
+            </>
           )}
           
           {/* Social Links */}
