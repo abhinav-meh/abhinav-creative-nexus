@@ -2,6 +2,16 @@ import ProjectLayout from '@/components/ProjectLayout'
 import tempoSection1 from '@/assets/tempo-section-1.jpg'
 import tempoSection2 from '@/assets/tempo-section-2.jpg'
 import tempoAffinityMap from '@/assets/tempo-affinity-map.jpg'
+import tempoWireframeWelcome from '@/assets/tempo-wireframe-welcome.webp'
+import tempoWireframe1 from '@/assets/tempo-wireframe-1.webp'
+import tempoWireframe2 from '@/assets/tempo-wireframe-2.webp'
+import tempoWireframe3 from '@/assets/tempo-wireframe-3.webp'
+import tempoWireframe4 from '@/assets/tempo-wireframe-4.webp'
+import tempoWireframe5 from '@/assets/tempo-wireframe-5.webp'
+import tempoWireframe6 from '@/assets/tempo-wireframe-6.webp'
+import tempoWireframe7 from '@/assets/tempo-wireframe-7.webp'
+import tempoWireframe8 from '@/assets/tempo-wireframe-8.webp'
+import tempoWireframe9 from '@/assets/tempo-wireframe-9.webp'
 
 const Tempo = () => {
   return (
@@ -109,7 +119,7 @@ const Tempo = () => {
             After identifying user needs, low-fidelity wireframes were created to map out the core user flows and information architecture. The wireframing process focused on:
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="space-y-3">
               <h3 className="text-xl font-semibold">Initial Sketches</h3>
               <ul className="space-y-2 ml-6">
@@ -125,6 +135,95 @@ const Tempo = () => {
                 <li className="leading-relaxed list-disc">Calendar integration patterns</li>
                 <li className="leading-relaxed list-disc">Energy tracking visualization concepts</li>
               </ul>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">Wireframe Gallery</h3>
+            <p className="text-lg leading-relaxed mb-6">
+              Below are the key wireframes showing the onboarding flow and main app screens:
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframeWelcome} 
+                  alt="Welcome screen wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Welcome</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe1} 
+                  alt="User information input wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">User Info</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe2} 
+                  alt="Weekly schedule setup wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Schedule Setup</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe3} 
+                  alt="Schedule input with time blocks wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Time Blocks</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe4} 
+                  alt="Goals setting wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Goals</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe5} 
+                  alt="Time dedication slider wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Time Dedication</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe6} 
+                  alt="Energy levels selection wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Energy Levels</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe7} 
+                  alt="Loading screen wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Loading</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe8} 
+                  alt="Dashboard home screen wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Dashboard</p>
+              </div>
+              <div className="border border-border rounded-lg p-3">
+                <img 
+                  src={tempoWireframe9} 
+                  alt="Calendar view wireframe" 
+                  className="rounded w-full"
+                />
+                <p className="text-sm text-muted-foreground mt-2 text-center">Calendar</p>
+              </div>
             </div>
           </div>
 
