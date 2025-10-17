@@ -27,6 +27,12 @@ const projects = [
     icon: xunoLogo
   },
   {
+    title: 'Tempo',
+    description: 'Time-management app helping working students balance studies, work, and energy levels',
+    category: 'Design' as const,
+    icon: '⏱️'
+  },
+  {
     title: 'Dither-er',
     description: 'Image dithering tool with customizable effects',
     category: 'Development' as const,
@@ -49,12 +55,6 @@ const projects = [
     description: 'Interactive digital water simulation built with TouchDesigner and controlled by accelerometer',
     category: 'Creative Tech' as const,
     icon: confluenceThumbnail
-  },
-  {
-    title: 'Tempo',
-    description: 'Time-management app helping working students balance studies, work, and energy levels',
-    category: 'Design' as const,
-    icon: '⏱️'
   }
 ]
 
