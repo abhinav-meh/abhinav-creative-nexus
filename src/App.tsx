@@ -15,6 +15,7 @@ import Ditherer from "./pages/projects/Ditherer";
 import Xuno from "./pages/projects/Xuno";
 import OOPCreativeCoding from "./pages/projects/OOPCreativeCoding";
 import Confluence from "./pages/projects/Confluence";
+import Tempo from "./pages/projects/Tempo";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/projects/xuno" element={<Xuno />} />
             <Route path="/projects/oop-creative-coding" element={<OOPCreativeCoding />} />
             <Route path="/projects/confluence" element={<Confluence />} />
+            <Route path="/projects/tempo" element={<Tempo />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
