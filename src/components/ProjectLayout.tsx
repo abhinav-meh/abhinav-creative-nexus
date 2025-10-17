@@ -44,11 +44,15 @@ const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayo
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
                 {icon && (
-                  <img 
-                    src={icon} 
-                    alt={`${title} logo`} 
-                    className="w-12 h-12" 
-                  />
+                  icon.endsWith('.svg') || icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('.webp') ? (
+                    <img 
+                      src={icon} 
+                      alt={`${title} logo`} 
+                      className="w-12 h-12" 
+                    />
+                  ) : (
+                    <span className="text-3xl">{icon}</span>
+                  )
                 )}
               </div>
               <div>
