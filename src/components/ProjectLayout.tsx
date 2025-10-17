@@ -17,7 +17,7 @@ const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayo
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
       {/* Static Grid Pattern Background */}
       <div 
         className="absolute inset-0 bg-grid-pattern" 
@@ -42,13 +42,13 @@ const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayo
           
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center">
+              <div className="w-20 h-20 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
                 {icon && (
                   icon.endsWith('.svg') || icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('.webp') ? (
                     <img 
                       src={icon} 
                       alt={`${title} logo`} 
-                      className="w-12 h-12" 
+                      className="w-16 h-16" 
                     />
                   ) : (
                     <span className="text-3xl">{icon}</span>

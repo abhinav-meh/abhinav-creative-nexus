@@ -5,7 +5,7 @@ import InteractiveGrid from '@/components/InteractiveGrid'
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
       {/* Static Grid Pattern Background */}
       <div 
         className="absolute inset-0 bg-grid-pattern" 

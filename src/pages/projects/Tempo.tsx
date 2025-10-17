@@ -159,7 +159,7 @@ const Tempo = () => {
             <p className="text-lg leading-relaxed mb-6">
               Below are the key wireframes showing the onboarding flow and main app screens:
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
               <div className="border border-border rounded-lg p-3">
                 <img 
                   src={tempoWireframeWelcome} 
