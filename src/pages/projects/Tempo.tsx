@@ -115,7 +115,7 @@ const Tempo = () => {
           <p className="text-lg leading-relaxed mb-6">
             Explore the full interactive prototype to experience Tempo's user flow and design details.
           </p>
-          <div className="w-full bg-secondary/20 rounded-lg overflow-hidden border border-border" style={{ height: '600px' }}>
+          <div className="w-full bg-secondary/20 rounded-lg overflow-hidden border border-border" style={{ height: '900px' }}>
             <iframe 
               style={{ border: 'none' }} 
               width="100%" 
