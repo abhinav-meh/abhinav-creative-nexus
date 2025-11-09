@@ -125,14 +125,12 @@ export default function ParticleWave() {
       </bufferGeometry>
       <pointsMaterial
         map={circleTexture}
-        size={isHovered ? 0.12 : 0.1}
+        size={isHovered ? 0.15 : 0.12}
         vertexColors
         transparent
-        opacity={0.7}
+        opacity={0.9}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
-        depthWrite={false}
-        depthTest={false}
       />
     </points>
   )

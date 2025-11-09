@@ -8,8 +8,8 @@ export default function ThreeBackground() {
         camera={{ position: [0, 5, 12], fov: 60 }}
         className="pointer-events-auto"
       >
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
+        <ambientLight intensity={0.8} />
+        <pointLight position={[10, 10, 10]} intensity={1.5} />
         <ParticleWave />
       </Canvas>
     </div>
