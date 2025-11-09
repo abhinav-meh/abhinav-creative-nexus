@@ -6,6 +6,7 @@ import { useDebounce } from '@/hooks/useDebounce'
 import { FLAGS } from '@/config/flags'
 
 interface GridControlsPanelProps {
+  preset: 'classic' | 'gradient'
   waveAmplitude: number
   particleCount: number
   waveSpeed: number
@@ -13,6 +14,7 @@ interface GridControlsPanelProps {
   cameraPositionY: number
   cameraPositionZ: number
   fov: number
+  onPresetChange: (value: 'classic' | 'gradient') => void
   onWaveAmplitudeChange: (value: number) => void
   onParticleCountChange: (value: number) => void
   onWaveSpeedChange: (value: number) => void
@@ -24,6 +26,7 @@ interface GridControlsPanelProps {
 }
 
 export default function GridControlsPanel({
+  preset,
   waveAmplitude,
   particleCount,
   waveSpeed,
@@ -31,6 +34,7 @@ export default function GridControlsPanel({
   cameraPositionY,
   cameraPositionZ,
   fov,
+  onPresetChange,
   onWaveAmplitudeChange,
   onParticleCountChange,
   onWaveSpeedChange,
@@ -136,6 +140,35 @@ export default function GridControlsPanel({
         >
           <div className="space-y-5">
             <h3 className="text-base font-semibold">Grid Controls</h3>
+
+            {/* Preset Toggle */}
+            <div className="space-y-2">
+              <label className="text-xs font-medium text-foreground">
+                Style Preset
+              </label>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => onPresetChange('classic')}
+                  className={`flex-1 px-3 py-2 text-xs rounded-lg transition ${
+                    preset === 'classic'
+                      ? 'bg-foreground text-background'
+                      : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                  }`}
+                >
+                  Classic Grid
+                </button>
+                <button
+                  onClick={() => onPresetChange('gradient')}
+                  className={`flex-1 px-3 py-2 text-xs rounded-lg transition ${
+                    preset === 'gradient'
+                      ? 'bg-foreground text-background'
+                      : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                  }`}
+                >
+                  Gradient Wave
+                </button>
+              </div>
+            </div>
 
             {/* Camera Rotation X */}
             <div className="space-y-2">

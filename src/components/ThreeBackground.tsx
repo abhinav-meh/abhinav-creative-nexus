@@ -32,14 +32,19 @@ export default function ThreeBackground() {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const maxParticles = isMobile ? 5000 : 8000
 
+  const [preset, setPreset] = useState<'classic' | 'gradient'>(() => {
+    const saved = localStorage.getItem('gridPreset')
+    return (saved as 'classic' | 'gradient') || 'classic'
+  })
+
   const [waveAmplitude, setWaveAmplitude] = useState(() => {
     const saved = localStorage.getItem('waveAmplitude')
-    return saved ? parseFloat(saved) : 0.4
+    return saved ? parseFloat(saved) : 0.24
   })
   
   const [particleCount, setParticleCount] = useState(() => {
     const saved = localStorage.getItem('particleCount')
-    const count = saved ? parseInt(saved, 10) : 3000
+    const count = saved ? parseInt(saved, 10) : 3200
     return Math.min(count, maxParticles)
   })
   
@@ -50,25 +55,29 @@ export default function ThreeBackground() {
 
   const [cameraPositionY, setCameraPositionY] = useState(() => {
     const saved = localStorage.getItem('cameraPositionY')
-    return saved ? parseFloat(saved) : 3
+    return saved ? parseFloat(saved) : 1.0
   })
 
   const [cameraPositionZ, setCameraPositionZ] = useState(() => {
     const saved = localStorage.getItem('cameraPositionZ')
-    return saved ? parseFloat(saved) : 10
+    return saved ? parseFloat(saved) : 8.0
   })
 
   const [cameraRotationX, setCameraRotationX] = useState(() => {
     const saved = localStorage.getItem('cameraRotationX')
-    return saved ? parseFloat(saved) : -0.3
+    return saved ? parseFloat(saved) : -0.28
   })
 
   const [fov, setFov] = useState(() => {
     const saved = localStorage.getItem('fov')
-    return saved ? parseFloat(saved) : 75
+    return saved ? parseFloat(saved) : 55
   })
 
   // Save to localStorage
+  useEffect(() => {
+    localStorage.setItem('gridPreset', preset)
+  }, [preset])
+
   useEffect(() => {
     localStorage.setItem('waveAmplitude', waveAmplitude.toString())
   }, [waveAmplitude])
@@ -98,13 +107,14 @@ export default function ThreeBackground() {
   }, [fov])
 
   const handleReset = () => {
-    setWaveAmplitude(0.4)
-    setParticleCount(3000)
+    setPreset('classic')
+    setWaveAmplitude(0.24)
+    setParticleCount(3200)
     setWaveSpeed(0.3)
-    setCameraPositionY(3)
-    setCameraPositionZ(10)
-    setCameraRotationX(-0.3)
-    setFov(75)
+    setCameraPositionY(1.0)
+    setCameraPositionZ(8.0)
+    setCameraRotationX(-0.28)
+    setFov(55)
   }
 
   return (
@@ -122,6 +132,10 @@ export default function ThreeBackground() {
           scene.background = new THREE.Color('#ffffff')
           camera.position.set(0, cameraPositionY, cameraPositionZ)
           camera.rotation.x = cameraRotationX
+          if ('fov' in camera) {
+            (camera as any).fov = fov
+            camera.updateProjectionMatrix()
+          }
         }}
         style={{
           position: 'fixed',
@@ -140,6 +154,7 @@ export default function ThreeBackground() {
           amplitude={waveAmplitude}
           speed={waveSpeed}
           particleCount={particleCount}
+          preset={preset}
         />
         <CameraController 
           positionY={cameraPositionY}
@@ -150,6 +165,7 @@ export default function ThreeBackground() {
       </Canvas>
       
       <GridControlsPanel
+        preset={preset}
         waveAmplitude={waveAmplitude}
         particleCount={particleCount}
         waveSpeed={waveSpeed}
@@ -157,6 +173,7 @@ export default function ThreeBackground() {
         cameraPositionY={cameraPositionY}
         cameraPositionZ={cameraPositionZ}
         fov={fov}
+        onPresetChange={setPreset}
         onWaveAmplitudeChange={setWaveAmplitude}
         onParticleCountChange={setParticleCount}
         onWaveSpeedChange={setWaveSpeed}

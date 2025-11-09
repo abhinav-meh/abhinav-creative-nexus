@@ -8,43 +8,49 @@ uniform float uTime, uAmp, uSpeed, uSizeBase;
 varying float vMix;
 
 void main() {
-  float phase = position.x * 0.6 + position.z * 0.25 + uTime * uSpeed;
+  float phase = position.x * 0.6 + position.y * 0.25 + uTime * uSpeed;
   float z = sin(phase) * uAmp;
-  vec3 pos = vec3(position.x, z, position.z);
+  vec3 pos = vec3(position.xy, z);
 
   vec4 mv = modelViewMatrix * vec4(pos, 1.0);
   gl_Position = projectionMatrix * mv;
 
   float dist = max(length(mv.xyz), 0.001);
-  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 2.0, 6.0);
+  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 2.5, 6.0);
 
-  // gradient shifts with the wave slightly
+  // gradient driver (harmless when disabled)
   vMix = fract(uv.x + 0.15 * sin(phase));
 }
 `
 
 const fragmentShader = `
 precision highp float;
-uniform vec3 uColorA, uColorB;
+uniform vec3 uColorA, uColorB, uMonoColor;
+uniform int uUseGradient;
 varying float vMix;
 
 void main() {
   vec2 p = gl_PointCoord - 0.5;
   float d = length(p);
   float circle = smoothstep(0.5, 0.0, d);
-  vec3 color = mix(uColorA, uColorB, vMix);
-  gl_FragColor = vec4(color, circle * 0.95);
+
+  vec3 g = mix(uColorA, uColorB, vMix);
+  vec3 color = (uUseGradient == 1) ? g : uMonoColor;
+
+  gl_FragColor = vec4(color, circle * 0.62);
 }
 `
 
 export default function ParticleWave({ 
-  amplitude = 0.4,
+  amplitude = 0.24,
   speed = 0.3,
-  particleCount = 3000
+  particleCount = 3200,
+  preset = 'classic'
 }: {
   amplitude?: number
   speed?: number
   particleCount?: number
+  preset?: 'classic' | 'gradient'
 }) {
   const pointsRef = useRef<THREE.Points>(null)
   
@@ -54,8 +60,14 @@ export default function ParticleWave({
     uSpeed: { value: speed },
     uColorA: { value: new THREE.Color('#7DC8FF') },
     uColorB: { value: new THREE.Color('#FF7AC7') },
-    uSizeBase: { value: 1.6 },
-  }), [])
+    uMonoColor: { value: new THREE.Color('#B9B9B9') },
+    uUseGradient: { value: preset === 'gradient' ? 1 : 0 },
+    uSizeBase: { value: 1.7 },
+  }), [preset])
+
+  useEffect(() => {
+    uniforms.uUseGradient.value = preset === 'gradient' ? 1 : 0
+  }, [preset, uniforms])
 
   useEffect(() => {
     uniforms.uAmp.value = amplitude
@@ -121,7 +133,7 @@ export default function ParticleWave({
   return (
     <points
       ref={pointsRef}
-      position={[0, 0.5, 0]}
+      position={[0, 0.8, 0]}
       material={material}
     />
   )

@@ -50,10 +50,11 @@ export default function ProjectCard({ title, description, category, number, slug
           border border-white/35
           bg-white/18
           backdrop-blur-2xl
-          shadow-[0_6px_24px_rgba(17,24,39,0.08)]
+          [-webkit-backdrop-filter:blur(24px)]
           ring-1 ring-inset ring-white/10
+          shadow-[0_6px_24px_rgba(17,24,39,0.10)]
+          hover:shadow-[0_10px_32px_rgba(17,24,39,0.14)]
           transition-all duration-300
-          hover:shadow-[0_10px_32px_rgba(17,24,39,0.12)]
           will-change-transform
         "
         onMouseEnter={() => setIsHovered(true)}
@@ -68,11 +69,11 @@ export default function ProjectCard({ title, description, category, number, slug
               opacity: isHovered ? 1 : 0,
               background: `
                 radial-gradient(
-                  500px 240px at ${mousePosition.x * 100}% ${mousePosition.y * 100}%,
+                  520px 240px at ${mousePosition.x * 100}% ${mousePosition.y * 100}%,
                   rgba(255,255,255,0.55) 0%,
-                  rgba(255,255,255,0.25) 25%,
-                  rgba(255,255,255,0.10) 45%,
-                  transparent 60%
+                  rgba(255,255,255,0.25) 26%,
+                  rgba(255,255,255,0.10) 46%,
+                  transparent 62%
                 )
               `,
               mixBlendMode: 'soft-light' as const,
@@ -84,7 +85,7 @@ export default function ProjectCard({ title, description, category, number, slug
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.45), rgba(255,255,255,0) 40%)'
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.45), rgba(255,255,255,0) 42%)'
           }}
         />
 
