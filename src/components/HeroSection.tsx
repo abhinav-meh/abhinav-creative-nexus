@@ -1,160 +1,119 @@
-import { useState, useEffect } from 'react'
-import ThreeScene from './ThreeScene'
+import { useEffect, useState } from 'react'
+import { Github, Linkedin, FileDown } from 'lucide-react'
 import { supabase } from '@/integrations/supabase/client'
-import { Github, Linkedin, FileText } from 'lucide-react'
+import ScrollIndicator from './ScrollIndicator'
 
 export default function HeroSection() {
-  const [visitorCount, setVisitorCount] = useState(40)
+  const [visitorCount, setVisitorCount] = useState<number | null>(null)
   const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [showEmail, setShowEmail] = useState(false)
 
   useEffect(() => {
-    // Check if device is touch-enabled
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
   }, [])
 
   useEffect(() => {
-    // Track unique visitor
-    const trackUniqueVisitor = async () => {
+    const trackVisitor = async () => {
       try {
-        // Get or create unique visitor ID
-        let visitorId = localStorage.getItem('visitor_id')
-        if (!visitorId) {
-          visitorId = crypto.randomUUID()
-          localStorage.setItem('visitor_id', visitorId)
-        }
-
-        // Track visitor and get updated count
-        const { data: newCount, error } = await supabase
-          .rpc('track_unique_visitor', { visitor_uuid: visitorId })
-        
-        if (newCount && !error) {
-          setVisitorCount(newCount)
-        } else {
-          // Fallback: get current count
-          const { data, error: fetchError } = await supabase
-            .from('visitor_stats')
-            .select('total_visitors')
-            .single()
-          
-          if (data && !fetchError) {
-            setVisitorCount(data.total_visitors)
-          }
+        const { data, error } = await supabase.rpc('track_unique_visitor')
+        if (error) throw error
+        if (data !== null) {
+          setVisitorCount(data)
         }
       } catch (error) {
-        console.error('Error tracking unique visitor:', error)
+        console.error('Error tracking visitor:', error)
       }
     }
 
-    trackUniqueVisitor()
+    trackVisitor()
 
-    // Listen for 'e' key press to reveal email
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'e' || e.key === 'E') {
         setShowEmail(true)
-        setTimeout(() => setShowEmail(false), 5000)
       }
     }
 
     window.addEventListener('keydown', handleKeyPress)
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress)
-    }
+    return () => window.removeEventListener('keydown', handleKeyPress)
   }, [])
 
   return (
-    <section className="relative h-[50vh] overflow-hidden bg-hero-gradient animate-gradient-shift bg-[length:400%_400%] font-space-mono">
-      <div className="absolute inset-0 bg-black/20" />
-      
-      {/* Three.js Interactive Scene */}
-      <ThreeScene />
-      
-      <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center pt-20 md:pt-0">
-        <div className="max-w-4xl">
-          <div className="mb-6 text-sm font-mono text-white animate-fade-in">
-            Hello, visitor <span className="font-bold text-white">#{visitorCount.toLocaleString()}</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">
-            <span className="block text-white">Abhinav Mehrotra</span>
-          </h1>
-          
-          <div className="text-xl md:text-2xl text-white font-light mb-8 animate-slide-up [animation-delay:0.2s]">
-            <span className="text-white">Creative Technologist</span> <span className="text-white">•</span> 
-            <span className="text-white"> Product Designer</span> <span className="text-white">•</span> 
-            <span className="text-white"> Developer</span>
-          </div>
-          
-          <div className="text-lg md:text-xl text-white max-w-3xl leading-relaxed animate-slide-up [animation-delay:0.4s]">
-            Researching, prototyping, designing and testing by day.{' '}
-            <span className="text-white font-medium">Coding, no-coding, launching products by night.</span>
-          </div>
-          
-          {/* Show email directly on touch devices, hide behind 'E' key on desktop */}
-          {isTouchDevice ? (
-            <div className="mt-8 text-lg font-mono text-white animate-slide-up [animation-delay:0.6s]">
+    <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-32">
+      {/* Visitor Counter */}
+      {visitorCount !== null && (
+        <div className="absolute top-24 left-6 md:left-12 text-xs tracking-tight text-muted-foreground">
+          Visitor #{visitorCount.toLocaleString()}
+        </div>
+      )}
+
+      {/* Main Content */}
+      <div className="max-w-5xl mx-auto text-center">
+        <h1 className="text-hero font-bold mb-6">
+          Abhinav Mehrotra
+        </h1>
+        
+        <p className="text-display font-light mb-8 text-muted-foreground">
+          Creative Technologist & Product Designer
+        </p>
+        
+        <p className="text-lg md:text-xl max-w-2xl mx-auto mb-12 text-muted-foreground tracking-tight leading-relaxed">
+          Researching, prototyping, designing and testing by day. 
+          Coding, no-coding, launching products by night.
+        </p>
+
+        {/* Contact & Links */}
+        <div className="flex flex-col items-center gap-6">
+          {/* Email */}
+          <div className="text-sm tracking-tight">
+            {isTouchDevice || showEmail ? (
               <a 
-                href="mailto:abhinav.comms@gmail.com" 
-                className="hover:text-primary transition-colors duration-200"
+                href="mailto:abhinavmehrotra@berkeley.edu" 
+                className="text-foreground hover:text-primary transition-colors"
               >
-                abhinav.comms@gmail.com
+                abhinavmehrotra@berkeley.edu
               </a>
-            </div>
-          ) : (
-            <>
-              {!showEmail && (
-                <div className="mt-8 text-sm text-white font-mono animate-slide-up [animation-delay:0.6s]">
-                  Press <kbd className="px-2 py-1 bg-secondary rounded text-white">E</kbd> to reveal email
-                </div>
-              )}
-              
-              {showEmail && (
-                <div className="mt-8 text-lg font-mono text-white animate-fade-in">
-                  <a 
-                    href="mailto:abhinav.comms@gmail.com" 
-                    className="hover:text-primary transition-colors duration-200"
-                  >
-                    abhinav.comms@gmail.com
-                  </a>
-                </div>
-              )}
-            </>
-          )}
-          
+            ) : (
+              <p className="text-muted-foreground">
+                Press <kbd className="px-2 py-1 bg-muted rounded text-xs">E</kbd> to reveal email
+              </p>
+            )}
+          </div>
+
           {/* Social Links */}
-          <div className="mt-8 flex gap-4 animate-slide-up [animation-delay:0.8s]">
+          <div className="flex items-center gap-6">
             <a
               href="https://github.com/abhinav-meh"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
-              aria-label="GitHub Profile"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="GitHub"
             >
-              <Github className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
+              <Github size={20} />
             </a>
             <a
               href="https://www.linkedin.com/in/abhinavux/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
-              aria-label="LinkedIn Profile"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
             >
-              <Linkedin className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
+              <Linkedin size={20} />
             </a>
             <a
               href="/resume.pdf"
-              download="Abhinav-Mehrotra-Resume.pdf"
-              className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
-              aria-label="Download Resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Resume"
             >
-              <FileText className="w-6 h-6 text-white group-hover:text-primary transition-colors duration-200" />
+              <FileDown size={20} />
             </a>
           </div>
         </div>
       </div>
-      
-      {/* Gradient overlay for smooth transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator />
     </section>
   )
 }

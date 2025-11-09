@@ -1,9 +1,8 @@
-import Navigation from '@/components/Navigation'
-import InteractiveGrid from '@/components/InteractiveGrid'
-import { Button } from '@/components/ui/button'
+import { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import { ReactNode } from 'react'
+import { Button } from './ui/button'
+import MinimalHeader from './MinimalHeader'
 
 interface ProjectLayoutProps {
   children: ReactNode
@@ -15,67 +14,52 @@ interface ProjectLayoutProps {
 
 const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayoutProps) => {
   const navigate = useNavigate()
+  const isImageIcon = icon && (icon.endsWith('.svg') || icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('.webp'))
 
   return (
-    <div className="min-h-screen bg-background relative overflow-x-hidden">
-      {/* Static Grid Pattern Background */}
-      <div 
-        className="absolute inset-0 bg-grid-pattern" 
-        style={{backgroundSize: '64px 64px'}}
-      ></div>
+    <div className="min-h-screen bg-background">
+      <MinimalHeader />
       
-      {/* Interactive Grid Overlay */}
-      <InteractiveGrid />
-      
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80"></div>
-      
-      <div className="relative z-10 pb-24">
-        <div className="container mx-auto px-4 py-16">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="mb-8 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Work
-          </Button>
+      <div className="container mx-auto px-6 py-32 max-w-5xl">
+        {/* Back Button */}
+        <Button
+          variant="ghost"
+          onClick={() => navigate('/')}
+          className="mb-12 text-muted-foreground hover:text-foreground -ml-4"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Work
+        </Button>
+
+        {/* Project Header */}
+        <div className="mb-16 flex items-start gap-8">
+          {icon && (
+            <div className="w-20 h-20 flex items-center justify-center shrink-0">
+              {isImageIcon ? (
+                <img 
+                  src={`/src/assets/${icon}`} 
+                  alt={`${title} icon`}
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <span className="text-5xl">{icon}</span>
+              )}
+            </div>
+          )}
           
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-20 h-20 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
-                {icon && (
-                  icon.endsWith('.svg') || icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('.webp') ? (
-                    <img 
-                      src={icon} 
-                      alt={`${title} logo`} 
-                      className="w-16 h-16" 
-                    />
-                  ) : (
-                    <span className="text-3xl">{icon}</span>
-                  )
-                )}
-              </div>
-              <div>
-                <h1 className="text-4xl font-bold text-foreground mb-2">{title}</h1>
-                <p className="text-lg text-muted-foreground mb-4">
-                  {subtitle}
-                </p>
-                {buttons && (
-                  <div className="flex gap-3">
-                    {buttons}
-                  </div>
-                )}
-              </div>
-            </div>
+          <div className="flex-1">
+            <h1 className="text-display md:text-hero font-bold mb-4">{title}</h1>
+            <p className="text-xl md:text-2xl text-muted-foreground tracking-tight">{subtitle}</p>
             
-            <div className="prose prose-invert max-w-none">
-              {children}
-            </div>
+            {buttons && <div className="mt-6 flex flex-wrap gap-3">{buttons}</div>}
           </div>
         </div>
+
+        {/* Project Content */}
+        <div className="prose prose-lg max-w-none">
+          {children}
+        </div>
       </div>
-      
-      <Navigation />
     </div>
   )
 }

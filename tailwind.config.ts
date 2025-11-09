@@ -19,9 +19,15 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'space-mono': ['Space Mono', 'monospace'],
-				sans: ['Space Mono', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				mono: ['Space Mono', 'ui-monospace', 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'monospace'],
+				sans: ['Helvetica Neue', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+			},
+			letterSpacing: {
+				tighter: '-0.05em',
+			},
+			fontSize: {
+				'hero': ['clamp(3rem, 8vw, 7.5rem)', { lineHeight: '1', letterSpacing: '-0.05em' }],
+				'display': ['clamp(2rem, 5vw, 3.75rem)', { lineHeight: '1.1', letterSpacing: '-0.05em' }],
+				'heading': ['clamp(1.5rem, 3vw, 2.5rem)', { lineHeight: '1.2', letterSpacing: '-0.05em' }],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -61,19 +67,19 @@ export default {
 					product: 'hsl(var(--category-product))',
 					website: 'hsl(var(--category-website))',
 					feature: 'hsl(var(--category-feature))',
-					research: 'hsl(var(--category-research))',
-					experiment: 'hsl(var(--category-experiment))'
+					experiment: 'hsl(var(--category-experiment))',
+					design: 'hsl(var(--design))',
+					development: 'hsl(var(--development))',
+					research: 'hsl(var(--research))',
+					tool: 'hsl(var(--tool))'
 				}
 			},
-			backgroundImage: {
-				'hero-gradient': 'linear-gradient(135deg, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-via)), hsl(var(--hero-gradient-to)))',
-				'card-gradient': 'linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%)',
-				'grid-pattern': `url("data:image/svg+xml,%3csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M0 0h64v1H0z' fill='none' stroke='%23374151' stroke-width='0.5' stroke-dasharray='8,8' opacity='0.3'/%3e%3cpath d='M0 0v64h1V0z' fill='none' stroke='%23374151' stroke-width='0.5' stroke-dasharray='8,8' opacity='0.3'/%3e%3c/svg%3e")`,
-				'dot-pattern': 'radial-gradient(circle, hsl(var(--grid-color)) 1px, transparent 1px)'
-			},
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
 			boxShadow: {
-				'card': 'var(--shadow-card)',
-				'hero': 'var(--shadow-hero)'
+				'minimal': '0 1px 3px 0 rgb(0 0 0 / 0.1)',
+				'card': '0 2px 8px 0 rgb(0 0 0 / 0.08)'
 			},
 			animation: {
 				'gradient-shift': 'gradient-shift 8s ease-in-out infinite',
