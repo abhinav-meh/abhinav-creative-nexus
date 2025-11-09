@@ -2,7 +2,15 @@ import { useRef, useMemo, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-export default function ParticleWave() {
+export default function ParticleWave({ 
+  amplitude = 0.2,
+  size = 0.12,
+  speed = 0.3
+}: {
+  amplitude?: number
+  size?: number
+  speed?: number
+}) {
   const pointsRef = useRef<THREE.Points>(null)
   const [isHovered, setIsHovered] = useState(false)
 
@@ -102,10 +110,10 @@ export default function ParticleWave() {
         const x = positions[i3]
         const z = positions[i3 + 2]
         
-        // Create slow, calm wave motion with reduced amplitude
-        const waveX = Math.sin(x * 0.5 + time * 0.3) * 0.15
-        const waveZ = Math.sin(z * 0.5 + time * 0.2) * 0.15
-        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time * 0.4) * 0.15
+        // Create slow, calm wave motion with controlled amplitude
+        const waveX = Math.sin(x * 0.5 + time * (0.3 * speed)) * (0.15 * amplitude)
+        const waveZ = Math.sin(z * 0.5 + time * (0.2 * speed)) * (0.15 * amplitude)
+        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time * (0.4 * speed)) * (0.15 * amplitude)
         
         const baseAmplitude = isHovered ? 0.6 : 0.5
         positions[i3 + 1] = (waveX + waveZ + wavePattern) * baseAmplitude
@@ -141,7 +149,7 @@ export default function ParticleWave() {
       </bufferGeometry>
       <pointsMaterial
         map={circleTexture}
-        size={0.12}
+        size={size}
         color="#bfbfbf"
         transparent
         opacity={0.55}

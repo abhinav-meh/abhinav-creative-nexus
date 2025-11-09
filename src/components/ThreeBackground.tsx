@@ -2,8 +2,14 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import ParticleWave from './ParticleSphere'
 import * as THREE from 'three'
 import { useState, useEffect } from 'react'
-import CameraDebugPanel from './CameraDebugPanel'
+import GridControlsPanel from './GridControlsPanel'
 import { useThree } from '@react-three/fiber'
+
+const DEFAULTS = {
+  amplitude: 0.2,
+  size: 0.12,
+  speed: 0.3,
+}
 
 function CameraController({ 
   positionY, 
@@ -32,22 +38,57 @@ function CameraController({
 }
 
 export default function ThreeBackground() {
-  const [positionY, setPositionY] = useState(3.5)
-  const [positionZ, setPositionZ] = useState(8)
-  const [rotationX, setRotationX] = useState(-0.45)
-  const [fov, setFov] = useState(60)
+  // Load from localStorage or use defaults
+  const [waveAmplitude, setWaveAmplitude] = useState(() => {
+    const saved = localStorage.getItem('gridControls_amplitude')
+    return saved ? parseFloat(saved) : DEFAULTS.amplitude
+  })
+  
+  const [particleSize, setParticleSize] = useState(() => {
+    const saved = localStorage.getItem('gridControls_size')
+    return saved ? parseFloat(saved) : DEFAULTS.size
+  })
+  
+  const [waveSpeed, setWaveSpeed] = useState(() => {
+    const saved = localStorage.getItem('gridControls_speed')
+    return saved ? parseFloat(saved) : DEFAULTS.speed
+  })
+
+  // Camera defaults
+  const [positionY] = useState(3.5)
+  const [positionZ] = useState(8)
+  const [rotationX] = useState(-0.45)
+  const [fov] = useState(60)
+
+  // Save to localStorage
+  useEffect(() => {
+    localStorage.setItem('gridControls_amplitude', waveAmplitude.toString())
+  }, [waveAmplitude])
+  
+  useEffect(() => {
+    localStorage.setItem('gridControls_size', particleSize.toString())
+  }, [particleSize])
+  
+  useEffect(() => {
+    localStorage.setItem('gridControls_speed', waveSpeed.toString())
+  }, [waveSpeed])
+
+  const handleReset = () => {
+    setWaveAmplitude(DEFAULTS.amplitude)
+    setParticleSize(DEFAULTS.size)
+    setWaveSpeed(DEFAULTS.speed)
+  }
 
   return (
     <>
-      <CameraDebugPanel
-        positionY={positionY}
-        positionZ={positionZ}
-        rotationX={rotationX}
-        fov={fov}
-        onPositionYChange={(v) => setPositionY(v[0])}
-        onPositionZChange={(v) => setPositionZ(v[0])}
-        onRotationXChange={(v) => setRotationX(v[0])}
-        onFovChange={(v) => setFov(v[0])}
+      <GridControlsPanel
+        waveAmplitude={waveAmplitude}
+        particleSize={particleSize}
+        waveSpeed={waveSpeed}
+        onWaveAmplitudeChange={setWaveAmplitude}
+        onParticleSizeChange={setParticleSize}
+        onWaveSpeedChange={setWaveSpeed}
+        onReset={handleReset}
       />
       
       <div className="fixed inset-0 pointer-events-none z-0 bg-gradient-to-b from-white via-white/80 to-[#f2f2f2]">
@@ -70,7 +111,11 @@ export default function ThreeBackground() {
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={0.5} />
         <group rotation={[-0.25, 0, 0]}>
-          <ParticleWave />
+          <ParticleWave 
+            amplitude={waveAmplitude}
+            size={particleSize}
+            speed={waveSpeed}
+          />
         </group>
       </Canvas>
       </div>
