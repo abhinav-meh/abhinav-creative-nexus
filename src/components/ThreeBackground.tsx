@@ -3,10 +3,11 @@ import ParticleWave from './ParticleSphere'
 
 export default function ThreeBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-[2]">
+    <div className="fixed inset-0 pointer-events-none z-0 bg-background">
       <Canvas
         camera={{ position: [0, 5, 12], fov: 60 }}
         className="pointer-events-auto"
+        gl={{ alpha: false }}
       >
         <ambientLight intensity={0.8} />
         <pointLight position={[10, 10, 10]} intensity={1.5} />

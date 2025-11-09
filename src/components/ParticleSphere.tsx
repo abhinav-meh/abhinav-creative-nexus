@@ -46,26 +46,26 @@ export default function ParticleWave() {
       positions[i * 3 + 1] = y
       positions[i * 3 + 2] = z
 
-      // Gradient from blue to pink to orange
+      // Gradient from blue to pink to orange - darker colors for contrast
       const progress = col / gridSize
       
       if (progress < 0.33) {
-        // Blue to Pink
+        // Deep Blue to Hot Pink
         const t = progress / 0.33
-        colors[i * 3] = 0.36 + (0.93 - 0.36) * t      // R: blue to pink
-        colors[i * 3 + 1] = 0.67 + (0.55 - 0.67) * t  // G: blue to pink
-        colors[i * 3 + 2] = 0.93 + (0.75 - 0.93) * t  // B: blue to pink
+        colors[i * 3] = 0.2 + (0.8 - 0.2) * t      // R
+        colors[i * 3 + 1] = 0.3 + (0.2 - 0.3) * t  // G
+        colors[i * 3 + 2] = 0.8 + (0.6 - 0.8) * t  // B
       } else if (progress < 0.66) {
-        // Pink to Orange
+        // Hot Pink to Bright Orange
         const t = (progress - 0.33) / 0.33
-        colors[i * 3] = 0.93 + (1.0 - 0.93) * t       // R: pink to orange
-        colors[i * 3 + 1] = 0.55 + (0.64 - 0.55) * t  // G: pink to orange
-        colors[i * 3 + 2] = 0.75 + (0.31 - 0.75) * t  // B: pink to orange
+        colors[i * 3] = 0.8 + (1.0 - 0.8) * t      // R
+        colors[i * 3 + 1] = 0.2 + (0.4 - 0.2) * t  // G
+        colors[i * 3 + 2] = 0.6 + (0.1 - 0.6) * t  // B
       } else {
-        // Orange
+        // Bright Orange
         colors[i * 3] = 1.0
-        colors[i * 3 + 1] = 0.64
-        colors[i * 3 + 2] = 0.31
+        colors[i * 3 + 1] = 0.4
+        colors[i * 3 + 2] = 0.1
       }
     }
 
@@ -125,12 +125,12 @@ export default function ParticleWave() {
       </bufferGeometry>
       <pointsMaterial
         map={circleTexture}
-        size={isHovered ? 0.15 : 0.12}
+        size={isHovered ? 0.2 : 0.15}
         vertexColors
         transparent
-        opacity={0.9}
+        opacity={1.0}
         sizeAttenuation
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   )
