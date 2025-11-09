@@ -15,22 +15,10 @@ export default function ParticleWave() {
     return 5000 // Desktop
   }, [])
   
-  // Create circular sprite texture
-  const circleTexture = useMemo(() => {
-    const canvas = document.createElement('canvas')
-    canvas.width = 32
-    canvas.height = 32
-    const ctx = canvas.getContext('2d')!
-    
-    const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16)
-    gradient.addColorStop(0, 'rgba(255,255,255,1)')
-    gradient.addColorStop(0.5, 'rgba(255,255,255,0.5)')
-    gradient.addColorStop(1, 'rgba(255,255,255,0)')
-    
-    ctx.fillStyle = gradient
-    ctx.fillRect(0, 0, 32, 32)
-    
-    return new THREE.CanvasTexture(canvas)
+  // Load custom plus SVG texture
+  const plusTexture = useMemo(() => {
+    const loader = new THREE.TextureLoader()
+    return loader.load('/textures/plus.svg')
   }, [])
   
   const { positions, colors } = useMemo(() => {
@@ -132,13 +120,15 @@ export default function ParticleWave() {
         />
       </bufferGeometry>
       <pointsMaterial
-        map={circleTexture}
-        size={isHovered ? 0.16 : 0.14}
-        vertexColors
+        map={plusTexture}
+        size={0.14}
+        color="#bfbfbf"
         transparent
-        opacity={0.55}
+        opacity={0.6}
+        alphaTest={0.01}
+        depthWrite={false}
         sizeAttenuation
-        blending={THREE.NormalBlending}
+        blending={THREE.AdditiveBlending}
       />
     </points>
   )
