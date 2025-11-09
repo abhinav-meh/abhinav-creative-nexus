@@ -128,7 +128,7 @@ export default function ParticleWave() {
         size={isHovered ? 0.2 : 0.15}
         vertexColors
         transparent
-        opacity={1.0}
+        opacity={0.7}
         sizeAttenuation
         blending={THREE.NormalBlending}
       />
