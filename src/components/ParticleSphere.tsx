@@ -121,7 +121,7 @@ export default function ParticleWave() {
   return (
     <points
       ref={pointsRef}
-      position={[0, 1.5, 0]}
+      position={[0, 1.8, 0]}
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}
     >
