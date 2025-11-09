@@ -2,7 +2,7 @@ export default function GridBackground() {
   const lines = Array.from({ length: 20 }, (_, i) => i)
   
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         {lines.map((i) => (
           <line
@@ -14,7 +14,7 @@ export default function GridBackground() {
             stroke="white"
             strokeWidth="1"
             strokeDasharray="10 15"
-            opacity="0.15"
+            opacity="0.3"
           />
         ))}
       </svg>
