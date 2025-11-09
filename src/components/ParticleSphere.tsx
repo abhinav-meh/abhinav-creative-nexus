@@ -15,8 +15,8 @@ export default function ParticleWave() {
     return 5000 // Desktop
   }, [])
   
-  // Create plus icon texture
-  const plusTexture = useMemo(() => {
+  // Create soft circular texture with smooth falloff
+  const circleTexture = useMemo(() => {
     const canvas = document.createElement('canvas')
     canvas.width = 64
     canvas.height = 64
@@ -25,24 +25,20 @@ export default function ParticleWave() {
     // Clear canvas
     ctx.clearRect(0, 0, 64, 64)
     
-    // Draw plus icon in medium gray
-    ctx.strokeStyle = '#999999'
-    ctx.lineWidth = 4
-    ctx.lineCap = 'round'
+    // Create radial gradient for soft circle
+    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32)
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')
+    gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.8)')
+    gradient.addColorStop(0.7, 'rgba(255, 255, 255, 0.3)')
+    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
     
-    // Horizontal line
-    ctx.beginPath()
-    ctx.moveTo(16, 32)
-    ctx.lineTo(48, 32)
-    ctx.stroke()
+    // Draw soft circle
+    ctx.fillStyle = gradient
+    ctx.fillRect(0, 0, 64, 64)
     
-    // Vertical line
-    ctx.beginPath()
-    ctx.moveTo(32, 16)
-    ctx.lineTo(32, 48)
-    ctx.stroke()
-    
-    return new THREE.CanvasTexture(canvas)
+    const texture = new THREE.CanvasTexture(canvas)
+    texture.needsUpdate = true
+    return texture
   }, [])
   
   const { positions, colors } = useMemo(() => {
@@ -144,11 +140,11 @@ export default function ParticleWave() {
         />
       </bufferGeometry>
       <pointsMaterial
-        map={plusTexture}
-        size={0.14}
-        color="#9ca3af"
+        map={circleTexture}
+        size={0.12}
+        color="#bfbfbf"
         transparent
-        opacity={0.9}
+        opacity={0.55}
         alphaTest={0.01}
         depthWrite={false}
         sizeAttenuation
