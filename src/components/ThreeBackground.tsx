@@ -3,7 +3,7 @@ import ParticleWave from './ParticleSphere'
 
 export default function ThreeBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none">
+    <div className="fixed inset-0 pointer-events-none z-0">
       <Canvas
         camera={{ position: [0, 3, 8], fov: 50 }}
         className="pointer-events-auto"

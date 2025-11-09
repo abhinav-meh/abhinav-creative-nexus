@@ -2,7 +2,7 @@ export default function GridBackground() {
   const lines = Array.from({ length: 20 }, (_, i) => i)
   
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         {lines.map((i) => (
           <line
