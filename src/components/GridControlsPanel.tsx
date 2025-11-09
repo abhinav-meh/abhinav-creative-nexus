@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
-import { Settings, RotateCcw, Share2, Sliders } from 'lucide-react'
+import { RotateCcw, Share2, Sliders } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import {
   Tooltip,
   TooltipContent,
@@ -116,32 +114,34 @@ export default function GridControlsPanel({
 
   return (
     <TooltipProvider>
-      <Sheet open={open} onOpenChange={setOpen}>
+      <Popover open={open} onOpenChange={setOpen}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <SheetTrigger asChild>
+            <PopoverTrigger asChild>
               <Button
                 size="icon"
-                className="fixed bottom-6 right-6 z-50 pointer-events-auto h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 bg-primary/90 hover:bg-primary backdrop-blur-sm"
+                className="fixed bottom-6 right-6 z-50 pointer-events-auto h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none bg-primary/90 hover:bg-primary backdrop-blur-sm"
               >
                 <Sliders className="h-6 w-6 text-primary-foreground" />
               </Button>
-            </SheetTrigger>
+            </PopoverTrigger>
           </TooltipTrigger>
           <TooltipContent side="left">
             <p>Customize Grid</p>
           </TooltipContent>
         </Tooltip>
         
-        <SheetContent 
-          side="right" 
-          className="w-full sm:w-[400px] pointer-events-auto overflow-y-auto"
+        <PopoverContent 
+          align="end"
+          side="top"
+          sideOffset={20}
+          className="w-[90vw] sm:w-[400px] pointer-events-auto bg-background/95 backdrop-blur-md border shadow-lg rounded-xl p-6 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95"
         >
-          <SheetHeader>
-            <SheetTitle className="text-lg font-semibold">Grid Controls</SheetTitle>
-          </SheetHeader>
-          
-          <div className="space-y-6 mt-6">
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold">Grid Controls</h3>
+            </div>
+
             {/* Camera Rotation X */}
             <div className="space-y-2">
               <div className="flex justify-between items-center">
@@ -222,7 +222,7 @@ export default function GridControlsPanel({
               />
             </div>
 
-            <div className="border-t border-border pt-6" />
+            <div className="border-t border-border" />
 
             {/* Wave Amplitude */}
             <div className="space-y-2">
@@ -284,9 +284,10 @@ export default function GridControlsPanel({
               />
             </div>
 
-            <div className="border-t border-border pt-6 space-y-3">
+            <div className="border-t border-border pt-4 space-y-3">
               <Button
                 variant="outline"
+                size="sm"
                 className="w-full"
                 onClick={handleShareConfig}
               >
@@ -296,6 +297,7 @@ export default function GridControlsPanel({
               
               <Button
                 variant="outline"
+                size="sm"
                 className="w-full"
                 onClick={() => {
                   onReset()
@@ -311,8 +313,8 @@ export default function GridControlsPanel({
               Changes are saved automatically
             </p>
           </div>
-        </SheetContent>
-      </Sheet>
+        </PopoverContent>
+      </Popover>
     </TooltipProvider>
   )
 }
