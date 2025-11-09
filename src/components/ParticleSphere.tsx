@@ -4,7 +4,6 @@ import * as THREE from 'three'
 import { FLAGS } from '@/config/flags'
 
 const vertexShader = `
-attribute vec2 uv;
 uniform float uTime, uAmp, uSpeed;
 varying float vMix;
 
@@ -16,8 +15,8 @@ void main() {
   vec4 mv = modelViewMatrix * vec4(pos, 1.0);
   gl_Position = projectionMatrix * mv;
 
-  float dist = length(mv.xyz);
-  gl_PointSize = clamp(120.0 / dist, 1.0, 8.0);
+  float dist = max(length(mv.xyz), 0.001);
+  gl_PointSize = clamp(140.0 / dist, 1.5, 4.0);
 
   // gradient shifts with the wave slightly
   vMix = fract(uv.x + 0.15 * sin(phase));
@@ -34,7 +33,7 @@ void main() {
   float d = length(p);
   float circle = smoothstep(0.5, 0.0, d);
   vec3 color = mix(uColorA, uColorB, vMix);
-  gl_FragColor = vec4(color, circle * 0.75);
+  gl_FragColor = vec4(color, circle * 0.95);
 }
 `
 
@@ -77,24 +76,25 @@ export default function ParticleWave({
   useEffect(() => {
     const width = 20
     const depth = 20
-    const gridSize = Math.sqrt(particleCount)
+    const gridSize = Math.ceil(Math.sqrt(particleCount))
     const positions = new Float32Array(particleCount * 3)
     const uvs = new Float32Array(particleCount * 2)
 
-    for (let i = 0; i < particleCount; i++) {
-      const row = Math.floor(i / gridSize)
-      const col = i % gridSize
-      
-      const x = (col / gridSize) * width - width / 2
-      const z = (row / gridSize) * depth - depth / 2
-      const y = 0
+    let i = 0
+    for (let row = 0; row < gridSize && i < particleCount; row++) {
+      for (let col = 0; col < gridSize && i < particleCount; col++) {
+        const x = (col / Math.max(1, gridSize - 1)) * width - width / 2
+        const z = (row / Math.max(1, gridSize - 1)) * depth - depth / 2
+        const y = 0
 
-      positions[i * 3] = x
-      positions[i * 3 + 1] = y
-      positions[i * 3 + 2] = z
+        positions[i * 3] = x
+        positions[i * 3 + 1] = y
+        positions[i * 3 + 2] = z
 
-      uvs[i * 2] = col / gridSize
-      uvs[i * 2 + 1] = row / gridSize
+        uvs[i * 2] = col / Math.max(1, gridSize - 1)
+        uvs[i * 2 + 1] = row / Math.max(1, gridSize - 1)
+        i++
+      }
     }
 
     const geom = new THREE.BufferGeometry()

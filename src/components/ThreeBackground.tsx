@@ -116,10 +116,12 @@ export default function ThreeBackground() {
           antialias: true,
           powerPreference: 'high-performance'
         }}
-        onCreated={({ gl, scene }) => {
+        onCreated={({ gl, scene, camera }) => {
           gl.setPixelRatio(Math.min(window.devicePixelRatio, 2))
           gl.setClearColor('#ffffff', 1)
           scene.background = new THREE.Color('#ffffff')
+          camera.position.set(0, cameraPositionY, cameraPositionZ)
+          camera.rotation.x = cameraRotationX
         }}
         style={{
           position: 'fixed',
