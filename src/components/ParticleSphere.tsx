@@ -1,9 +1,9 @@
-import { useRef, useMemo, useState } from 'react'
+import { useRef, useMemo, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 export default function ParticleWave({ 
-  amplitude = 0.25,
+  amplitude = 0.4,
   size = 0.08,
   speed = 0.3,
   particleCount = 3000
@@ -15,6 +15,7 @@ export default function ParticleWave({
 }) {
   const pointsRef = useRef<THREE.Points>(null)
   const [isHovered, setIsHovered] = useState(false)
+  const geometryRef = useRef<THREE.BufferGeometry | null>(null)
   
   // Create soft circular texture with smooth falloff
   const circleTexture = useMemo(() => {
@@ -88,6 +89,16 @@ export default function ParticleWave({
     return { positions, colors }
   }, [particleCount])
 
+  // Update geometry when particle count changes
+  useEffect(() => {
+    if (pointsRef.current && geometryRef.current) {
+      geometryRef.current.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+      geometryRef.current.setAttribute('color', new THREE.BufferAttribute(colors, 3))
+      geometryRef.current.attributes.position.needsUpdate = true
+      geometryRef.current.attributes.color.needsUpdate = true
+    }
+  }, [particleCount, positions, colors])
+
   useFrame((state) => {
     if (pointsRef.current) {
       const time = state.clock.getElapsedTime()
@@ -104,11 +115,11 @@ export default function ParticleWave({
         const z = positions[i3 + 2]
         
         // Create slow, calm wave motion with controlled amplitude
-        const waveX = Math.sin(x * 0.5 + time * (0.3 * speed)) * (0.15 * amplitude)
-        const waveZ = Math.sin(z * 0.5 + time * (0.2 * speed)) * (0.15 * amplitude)
-        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time * (0.4 * speed)) * (0.15 * amplitude)
+        const waveX = Math.sin(x * 0.5 + time * (0.3 * speed)) * (0.2 * amplitude)
+        const waveZ = Math.sin(z * 0.5 + time * (0.2 * speed)) * (0.2 * amplitude)
+        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time * (0.4 * speed)) * (0.25 * amplitude)
         
-        const baseAmplitude = isHovered ? 0.6 : 0.5
+        const baseAmplitude = isHovered ? 0.8 : 0.7
         positions[i3 + 1] = (waveX + waveZ + wavePattern) * baseAmplitude
       }
 
@@ -126,7 +137,7 @@ export default function ParticleWave({
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}
     >
-      <bufferGeometry>
+      <bufferGeometry ref={geometryRef}>
         <bufferAttribute
           attach="attributes-position"
           count={particleCount}

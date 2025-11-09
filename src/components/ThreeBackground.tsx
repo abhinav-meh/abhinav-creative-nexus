@@ -6,7 +6,7 @@ import GridControlsPanel from './GridControlsPanel'
 import { useThree } from '@react-three/fiber'
 
 const DEFAULTS = {
-  amplitude: 0.25,
+  amplitude: 0.4,
   size: 0.08,
   speed: 0.3,
   particleCount: 3000,

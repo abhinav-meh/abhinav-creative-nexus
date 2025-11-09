@@ -52,6 +52,7 @@ export default function GridControlsPanel({
   onReset,
 }: GridControlsPanelProps) {
   const [open, setOpen] = useState(false)
+  const [showLabel, setShowLabel] = useState(true)
   const [localAmplitude, setLocalAmplitude] = useState(waveAmplitude)
   const [localCount, setLocalCount] = useState(particleCount)
   const [localSpeed, setLocalSpeed] = useState(waveSpeed)
@@ -59,6 +60,23 @@ export default function GridControlsPanel({
   const [localPositionY, setLocalPositionY] = useState(cameraPositionY)
   const [localPositionZ, setLocalPositionZ] = useState(cameraPositionZ)
   const [localFov, setLocalFov] = useState(fov)
+  
+  // Hide label after 4 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLabel(false)
+    }, 4000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Hide label on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowLabel(false)
+    }
+    window.addEventListener('scroll', handleScroll, { once: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   
   // Debounce values for performance
   const debouncedAmplitude = useDebounce(localAmplitude, 100)
@@ -114,22 +132,39 @@ export default function GridControlsPanel({
 
   return (
     <TooltipProvider>
-      <Popover open={open} onOpenChange={setOpen}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <PopoverTrigger asChild>
-              <Button
-                size="icon"
-                className="fixed bottom-6 right-6 z-50 pointer-events-auto h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none bg-primary/90 hover:bg-primary backdrop-blur-sm"
-              >
-                <Sliders className="h-6 w-6 text-primary-foreground" />
-              </Button>
-            </PopoverTrigger>
-          </TooltipTrigger>
-          <TooltipContent side="left">
-            <p>Customize Grid</p>
-          </TooltipContent>
-        </Tooltip>
+      <div className="fixed bottom-6 right-6 z-50 pointer-events-auto flex items-end gap-3">
+        {/* Floating Label */}
+        <div 
+          className={`
+            hidden sm:flex items-center gap-2 px-4 py-2 bg-background/95 backdrop-blur-sm 
+            rounded-full shadow-md border border-border text-sm font-medium text-foreground
+            transition-all duration-500 pointer-events-none
+            ${showLabel || open ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}
+          `}
+          onMouseEnter={() => setShowLabel(true)}
+        >
+          Customize Grid
+          <span className="text-muted-foreground">→</span>
+        </div>
+
+        <Popover open={open} onOpenChange={setOpen}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <PopoverTrigger asChild>
+                <Button
+                  size="icon"
+                  className="h-16 w-16 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 bg-primary/90 hover:bg-primary backdrop-blur-sm group"
+                  onMouseEnter={() => setShowLabel(true)}
+                >
+                  <Sliders className="h-7 w-7 text-primary-foreground group-hover:rotate-90 transition-transform duration-300" />
+                  <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                </Button>
+              </PopoverTrigger>
+            </TooltipTrigger>
+            <TooltipContent side="left">
+              <p>Customize Grid</p>
+            </TooltipContent>
+          </Tooltip>
         
         <PopoverContent 
           align="end"
@@ -238,7 +273,7 @@ export default function GridControlsPanel({
                 value={[localAmplitude]}
                 onValueChange={(v) => setLocalAmplitude(v[0])}
                 min={0.05}
-                max={0.6}
+                max={1.0}
                 step={0.01}
                 className="w-full"
               />
@@ -315,6 +350,7 @@ export default function GridControlsPanel({
           </div>
         </PopoverContent>
       </Popover>
+      </div>
     </TooltipProvider>
   )
 }
