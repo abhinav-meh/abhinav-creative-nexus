@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html, body, #root {
+    background-color: #ffffff !important;
+  }
+
   * {
     @apply border-border;
   }
