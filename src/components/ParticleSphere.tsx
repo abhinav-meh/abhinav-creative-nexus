@@ -106,10 +106,10 @@ export default function ParticleWave() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={isHovered ? 0.05 : 0.04}
+        size={isHovered ? 0.08 : 0.06}
         vertexColors
         transparent
-        opacity={0.7}
+        opacity={0.9}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
       />

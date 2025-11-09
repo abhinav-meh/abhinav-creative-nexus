@@ -11,10 +11,10 @@ export default function GridBackground() {
             y1="0"
             x2={`${(i * 5) + 10}%`}
             y2="100%"
-            stroke="white"
-            strokeWidth="1"
+            stroke="hsl(var(--primary))"
+            strokeWidth="2"
             strokeDasharray="10 15"
-            opacity="0.3"
+            opacity="0.6"
           />
         ))}
       </svg>
