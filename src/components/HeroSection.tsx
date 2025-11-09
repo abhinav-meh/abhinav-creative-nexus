@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import PixelGrid from './PixelGrid'
+import ThreeScene from './ThreeScene'
 import { supabase } from '@/integrations/supabase/client'
 import { Github, Linkedin, FileText } from 'lucide-react'
 
@@ -66,8 +66,8 @@ export default function HeroSection() {
     <section className="relative h-[50vh] overflow-hidden bg-hero-gradient animate-gradient-shift bg-[length:400%_400%] font-space-mono">
       <div className="absolute inset-0 bg-black/20" />
       
-      {/* Pixel Grid Background */}
-      <PixelGrid />
+      {/* Three.js Interactive Scene */}
+      <ThreeScene />
       
       <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center pt-20 md:pt-0">
         <div className="max-w-4xl">
