@@ -1,55 +1,85 @@
-import { useRef, useMemo, useState, useEffect } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { FLAGS } from '@/config/flags'
+
+const vertexShader = `
+attribute vec2 uv;
+uniform float uTime, uAmp, uSpeed;
+varying float vMix;
+
+void main() {
+  float phase = position.x * 0.6 + position.z * 0.25 + uTime * uSpeed;
+  float z = sin(phase) * uAmp;
+  vec3 pos = vec3(position.x, z, position.z);
+
+  vec4 mv = modelViewMatrix * vec4(pos, 1.0);
+  gl_Position = projectionMatrix * mv;
+
+  float dist = length(mv.xyz);
+  gl_PointSize = clamp(120.0 / dist, 1.0, 8.0);
+
+  // gradient shifts with the wave slightly
+  vMix = fract(uv.x + 0.15 * sin(phase));
+}
+`
+
+const fragmentShader = `
+precision highp float;
+uniform vec3 uColorA, uColorB;
+varying float vMix;
+
+void main() {
+  vec2 p = gl_PointCoord - 0.5;
+  float d = length(p);
+  float circle = smoothstep(0.5, 0.0, d);
+  vec3 color = mix(uColorA, uColorB, vMix);
+  gl_FragColor = vec4(color, circle * 0.75);
+}
+`
 
 export default function ParticleWave({ 
   amplitude = 0.4,
-  size = 0.08,
   speed = 0.3,
   particleCount = 3000
 }: {
   amplitude?: number
-  size?: number
   speed?: number
   particleCount?: number
 }) {
   const pointsRef = useRef<THREE.Points>(null)
-  const [isHovered, setIsHovered] = useState(false)
-  const geometryRef = useRef<THREE.BufferGeometry | null>(null)
   
-  // Create soft circular texture with smooth falloff
-  const circleTexture = useMemo(() => {
-    const canvas = document.createElement('canvas')
-    canvas.width = 64
-    canvas.height = 64
-    const ctx = canvas.getContext('2d')!
-    
-    // Clear canvas
-    ctx.clearRect(0, 0, 64, 64)
-    
-    // Create radial gradient for soft circle
-    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32)
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')
-    gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.8)')
-    gradient.addColorStop(0.7, 'rgba(255, 255, 255, 0.3)')
-    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
-    
-    // Draw soft circle
-    ctx.fillStyle = gradient
-    ctx.fillRect(0, 0, 64, 64)
-    
-    const texture = new THREE.CanvasTexture(canvas)
-    texture.needsUpdate = true
-    return texture
-  }, [])
-  
-  const { positions, colors } = useMemo(() => {
-    const positions = new Float32Array(particleCount * 3)
-    const colors = new Float32Array(particleCount * 3)
-    
+  const uniforms = useMemo(() => ({
+    uTime: { value: 0 },
+    uAmp: { value: amplitude },
+    uSpeed: { value: speed },
+    uColorA: { value: new THREE.Color('#7DC8FF') },
+    uColorB: { value: new THREE.Color('#FF7AC7') },
+  }), [])
+
+  useEffect(() => {
+    uniforms.uAmp.value = amplitude
+  }, [amplitude, uniforms])
+
+  useEffect(() => {
+    uniforms.uSpeed.value = speed
+  }, [speed, uniforms])
+
+  const material = useMemo(() => new THREE.ShaderMaterial({
+    vertexShader,
+    fragmentShader,
+    transparent: true,
+    depthWrite: false,
+    blending: FLAGS.gradientParticles ? THREE.NormalBlending : THREE.AdditiveBlending,
+    uniforms,
+  }), [uniforms])
+
+  useEffect(() => {
     const width = 20
     const depth = 20
     const gridSize = Math.sqrt(particleCount)
+    const positions = new Float32Array(particleCount * 3)
+    const uvs = new Float32Array(particleCount * 2)
 
     for (let i = 0; i < particleCount; i++) {
       const row = Math.floor(i / gridSize)
@@ -63,72 +93,27 @@ export default function ParticleWave({
       positions[i * 3 + 1] = y
       positions[i * 3 + 2] = z
 
-      // Initial gradient setup (will be animated in useFrame)
-      const progress = col / gridSize
-      
-      // Vibrant Blue (#7DC8FF) to Warm Pink (#FF7AC7)
-      // Blue: RGB(125, 200, 255) -> normalized (0.49, 0.784, 1.0)
-      // Pink: RGB(255, 122, 199) -> normalized (1.0, 0.478, 0.78)
-      colors[i * 3] = 0.49 + (1.0 - 0.49) * progress       // R
-      colors[i * 3 + 1] = 0.784 + (0.478 - 0.784) * progress // G
-      colors[i * 3 + 2] = 1.0 + (0.78 - 1.0) * progress      // B
+      uvs[i * 2] = col / gridSize
+      uvs[i * 2 + 1] = row / gridSize
     }
 
-    return { positions, colors }
+    const geom = new THREE.BufferGeometry()
+    geom.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    geom.setAttribute('uv', new THREE.BufferAttribute(uvs, 2))
+    geom.setDrawRange(0, particleCount)
+    geom.computeBoundingSphere()
+
+    if (pointsRef.current) {
+      pointsRef.current.geometry?.dispose()
+      pointsRef.current.geometry = geom
+      pointsRef.current.frustumCulled = false
+    }
   }, [particleCount])
 
-  // Update geometry when particle count changes
-  useEffect(() => {
-    if (pointsRef.current && geometryRef.current) {
-      geometryRef.current.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-      geometryRef.current.setAttribute('color', new THREE.BufferAttribute(colors, 3))
-      geometryRef.current.attributes.position.needsUpdate = true
-      geometryRef.current.attributes.color.needsUpdate = true
-    }
-  }, [particleCount, positions, colors])
-
-  useFrame((state) => {
+  useFrame(({ clock }) => {
+    uniforms.uTime.value = clock.getElapsedTime()
     if (pointsRef.current) {
-      const time = state.clock.getElapsedTime()
-      
-      const positions = pointsRef.current.geometry.attributes.position.array as Float32Array
-      const colors = pointsRef.current.geometry.attributes.color.array as Float32Array
-      const gridSize = Math.sqrt(particleCount)
-
-      for (let i = 0; i < particleCount; i++) {
-        const i3 = i * 3
-        const row = Math.floor(i / gridSize)
-        const col = i % gridSize
-        
-        const x = positions[i3]
-        const z = positions[i3 + 2]
-        
-        // Create slow, calm wave motion with controlled amplitude
-        const waveX = Math.sin(x * 0.5 + time * (0.3 * speed)) * (0.2 * amplitude)
-        const waveZ = Math.sin(z * 0.5 + time * (0.2 * speed)) * (0.2 * amplitude)
-        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time * (0.4 * speed)) * (0.25 * amplitude)
-        
-        const baseAmplitude = isHovered ? 0.8 : 0.7
-        positions[i3 + 1] = (waveX + waveZ + wavePattern) * baseAmplitude
-
-        // Animate gradient colors based on wave position and time
-        const normalizedX = (x + 10) / 20 // Normalize x to 0-1
-        const normalizedZ = (z + 10) / 20 // Normalize z to 0-1
-        const wavePhase = Math.sin(x * 0.5 + time * 0.6) * 0.5 + 0.5 // 0-1 oscillation
-        const depthPhase = Math.sin(z * 0.3 + time * 0.4) * 0.3 + 0.5 // Additional depth variation
-        const progress = ((normalizedX * 0.6 + normalizedZ * 0.2) + wavePhase * 0.4 + depthPhase * 0.2) % 1
-        
-        // Vibrant Blue (#7DC8FF) to Warm Pink (#FF7AC7)
-        colors[i3] = 0.49 + (1.0 - 0.49) * progress       // R
-        colors[i3 + 1] = 0.784 + (0.478 - 0.784) * progress // G
-        colors[i3 + 2] = 1.0 + (0.78 - 1.0) * progress      // B
-      }
-
-      pointsRef.current.geometry.attributes.position.needsUpdate = true
-      pointsRef.current.geometry.attributes.color.needsUpdate = true
-      
-      // Gentle rotation
-      pointsRef.current.rotation.y = time * 0.02
+      pointsRef.current.rotation.y = clock.getElapsedTime() * 0.02
     }
   })
 
@@ -136,35 +121,7 @@ export default function ParticleWave({
     <points
       ref={pointsRef}
       position={[0, 0.5, 0]}
-      onPointerEnter={() => setIsHovered(true)}
-      onPointerLeave={() => setIsHovered(false)}
-    >
-      <bufferGeometry ref={geometryRef}>
-        <bufferAttribute
-          attach="attributes-position"
-          count={particleCount}
-          array={positions}
-          itemSize={3}
-        />
-        <bufferAttribute
-          attach="attributes-color"
-          count={particleCount}
-          array={colors}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial
-        map={circleTexture}
-        size={size}
-        transparent
-        opacity={0.85}
-        alphaTest={0.01}
-        depthWrite={false}
-        sizeAttenuation
-        vertexColors
-        blending={THREE.AdditiveBlending}
-        toneMapped={false}
-      />
-    </points>
+      material={material}
+    />
   )
 }

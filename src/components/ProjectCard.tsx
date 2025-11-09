@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
-import { useState, useRef, MouseEvent } from 'react'
+import { useState, useRef, MouseEvent, CSSProperties } from 'react'
+import { FLAGS } from '@/config/flags'
 
 interface ProjectCardProps {
   title: string
@@ -23,7 +24,7 @@ export default function ProjectCard({ title, description, category, number, slug
   const cardRef = useRef<HTMLDivElement>(null)
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return
+    if (!cardRef.current || !FLAGS.cardSheen) return
     
     const rect = cardRef.current.getBoundingClientRect()
     const x = (e.clientX - rect.left) / rect.width
@@ -32,9 +33,10 @@ export default function ProjectCard({ title, description, category, number, slug
     setMousePosition({ x, y })
   }
 
-  const sheenStyle = {
-    background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 30%, transparent 60%)`,
-  }
+  const sheenStyle: CSSProperties = FLAGS.cardSheen ? {
+    background: `radial-gradient(600px circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(255, 255, 255, 0.35), transparent 60%)`,
+    mixBlendMode: 'soft-light' as const,
+  } : {}
 
   return (
     <Link
@@ -44,11 +46,11 @@ export default function ProjectCard({ title, description, category, number, slug
       <div 
         ref={cardRef}
         className={`
-          relative overflow-hidden border rounded-lg p-8 md:p-10 
+          relative overflow-hidden border rounded-2xl p-8 md:p-10 
           transition-all duration-300
           ${isHovered 
-            ? 'border-foreground/40 bg-white/25 backdrop-blur-[12px] shadow-lg' 
-            : 'border-border bg-background'
+            ? 'border-foreground/20 bg-background/50 backdrop-blur-xl shadow-md' 
+            : 'border-border/10 bg-background shadow-sm'
           }
         `}
         onMouseEnter={() => setIsHovered(true)}
@@ -56,9 +58,9 @@ export default function ProjectCard({ title, description, category, number, slug
         onMouseMove={handleMouseMove}
       >
         {/* Parallax Sheen */}
-        {isHovered && (
+        {FLAGS.cardSheen && isHovered && (
           <div 
-            className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+            className="absolute inset-0 pointer-events-none transition-opacity duration-200"
             style={sheenStyle}
           />
         )}
