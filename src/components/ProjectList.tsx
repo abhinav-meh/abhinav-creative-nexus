@@ -4,50 +4,42 @@ const projects = [
   {
     title: 'Tempo',
     description: 'A mobile app designed to help users manage their time and focus on what matters most through intentional task planning and distraction-free focus sessions.',
-    category: 'Design',
-    icon: 'tempo-logo.svg'
+    category: 'Design'
   },
   {
     title: 'Begig',
     description: 'A freelancing platform connecting clients with talented freelancers. Features include gig posting, proposal management, secure payments, and project tracking.',
-    category: 'Development',
-    icon: 'begig-logo.svg'
+    category: 'Development'
   },
   {
     title: 'Woz',
     description: 'An AI-powered Wizard of Oz testing platform for conversational interfaces. Enables researchers to simulate AI responses and gather insights before building the actual system.',
-    category: 'Research',
-    icon: 'woz-logo.svg'
+    category: 'Research'
   },
   {
     title: 'XUNO',
     description: 'A comprehensive design system and component library for building consistent, accessible web applications with modern UI patterns.',
-    category: 'Design',
-    icon: 'xuno-logo.svg'
+    category: 'Design'
   },
   {
     title: 'Dither-er',
     description: 'An interactive web tool for applying dithering effects to images. Experiment with various algorithms and export high-quality dithered artwork.',
-    category: 'Tool',
-    icon: 'ditherer-thumbnail.svg'
+    category: 'Tool'
   },
   {
     title: 'OOP Principles in Creative Coding',
     description: 'An academic paper exploring how object-oriented programming principles can be applied to creative coding practices and generative art.',
-    category: 'Research',
-    icon: '📄'
+    category: 'Research'
   },
   {
     title: 'Amazeballs',
     description: 'An immersive maze game with innovative wearable controller integration. Navigate through procedurally generated mazes using custom hardware.',
-    category: 'Development',
-    icon: '🎮'
+    category: 'Development'
   },
   {
     title: 'Confluence',
     description: 'A collaborative platform exploring the intersection of design and development workflows. Tools for seamless team communication and asset management.',
-    category: 'Tool',
-    icon: 'confluence-thumbnail.svg'
+    category: 'Tool'
   }
 ]
 
@@ -59,7 +51,7 @@ export default function ProjectList() {
           Selected Work
         </h2>
         
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-6">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.title}
