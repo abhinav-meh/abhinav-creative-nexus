@@ -18,14 +18,14 @@ import { toast } from 'sonner'
 
 interface GridControlsPanelProps {
   waveAmplitude: number
-  particleSize: number
+  particleCount: number
   waveSpeed: number
   cameraRotationX: number
   cameraPositionY: number
   cameraPositionZ: number
   fov: number
   onWaveAmplitudeChange: (value: number) => void
-  onParticleSizeChange: (value: number) => void
+  onParticleCountChange: (value: number) => void
   onWaveSpeedChange: (value: number) => void
   onCameraRotationXChange: (value: number) => void
   onCameraPositionYChange: (value: number) => void
@@ -36,14 +36,14 @@ interface GridControlsPanelProps {
 
 export default function GridControlsPanel({
   waveAmplitude,
-  particleSize,
+  particleCount,
   waveSpeed,
   cameraRotationX,
   cameraPositionY,
   cameraPositionZ,
   fov,
   onWaveAmplitudeChange,
-  onParticleSizeChange,
+  onParticleCountChange,
   onWaveSpeedChange,
   onCameraRotationXChange,
   onCameraPositionYChange,
@@ -53,7 +53,7 @@ export default function GridControlsPanel({
 }: GridControlsPanelProps) {
   const [open, setOpen] = useState(false)
   const [localAmplitude, setLocalAmplitude] = useState(waveAmplitude)
-  const [localSize, setLocalSize] = useState(particleSize)
+  const [localCount, setLocalCount] = useState(particleCount)
   const [localSpeed, setLocalSpeed] = useState(waveSpeed)
   const [localRotationX, setLocalRotationX] = useState(cameraRotationX)
   const [localPositionY, setLocalPositionY] = useState(cameraPositionY)
@@ -62,7 +62,7 @@ export default function GridControlsPanel({
   
   // Debounce values for performance
   const debouncedAmplitude = useDebounce(localAmplitude, 100)
-  const debouncedSize = useDebounce(localSize, 100)
+  const debouncedCount = useDebounce(localCount, 300) // Longer debounce for particle count
   const debouncedSpeed = useDebounce(localSpeed, 100)
   const debouncedRotationX = useDebounce(localRotationX, 100)
   const debouncedPositionY = useDebounce(localPositionY, 100)
@@ -74,8 +74,8 @@ export default function GridControlsPanel({
   }, [debouncedAmplitude, onWaveAmplitudeChange])
   
   useEffect(() => {
-    onParticleSizeChange(debouncedSize)
-  }, [debouncedSize, onParticleSizeChange])
+    onParticleCountChange(debouncedCount)
+  }, [debouncedCount, onParticleCountChange])
   
   useEffect(() => {
     onWaveSpeedChange(debouncedSpeed)
@@ -100,7 +100,7 @@ export default function GridControlsPanel({
   const handleShareConfig = () => {
     const params = new URLSearchParams({
       amp: localAmplitude.toFixed(2),
-      size: localSize.toFixed(2),
+      count: localCount.toString(),
       speed: localSpeed.toFixed(1),
       rotX: localRotationX.toFixed(2),
       posY: localPositionY.toFixed(1),
@@ -238,28 +238,28 @@ export default function GridControlsPanel({
                 value={[localAmplitude]}
                 onValueChange={(v) => setLocalAmplitude(v[0])}
                 min={0.05}
-                max={0.4}
+                max={0.6}
                 step={0.01}
                 className="w-full"
               />
             </div>
 
-            {/* Particle Size */}
+            {/* Particle Density */}
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className="text-sm font-medium text-foreground">
-                  Particle Size
+                  Particle Density
                 </label>
                 <span className="text-sm text-muted-foreground font-mono">
-                  {localSize.toFixed(2)}
+                  {localCount}
                 </span>
               </div>
               <Slider
-                value={[localSize]}
-                onValueChange={(v) => setLocalSize(v[0])}
-                min={0.05}
-                max={0.2}
-                step={0.01}
+                value={[localCount]}
+                onValueChange={(v) => setLocalCount(v[0])}
+                min={1000}
+                max={8000}
+                step={100}
                 className="w-full"
               />
             </div>

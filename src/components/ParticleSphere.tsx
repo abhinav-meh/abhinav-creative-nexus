@@ -3,25 +3,18 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 export default function ParticleWave({ 
-  amplitude = 0.2,
-  size = 0.12,
-  speed = 0.3
+  amplitude = 0.25,
+  size = 0.08,
+  speed = 0.3,
+  particleCount = 3000
 }: {
   amplitude?: number
   size?: number
   speed?: number
+  particleCount?: number
 }) {
   const pointsRef = useRef<THREE.Points>(null)
   const [isHovered, setIsHovered] = useState(false)
-
-  // Optimize particle count based on viewport size
-  const particleCount = useMemo(() => {
-    if (typeof window === 'undefined') return 3000
-    const width = window.innerWidth
-    if (width < 768) return 1500 // Mobile
-    if (width < 1024) return 3000 // Tablet
-    return 5000 // Desktop
-  }, [])
   
   // Create soft circular texture with smooth falloff
   const circleTexture = useMemo(() => {
@@ -93,7 +86,7 @@ export default function ParticleWave({
     }
 
     return { positions, colors }
-  }, [])
+  }, [particleCount])
 
   useFrame((state) => {
     if (pointsRef.current) {

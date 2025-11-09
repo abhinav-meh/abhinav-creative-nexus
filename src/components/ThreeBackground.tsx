@@ -6,9 +6,10 @@ import GridControlsPanel from './GridControlsPanel'
 import { useThree } from '@react-three/fiber'
 
 const DEFAULTS = {
-  amplitude: 0.2,
-  size: 0.12,
+  amplitude: 0.25,
+  size: 0.08,
   speed: 0.3,
+  particleCount: 3000,
 }
 
 function CameraController({ 
@@ -44,9 +45,9 @@ export default function ThreeBackground() {
     return saved ? parseFloat(saved) : DEFAULTS.amplitude
   })
   
-  const [particleSize, setParticleSize] = useState(() => {
-    const saved = localStorage.getItem('gridControls_size')
-    return saved ? parseFloat(saved) : DEFAULTS.size
+  const [particleCount, setParticleCount] = useState(() => {
+    const saved = localStorage.getItem('gridControls_particleCount')
+    return saved ? parseInt(saved) : DEFAULTS.particleCount
   })
   
   const [waveSpeed, setWaveSpeed] = useState(() => {
@@ -81,8 +82,8 @@ export default function ThreeBackground() {
   }, [waveAmplitude])
   
   useEffect(() => {
-    localStorage.setItem('gridControls_size', particleSize.toString())
-  }, [particleSize])
+    localStorage.setItem('gridControls_particleCount', particleCount.toString())
+  }, [particleCount])
   
   useEffect(() => {
     localStorage.setItem('gridControls_speed', waveSpeed.toString())
@@ -106,7 +107,7 @@ export default function ThreeBackground() {
 
   const handleReset = () => {
     setWaveAmplitude(DEFAULTS.amplitude)
-    setParticleSize(DEFAULTS.size)
+    setParticleCount(DEFAULTS.particleCount)
     setWaveSpeed(DEFAULTS.speed)
     setPositionY(3.5)
     setPositionZ(8)
@@ -118,14 +119,14 @@ export default function ThreeBackground() {
     <>
       <GridControlsPanel
         waveAmplitude={waveAmplitude}
-        particleSize={particleSize}
+        particleCount={particleCount}
         waveSpeed={waveSpeed}
         cameraRotationX={rotationX}
         cameraPositionY={positionY}
         cameraPositionZ={positionZ}
         fov={fov}
         onWaveAmplitudeChange={setWaveAmplitude}
-        onParticleSizeChange={setParticleSize}
+        onParticleCountChange={setParticleCount}
         onWaveSpeedChange={setWaveSpeed}
         onCameraRotationXChange={setRotationX}
         onCameraPositionYChange={setPositionY}
@@ -156,8 +157,9 @@ export default function ThreeBackground() {
         <group rotation={[-0.25, 0, 0]}>
           <ParticleWave 
             amplitude={waveAmplitude}
-            size={particleSize}
+            size={DEFAULTS.size}
             speed={waveSpeed}
+            particleCount={particleCount}
           />
         </group>
       </Canvas>
