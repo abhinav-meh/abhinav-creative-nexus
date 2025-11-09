@@ -113,6 +113,7 @@ export default function ParticleWave() {
   return (
     <points
       ref={pointsRef}
+      position={[0, 1.5, 0]}
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}
     >
@@ -132,10 +133,10 @@ export default function ParticleWave() {
       </bufferGeometry>
       <pointsMaterial
         map={circleTexture}
-        size={isHovered ? 0.12 : 0.1}
+        size={isHovered ? 0.16 : 0.14}
         vertexColors
         transparent
-        opacity={0.4}
+        opacity={0.55}
         sizeAttenuation
         blending={THREE.NormalBlending}
       />

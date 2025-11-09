@@ -4,7 +4,7 @@ import * as THREE from 'three'
 
 export default function ThreeBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 bg-transparent">
+    <div className="fixed inset-0 pointer-events-none z-0 bg-gradient-to-b from-white via-white/80 to-[#f2f2f2]">
       <Canvas
         camera={{ position: [0, 2, 10], fov: 60 }}
         gl={{ alpha: false }}
