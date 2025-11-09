@@ -53,26 +53,26 @@ export default function ParticleWave() {
       positions[i * 3 + 1] = y
       positions[i * 3 + 2] = z
 
-      // Gradient from blue to pink to orange - darker colors for contrast
+      // Soft gradient for white background: light teal → lavender → pale peach
       const progress = col / gridSize
       
       if (progress < 0.33) {
-        // Deep Blue to Hot Pink
+        // Light Teal to Lavender
         const t = progress / 0.33
-        colors[i * 3] = 0.2 + (0.8 - 0.2) * t      // R
-        colors[i * 3 + 1] = 0.3 + (0.2 - 0.3) * t  // G
-        colors[i * 3 + 2] = 0.8 + (0.6 - 0.8) * t  // B
+        colors[i * 3] = 0.6 + (0.7 - 0.6) * t      // R
+        colors[i * 3 + 1] = 0.8 + (0.7 - 0.8) * t  // G
+        colors[i * 3 + 2] = 0.85 + (0.9 - 0.85) * t  // B
       } else if (progress < 0.66) {
-        // Hot Pink to Bright Orange
+        // Lavender to Pale Peach
         const t = (progress - 0.33) / 0.33
-        colors[i * 3] = 0.8 + (1.0 - 0.8) * t      // R
-        colors[i * 3 + 1] = 0.2 + (0.4 - 0.2) * t  // G
-        colors[i * 3 + 2] = 0.6 + (0.1 - 0.6) * t  // B
+        colors[i * 3] = 0.7 + (0.95 - 0.7) * t     // R
+        colors[i * 3 + 1] = 0.7 + (0.85 - 0.7) * t  // G
+        colors[i * 3 + 2] = 0.9 + (0.8 - 0.9) * t   // B
       } else {
-        // Bright Orange
-        colors[i * 3] = 1.0
-        colors[i * 3 + 1] = 0.4
-        colors[i * 3 + 2] = 0.1
+        // Pale Peach
+        colors[i * 3] = 0.95
+        colors[i * 3 + 1] = 0.85
+        colors[i * 3 + 2] = 0.8
       }
     }
 
@@ -94,19 +94,19 @@ export default function ParticleWave() {
         const x = positions[i3]
         const z = positions[i3 + 2]
         
-        // Create wave motion
-        const waveX = Math.sin(x * 0.5 + time * 0.8) * 0.3
-        const waveZ = Math.sin(z * 0.5 + time * 0.5) * 0.3
-        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time) * 0.5
+        // Create slow, calm wave motion
+        const waveX = Math.sin(x * 0.5 + time * 0.3) * 0.2
+        const waveZ = Math.sin(z * 0.5 + time * 0.2) * 0.2
+        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time * 0.4) * 0.3
         
-        const baseAmplitude = isHovered ? 1.2 : 0.8
+        const baseAmplitude = isHovered ? 0.8 : 0.6
         positions[i3 + 1] = (waveX + waveZ + wavePattern) * baseAmplitude
       }
 
       pointsRef.current.geometry.attributes.position.needsUpdate = true
       
-      // Slight rotation
-      pointsRef.current.rotation.y = time * 0.05
+      // Gentle rotation
+      pointsRef.current.rotation.y = time * 0.02
     }
   })
 
@@ -132,10 +132,10 @@ export default function ParticleWave() {
       </bufferGeometry>
       <pointsMaterial
         map={circleTexture}
-        size={isHovered ? 0.2 : 0.15}
+        size={isHovered ? 0.12 : 0.1}
         vertexColors
         transparent
-        opacity={0.7}
+        opacity={0.4}
         sizeAttenuation
         blending={THREE.NormalBlending}
       />

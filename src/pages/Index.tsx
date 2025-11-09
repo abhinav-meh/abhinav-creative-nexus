@@ -5,7 +5,7 @@ import ThreeBackground from '@/components/ThreeBackground'
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative bg-gradient-to-b from-[#fafafa] to-white">
+    <div className="min-h-screen relative bg-white">
       <ThreeBackground />
       <div className="relative z-10 pointer-events-auto">
         <MinimalHeader />
