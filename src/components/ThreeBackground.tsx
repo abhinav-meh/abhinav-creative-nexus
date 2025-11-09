@@ -7,9 +7,10 @@ export default function ThreeBackground() {
     <div className="fixed inset-0 pointer-events-none z-0">
       <Canvas
         camera={{ position: [0, 5, 12], fov: 60 }}
-        className="pointer-events-auto"
-        onCreated={({ scene }) => {
-          scene.background = new THREE.Color('#ffffff')
+        style={{ pointerEvents: 'none' }}
+        onCreated={({ scene, gl }) => {
+          scene.background = new THREE.Color('#fafafa')
+          gl.domElement.style.pointerEvents = 'none'
         }}
       >
         <ambientLight intensity={0.8} />

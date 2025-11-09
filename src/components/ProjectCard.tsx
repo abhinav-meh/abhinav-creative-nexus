@@ -6,16 +6,7 @@ interface ProjectCardProps {
   description: string
   category: string
   number: number
-}
-
-const getProjectSlug = (title: string) => {
-  if (title === 'OOP Principles in Creative Coding') {
-    return 'oop-creative-coding'
-  }
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '')
+  slug: string
 }
 
 const categoryStyles: Record<string, string> = {
@@ -25,8 +16,7 @@ const categoryStyles: Record<string, string> = {
   'Tool': 'text-tool'
 }
 
-export default function ProjectCard({ title, description, category, number }: ProjectCardProps) {
-  const slug = getProjectSlug(title)
+export default function ProjectCard({ title, description, category, number, slug }: ProjectCardProps) {
 
   return (
     <Link

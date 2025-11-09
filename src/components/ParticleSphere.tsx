@@ -6,7 +6,14 @@ export default function ParticleWave() {
   const pointsRef = useRef<THREE.Points>(null)
   const [isHovered, setIsHovered] = useState(false)
 
-  const particleCount = 5000
+  // Optimize particle count based on viewport size
+  const particleCount = useMemo(() => {
+    if (typeof window === 'undefined') return 3000
+    const width = window.innerWidth
+    if (width < 768) return 1500 // Mobile
+    if (width < 1024) return 3000 // Tablet
+    return 5000 // Desktop
+  }, [])
   
   // Create circular sprite texture
   const circleTexture = useMemo(() => {
