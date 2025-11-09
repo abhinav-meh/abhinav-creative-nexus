@@ -15,10 +15,34 @@ export default function ParticleWave() {
     return 5000 // Desktop
   }, [])
   
-  // Load custom plus SVG texture
+  // Create plus icon texture
   const plusTexture = useMemo(() => {
-    const loader = new THREE.TextureLoader()
-    return loader.load('/textures/plus.svg')
+    const canvas = document.createElement('canvas')
+    canvas.width = 64
+    canvas.height = 64
+    const ctx = canvas.getContext('2d')!
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, 64, 64)
+    
+    // Draw plus icon in medium gray
+    ctx.strokeStyle = '#999999'
+    ctx.lineWidth = 4
+    ctx.lineCap = 'round'
+    
+    // Horizontal line
+    ctx.beginPath()
+    ctx.moveTo(16, 32)
+    ctx.lineTo(48, 32)
+    ctx.stroke()
+    
+    // Vertical line
+    ctx.beginPath()
+    ctx.moveTo(32, 16)
+    ctx.lineTo(32, 48)
+    ctx.stroke()
+    
+    return new THREE.CanvasTexture(canvas)
   }, [])
   
   const { positions, colors } = useMemo(() => {
@@ -122,13 +146,13 @@ export default function ParticleWave() {
       <pointsMaterial
         map={plusTexture}
         size={0.14}
-        color="#bfbfbf"
+        color="#9ca3af"
         transparent
-        opacity={0.6}
+        opacity={0.9}
         alphaTest={0.01}
         depthWrite={false}
         sizeAttenuation
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   )
