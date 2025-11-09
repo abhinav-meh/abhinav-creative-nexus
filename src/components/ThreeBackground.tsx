@@ -5,12 +5,28 @@ import { useState, useEffect } from 'react'
 import CameraDebugPanel from './CameraDebugPanel'
 import { useThree } from '@react-three/fiber'
 
-function CameraController({ rotationX }: { rotationX: number }) {
+function CameraController({ 
+  positionY, 
+  positionZ, 
+  rotationX, 
+  fov 
+}: { 
+  positionY: number
+  positionZ: number
+  rotationX: number
+  fov: number
+}) {
   const { camera } = useThree()
   
   useEffect(() => {
+    camera.position.y = positionY
+    camera.position.z = positionZ
     camera.rotation.x = rotationX
-  }, [rotationX, camera])
+    if ('fov' in camera && camera instanceof THREE.PerspectiveCamera) {
+      camera.fov = fov
+      camera.updateProjectionMatrix()
+    }
+  }, [positionY, positionZ, rotationX, fov, camera])
   
   return null
 }
@@ -45,7 +61,12 @@ export default function ThreeBackground() {
             gl.domElement.style.pointerEvents = 'none'
           }}
         >
-        <CameraController rotationX={rotationX} />
+        <CameraController 
+          positionY={positionY}
+          positionZ={positionZ}
+          rotationX={rotationX} 
+          fov={fov}
+        />
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={0.5} />
         <group rotation={[-0.25, 0, 0]}>
