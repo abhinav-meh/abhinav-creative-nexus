@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { RotateCcw, Share2, Sliders } from 'lucide-react'
+import { RotateCcw, Sliders } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 import {
@@ -14,7 +14,6 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { useDebounce } from '@/hooks/useDebounce'
-import { toast } from 'sonner'
 
 interface GridControlsPanelProps {
   waveAmplitude: number
@@ -114,21 +113,6 @@ export default function GridControlsPanel({
   useEffect(() => {
     onFovChange(debouncedFov)
   }, [debouncedFov, onFovChange])
-
-  const handleShareConfig = () => {
-    const params = new URLSearchParams({
-      amp: localAmplitude.toFixed(2),
-      count: localCount.toString(),
-      speed: localSpeed.toFixed(1),
-      rotX: localRotationX.toFixed(2),
-      posY: localPositionY.toFixed(1),
-      posZ: localPositionZ.toFixed(1),
-      fov: localFov.toFixed(0),
-    })
-    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`
-    navigator.clipboard.writeText(url)
-    toast.success('Configuration copied to clipboard!')
-  }
 
   return (
     <TooltipProvider>
@@ -319,20 +303,9 @@ export default function GridControlsPanel({
               />
             </div>
 
-            <div className="border-t border-border pt-4 space-y-3">
+            <div className="border-t border-border pt-6">
               <Button
                 variant="outline"
-                size="sm"
-                className="w-full"
-                onClick={handleShareConfig}
-              >
-                <Share2 className="mr-2 h-4 w-4" />
-                Share Configuration
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="sm"
                 className="w-full"
                 onClick={() => {
                   onReset()
@@ -344,7 +317,7 @@ export default function GridControlsPanel({
               </Button>
             </div>
 
-            <p className="text-xs text-muted-foreground text-center">
+            <p className="text-xs text-muted-foreground text-center pt-2">
               Changes are saved automatically
             </p>
           </div>

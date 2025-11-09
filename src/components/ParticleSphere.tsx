@@ -63,27 +63,15 @@ export default function ParticleWave({
       positions[i * 3 + 1] = y
       positions[i * 3 + 2] = z
 
-      // Soft gradient for white background: light teal → lavender → pale peach
+      // Initial gradient setup (will be animated in useFrame)
       const progress = col / gridSize
       
-      if (progress < 0.33) {
-        // Light Teal to Lavender
-        const t = progress / 0.33
-        colors[i * 3] = 0.6 + (0.7 - 0.6) * t      // R
-        colors[i * 3 + 1] = 0.8 + (0.7 - 0.8) * t  // G
-        colors[i * 3 + 2] = 0.85 + (0.9 - 0.85) * t  // B
-      } else if (progress < 0.66) {
-        // Lavender to Pale Peach
-        const t = (progress - 0.33) / 0.33
-        colors[i * 3] = 0.7 + (0.95 - 0.7) * t     // R
-        colors[i * 3 + 1] = 0.7 + (0.85 - 0.7) * t  // G
-        colors[i * 3 + 2] = 0.9 + (0.8 - 0.9) * t   // B
-      } else {
-        // Pale Peach
-        colors[i * 3] = 0.95
-        colors[i * 3 + 1] = 0.85
-        colors[i * 3 + 2] = 0.8
-      }
+      // Soft Blue (#9CC9FF) to Vibrant Pink (#FF7AC7)
+      // Blue: RGB(156, 201, 255) -> normalized (0.612, 0.788, 1.0)
+      // Pink: RGB(255, 122, 199) -> normalized (1.0, 0.478, 0.78)
+      colors[i * 3] = 0.612 + (1.0 - 0.612) * progress       // R
+      colors[i * 3 + 1] = 0.788 + (0.478 - 0.788) * progress // G
+      colors[i * 3 + 2] = 1.0 + (0.78 - 1.0) * progress      // B
     }
 
     return { positions, colors }
@@ -104,6 +92,7 @@ export default function ParticleWave({
       const time = state.clock.getElapsedTime()
       
       const positions = pointsRef.current.geometry.attributes.position.array as Float32Array
+      const colors = pointsRef.current.geometry.attributes.color.array as Float32Array
       const gridSize = Math.sqrt(particleCount)
 
       for (let i = 0; i < particleCount; i++) {
@@ -121,9 +110,20 @@ export default function ParticleWave({
         
         const baseAmplitude = isHovered ? 0.8 : 0.7
         positions[i3 + 1] = (waveX + waveZ + wavePattern) * baseAmplitude
+
+        // Animate gradient colors based on wave position and time
+        const normalizedX = (x + 10) / 20 // Normalize x to 0-1
+        const wavePhase = Math.sin(x * 0.5 + time * 0.5) * 0.5 + 0.5 // 0-1 oscillation
+        const progress = (normalizedX + wavePhase * 0.3) % 1 // Add wave influence to gradient
+        
+        // Soft Blue (#9CC9FF) to Vibrant Pink (#FF7AC7)
+        colors[i3] = 0.612 + (1.0 - 0.612) * progress       // R
+        colors[i3 + 1] = 0.788 + (0.478 - 0.788) * progress // G
+        colors[i3 + 2] = 1.0 + (0.78 - 1.0) * progress      // B
       }
 
       pointsRef.current.geometry.attributes.position.needsUpdate = true
+      pointsRef.current.geometry.attributes.color.needsUpdate = true
       
       // Gentle rotation
       pointsRef.current.rotation.y = time * 0.02
@@ -154,12 +154,12 @@ export default function ParticleWave({
       <pointsMaterial
         map={circleTexture}
         size={size}
-        color="#bfbfbf"
         transparent
-        opacity={0.55}
+        opacity={0.7}
         alphaTest={0.01}
         depthWrite={false}
         sizeAttenuation
+        vertexColors
         blending={THREE.NormalBlending}
       />
     </points>
