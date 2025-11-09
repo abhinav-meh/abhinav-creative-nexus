@@ -102,12 +102,12 @@ export default function ParticleWave() {
         const x = positions[i3]
         const z = positions[i3 + 2]
         
-        // Create slow, calm wave motion
-        const waveX = Math.sin(x * 0.5 + time * 0.3) * 0.2
-        const waveZ = Math.sin(z * 0.5 + time * 0.2) * 0.2
-        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time * 0.4) * 0.3
+        // Create slow, calm wave motion with reduced amplitude
+        const waveX = Math.sin(x * 0.5 + time * 0.3) * 0.15
+        const waveZ = Math.sin(z * 0.5 + time * 0.2) * 0.15
+        const wavePattern = Math.sin(x * 0.8 + z * 0.8 + time * 0.4) * 0.15
         
-        const baseAmplitude = isHovered ? 0.8 : 0.6
+        const baseAmplitude = isHovered ? 0.6 : 0.5
         positions[i3 + 1] = (waveX + waveZ + wavePattern) * baseAmplitude
       }
 
@@ -121,7 +121,7 @@ export default function ParticleWave() {
   return (
     <points
       ref={pointsRef}
-      position={[0, 1.8, 0]}
+      position={[0, 0.5, 0]}
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}
     >
