@@ -1,5 +1,5 @@
 export default function GridBackground() {
-  const lines = Array.from({ length: 20 }, (_, i) => i)
+  const lines = Array.from({ length: 12 }, (_, i) => i)
   
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
@@ -7,9 +7,9 @@ export default function GridBackground() {
         {lines.map((i) => (
           <line
             key={i}
-            x1={`${(i * 5) + 10}%`}
+            x1={`${(i * 8) + 10}%`}
             y1="0"
-            x2={`${(i * 5) + 10}%`}
+            x2={`${(i * 8) + 10}%`}
             y2="100%"
             stroke="hsl(var(--primary))"
             strokeWidth="2"

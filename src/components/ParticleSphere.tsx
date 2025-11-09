@@ -112,6 +112,8 @@ export default function ParticleWave() {
         opacity={0.9}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
+        depthWrite={false}
+        depthTest={false}
       />
     </points>
   )

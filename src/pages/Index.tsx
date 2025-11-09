@@ -10,7 +10,7 @@ const Index = () => {
       <div className="fixed inset-0 bg-background/95 -z-10" />
       <GridBackground />
       <ThreeBackground />
-      <div className="relative">
+      <div className="relative z-10">
         <MinimalHeader />
         <HeroSection />
         <ProjectList />
