@@ -5,7 +5,7 @@ export default function ThreeBackground() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[2]">
       <Canvas
-        camera={{ position: [0, 3, 8], fov: 50 }}
+        camera={{ position: [0, 5, 12], fov: 60 }}
         className="pointer-events-auto"
       >
         <ambientLight intensity={0.5} />

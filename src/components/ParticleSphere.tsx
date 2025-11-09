@@ -6,14 +6,32 @@ export default function ParticleWave() {
   const pointsRef = useRef<THREE.Points>(null)
   const [isHovered, setIsHovered] = useState(false)
 
-  const particleCount = 3000
+  const particleCount = 5000
+  
+  // Create circular sprite texture
+  const circleTexture = useMemo(() => {
+    const canvas = document.createElement('canvas')
+    canvas.width = 32
+    canvas.height = 32
+    const ctx = canvas.getContext('2d')!
+    
+    const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16)
+    gradient.addColorStop(0, 'rgba(255,255,255,1)')
+    gradient.addColorStop(0.5, 'rgba(255,255,255,0.5)')
+    gradient.addColorStop(1, 'rgba(255,255,255,0)')
+    
+    ctx.fillStyle = gradient
+    ctx.fillRect(0, 0, 32, 32)
+    
+    return new THREE.CanvasTexture(canvas)
+  }, [])
   
   const { positions, colors } = useMemo(() => {
     const positions = new Float32Array(particleCount * 3)
     const colors = new Float32Array(particleCount * 3)
     
-    const width = 8
-    const depth = 8
+    const width = 20
+    const depth = 20
     const gridSize = Math.sqrt(particleCount)
 
     for (let i = 0; i < particleCount; i++) {
@@ -106,10 +124,11 @@ export default function ParticleWave() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={isHovered ? 0.08 : 0.06}
+        map={circleTexture}
+        size={isHovered ? 0.12 : 0.1}
         vertexColors
         transparent
-        opacity={0.9}
+        opacity={0.7}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
         depthWrite={false}
