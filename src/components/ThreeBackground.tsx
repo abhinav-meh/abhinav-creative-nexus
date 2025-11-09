@@ -54,11 +54,26 @@ export default function ThreeBackground() {
     return saved ? parseFloat(saved) : DEFAULTS.speed
   })
 
-  // Camera defaults
-  const [positionY] = useState(3.5)
-  const [positionZ] = useState(8)
-  const [rotationX] = useState(-0.45)
-  const [fov] = useState(60)
+  // Camera state with localStorage
+  const [positionY, setPositionY] = useState(() => {
+    const saved = localStorage.getItem('gridControls_cameraY')
+    return saved ? parseFloat(saved) : 3.5
+  })
+  
+  const [positionZ, setPositionZ] = useState(() => {
+    const saved = localStorage.getItem('gridControls_cameraZ')
+    return saved ? parseFloat(saved) : 8
+  })
+  
+  const [rotationX, setRotationX] = useState(() => {
+    const saved = localStorage.getItem('gridControls_cameraRotX')
+    return saved ? parseFloat(saved) : -0.45
+  })
+  
+  const [fov, setFov] = useState(() => {
+    const saved = localStorage.getItem('gridControls_fov')
+    return saved ? parseFloat(saved) : 60
+  })
 
   // Save to localStorage
   useEffect(() => {
@@ -73,10 +88,30 @@ export default function ThreeBackground() {
     localStorage.setItem('gridControls_speed', waveSpeed.toString())
   }, [waveSpeed])
 
+  useEffect(() => {
+    localStorage.setItem('gridControls_cameraY', positionY.toString())
+  }, [positionY])
+
+  useEffect(() => {
+    localStorage.setItem('gridControls_cameraZ', positionZ.toString())
+  }, [positionZ])
+
+  useEffect(() => {
+    localStorage.setItem('gridControls_cameraRotX', rotationX.toString())
+  }, [rotationX])
+
+  useEffect(() => {
+    localStorage.setItem('gridControls_fov', fov.toString())
+  }, [fov])
+
   const handleReset = () => {
     setWaveAmplitude(DEFAULTS.amplitude)
     setParticleSize(DEFAULTS.size)
     setWaveSpeed(DEFAULTS.speed)
+    setPositionY(3.5)
+    setPositionZ(8)
+    setRotationX(-0.45)
+    setFov(60)
   }
 
   return (
@@ -85,9 +120,17 @@ export default function ThreeBackground() {
         waveAmplitude={waveAmplitude}
         particleSize={particleSize}
         waveSpeed={waveSpeed}
+        cameraRotationX={rotationX}
+        cameraPositionY={positionY}
+        cameraPositionZ={positionZ}
+        fov={fov}
         onWaveAmplitudeChange={setWaveAmplitude}
         onParticleSizeChange={setParticleSize}
         onWaveSpeedChange={setWaveSpeed}
+        onCameraRotationXChange={setRotationX}
+        onCameraPositionYChange={setPositionY}
+        onCameraPositionZChange={setPositionZ}
+        onFovChange={setFov}
         onReset={handleReset}
       />
       
