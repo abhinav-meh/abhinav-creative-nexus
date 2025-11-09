@@ -66,11 +66,11 @@ export default function ParticleWave({
       // Initial gradient setup (will be animated in useFrame)
       const progress = col / gridSize
       
-      // Soft Blue (#9CC9FF) to Vibrant Pink (#FF7AC7)
-      // Blue: RGB(156, 201, 255) -> normalized (0.612, 0.788, 1.0)
+      // Vibrant Blue (#7DC8FF) to Warm Pink (#FF7AC7)
+      // Blue: RGB(125, 200, 255) -> normalized (0.49, 0.784, 1.0)
       // Pink: RGB(255, 122, 199) -> normalized (1.0, 0.478, 0.78)
-      colors[i * 3] = 0.612 + (1.0 - 0.612) * progress       // R
-      colors[i * 3 + 1] = 0.788 + (0.478 - 0.788) * progress // G
+      colors[i * 3] = 0.49 + (1.0 - 0.49) * progress       // R
+      colors[i * 3 + 1] = 0.784 + (0.478 - 0.784) * progress // G
       colors[i * 3 + 2] = 1.0 + (0.78 - 1.0) * progress      // B
     }
 
@@ -113,12 +113,14 @@ export default function ParticleWave({
 
         // Animate gradient colors based on wave position and time
         const normalizedX = (x + 10) / 20 // Normalize x to 0-1
-        const wavePhase = Math.sin(x * 0.5 + time * 0.5) * 0.5 + 0.5 // 0-1 oscillation
-        const progress = (normalizedX + wavePhase * 0.3) % 1 // Add wave influence to gradient
+        const normalizedZ = (z + 10) / 20 // Normalize z to 0-1
+        const wavePhase = Math.sin(x * 0.5 + time * 0.6) * 0.5 + 0.5 // 0-1 oscillation
+        const depthPhase = Math.sin(z * 0.3 + time * 0.4) * 0.3 + 0.5 // Additional depth variation
+        const progress = ((normalizedX * 0.6 + normalizedZ * 0.2) + wavePhase * 0.4 + depthPhase * 0.2) % 1
         
-        // Soft Blue (#9CC9FF) to Vibrant Pink (#FF7AC7)
-        colors[i3] = 0.612 + (1.0 - 0.612) * progress       // R
-        colors[i3 + 1] = 0.788 + (0.478 - 0.788) * progress // G
+        // Vibrant Blue (#7DC8FF) to Warm Pink (#FF7AC7)
+        colors[i3] = 0.49 + (1.0 - 0.49) * progress       // R
+        colors[i3 + 1] = 0.784 + (0.478 - 0.784) * progress // G
         colors[i3 + 2] = 1.0 + (0.78 - 1.0) * progress      // B
       }
 
@@ -155,12 +157,13 @@ export default function ParticleWave({
         map={circleTexture}
         size={size}
         transparent
-        opacity={0.7}
+        opacity={0.85}
         alphaTest={0.01}
         depthWrite={false}
         sizeAttenuation
         vertexColors
-        blending={THREE.NormalBlending}
+        blending={THREE.AdditiveBlending}
+        toneMapped={false}
       />
     </points>
   )

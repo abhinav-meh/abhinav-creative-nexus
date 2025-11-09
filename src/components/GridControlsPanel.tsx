@@ -132,23 +132,16 @@ export default function GridControlsPanel({
         </div>
 
         <Popover open={open} onOpenChange={setOpen}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <PopoverTrigger asChild>
-                <Button
-                  size="icon"
-                  className="h-16 w-16 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 bg-primary/90 hover:bg-primary backdrop-blur-sm group"
-                  onMouseEnter={() => setShowLabel(true)}
-                >
-                  <Sliders className="h-7 w-7 text-primary-foreground group-hover:rotate-90 transition-transform duration-300" />
-                  <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
-                </Button>
-              </PopoverTrigger>
-            </TooltipTrigger>
-            <TooltipContent side="left">
-              <p>Customize Grid</p>
-            </TooltipContent>
-          </Tooltip>
+          <PopoverTrigger asChild>
+            <Button
+              size="icon"
+              className="h-16 w-16 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 bg-primary/90 hover:bg-primary backdrop-blur-sm group"
+              onMouseEnter={() => setShowLabel(true)}
+            >
+              <Sliders className="h-7 w-7 text-primary-foreground group-hover:rotate-90 transition-transform duration-300" />
+              <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+            </Button>
+          </PopoverTrigger>
         
         <PopoverContent 
           align="end"
