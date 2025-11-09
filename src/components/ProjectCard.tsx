@@ -45,25 +45,56 @@ export default function ProjectCard({ title, description, category, number, slug
     >
       <div 
         ref={cardRef}
-        className={`
-          relative overflow-hidden border rounded-2xl p-8 md:p-10 
+        className="
+          relative overflow-hidden rounded-3xl p-8 md:p-10
+          border border-white/35
+          bg-white/18
+          backdrop-blur-2xl
+          shadow-[0_6px_24px_rgba(17,24,39,0.08)]
+          ring-1 ring-inset ring-white/10
           transition-all duration-300
-          ${isHovered 
-            ? 'border-foreground/20 bg-background/50 backdrop-blur-xl shadow-md' 
-            : 'border-border/10 bg-background shadow-sm'
-          }
-        `}
+          hover:shadow-[0_10px_32px_rgba(17,24,39,0.12)]
+          will-change-transform
+        "
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onMouseMove={handleMouseMove}
       >
-        {/* Parallax Sheen */}
-        {FLAGS.cardSheen && isHovered && (
+        {/* Liquid sheen (cursor-follow) */}
+        {FLAGS.cardSheen && (
           <div 
-            className="absolute inset-0 pointer-events-none transition-opacity duration-200"
-            style={sheenStyle}
+            className="pointer-events-none absolute inset-0 transition-opacity duration-200"
+            style={{
+              opacity: isHovered ? 1 : 0,
+              background: `
+                radial-gradient(
+                  500px 240px at ${mousePosition.x * 100}% ${mousePosition.y * 100}%,
+                  rgba(255,255,255,0.55) 0%,
+                  rgba(255,255,255,0.25) 25%,
+                  rgba(255,255,255,0.10) 45%,
+                  transparent 60%
+                )
+              `,
+              mixBlendMode: 'soft-light' as const,
+            }}
           />
         )}
+
+        {/* Subtle inner highlight at top (liquid rim) */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.45), rgba(255,255,255,0) 40%)'
+          }}
+        />
+
+        {/* Very faint noise for realism */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><filter id='n' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 0 0 0 0.25'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")`
+          }}
+        />
 
         <div className="relative z-10">
           <div className="flex items-start justify-between gap-6 mb-6">

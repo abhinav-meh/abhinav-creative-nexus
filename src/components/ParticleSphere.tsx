@@ -4,7 +4,7 @@ import * as THREE from 'three'
 import { FLAGS } from '@/config/flags'
 
 const vertexShader = `
-uniform float uTime, uAmp, uSpeed;
+uniform float uTime, uAmp, uSpeed, uSizeBase;
 varying float vMix;
 
 void main() {
@@ -16,7 +16,7 @@ void main() {
   gl_Position = projectionMatrix * mv;
 
   float dist = max(length(mv.xyz), 0.001);
-  gl_PointSize = clamp(140.0 / dist, 1.5, 4.0);
+  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 2.0, 6.0);
 
   // gradient shifts with the wave slightly
   vMix = fract(uv.x + 0.15 * sin(phase));
@@ -54,6 +54,7 @@ export default function ParticleWave({
     uSpeed: { value: speed },
     uColorA: { value: new THREE.Color('#7DC8FF') },
     uColorB: { value: new THREE.Color('#FF7AC7') },
+    uSizeBase: { value: 1.6 },
   }), [])
 
   useEffect(() => {
