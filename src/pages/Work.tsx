@@ -69,32 +69,21 @@ export default function Work() {
             </ul>
           </section>
 
-          {/* RIGHT: preview (sticky) */}
-          <aside className="relative md:sticky md:top-0 md:h-[100svh] rounded-3xl overflow-hidden">
-            {/* Default: wave grid when nothing hovered */}
-            {!hovered && (
-              <div className="absolute inset-0 z-0 pointer-events-none">
-                <ThreeBackground />
-              </div>
-            )}
-
-            {/* Hovered preview */}
-            {hovered && (
-              <figure className="absolute inset-0 z-10">
+          {/* RIGHT: preview (sticky) - only visible on hover */}
+          {hovered && (
+            <aside className="hidden md:block fixed right-0 top-0 w-[50vw] h-[100svh] z-30">
+              <figure className="absolute inset-0">
                 <img
                   src={projectCovers[hovered.slug] || `/images/projects/${hovered.slug}.jpg`}
                   alt={hovered.title}
-                  className="h-full w-full object-contain md:object-cover
+                  className="h-full w-full object-cover
                              opacity-0 animate-[fadeIn_280ms_ease_forwards]"
                   loading="eager"
                 />
                 <figcaption className="sr-only">{hovered.title}</figcaption>
               </figure>
-            )}
-
-            {/* Subtle framing */}
-            <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.06] rounded-3xl pointer-events-none" />
-          </aside>
+            </aside>
+          )}
         </div>
       </div>
 
