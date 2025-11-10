@@ -1,13 +1,13 @@
 import ThreeBackground from '@/components/ThreeBackground'
 import SiteNavLeft from '@/components/SiteNavLeft'
 import SiteNavBottom from '@/components/SiteNavBottom'
-import { Dribbble, Linkedin, FileText } from 'lucide-react'
+import { Github, Linkedin, FileText } from 'lucide-react'
 
 const Index = () => {
   return (
     <div className="relative h-screen overflow-hidden bg-white">
-      {/* Background grid */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      {/* Background particle wave */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
         <ThreeBackground />
       </div>
 
@@ -16,45 +16,44 @@ const Index = () => {
       <SiteNavBottom />
 
       {/* Hero content */}
-      <section className="relative z-20 flex flex-col items-center justify-center h-screen text-center space-y-4 pointer-events-auto">
-        <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
+      <section className="relative h-screen flex flex-col items-center justify-center text-center space-y-4 z-10">
+        <h1 className="text-6xl md:text-7xl font-black tracking-tight">
           Abhinav Mehrotra
         </h1>
-        <h2 className="text-xl md:text-2xl font-light text-gray-600">
+        <h2 className="text-2xl md:text-3xl font-light text-gray-600">
           Creative Technologist &amp; Product Designer
         </h2>
-        <p className="max-w-lg text-gray-500 text-sm md:text-base px-6">
+        <p className="max-w-xl text-gray-500 text-base md:text-lg px-6">
           Researching, prototyping, designing and testing by day. Coding, no-coding, launching products by night.
         </p>
-
-        {/* Social links row */}
-        <div className="flex items-center space-x-4 text-gray-700 mt-4">
-          <a href="https://dribbble.com/abhimeh" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
-            Dribbble
-          </a>
-          <a href="https://linkedin.com/in/abhimeh" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
-            LinkedIn
-          </a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
-            Resume
-          </a>
-        </div>
-
+        
         {/* Social icons */}
-        <div className="flex items-center gap-3 mt-4">
-          <a href="https://dribbble.com/abhimeh" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors">
-            <Dribbble className="w-5 h-5" />
+        <div className="flex space-x-4 pt-4">
+          <a 
+            href="https://github.com/abhimeh" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-black hover:opacity-70 transition-opacity"
+          >
+            <Github className="w-8 h-8" strokeWidth={1.5} />
           </a>
-          <a href="https://linkedin.com/in/abhimeh" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors">
-            <Linkedin className="w-5 h-5" />
+          <a 
+            href="https://linkedin.com/in/abhimeh" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-black hover:opacity-70 transition-opacity"
+          >
+            <Linkedin className="w-8 h-8" strokeWidth={1.5} />
           </a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors">
-            <FileText className="w-5 h-5" />
+          <a 
+            href="/resume.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-black hover:opacity-70 transition-opacity"
+          >
+            <FileText className="w-8 h-8" strokeWidth={1.5} />
           </a>
         </div>
-
-        {/* Reveal email hint */}
-        <p className="text-xs text-gray-400 mt-4">Press E to reveal email</p>
       </section>
     </div>
   )
