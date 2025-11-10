@@ -3,15 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  /* Lock viewport height & disable scrolling */
   html, body, #root {
     height: 100%;
     background-color: #ffffff !important;
-  }
-
-  html, body {
-    overflow: hidden;
-    overscroll-behavior: none;
   }
 
   /* Dynamic viewport unit for mobile address bar */
