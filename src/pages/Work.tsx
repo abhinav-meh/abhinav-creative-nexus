@@ -47,17 +47,15 @@ export default function Work() {
   const go = (slug: string) => (window.location.href = `/projects/${slug}`);
 
   return (
-    <div className="min-h-[100svh] bg-white text-neutral-900 overflow-auto">
+    <div className="min-h-[100svh] bg-white text-neutral-900">
       <SiteNavLeft />
       <SiteNavBottom />
       
-      <div className="mx-auto w-full max-w-7xl px-6 md:px-10 md:pl-32">
-        <div className="grid md:grid-cols-[420px_1fr] gap-10 py-14 pb-24 md:py-20">
-          
-          {/* LEFT — titles in ALL CAPS, no tags */}
-          <section className="relative z-10 md:pr-6">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-8 text-neutral-900">SELECTED WORK</h1>
-            <ul className="space-y-4 md:space-y-3 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[100svh]">
+        {/* LEFT: solid white, text column */}
+        <section className="relative bg-white z-10 md:pl-32 md:pr-10 px-6 py-12 md:py-16 flex items-center">
+          <div className="w-full">
+            <ul className="space-y-5 md:space-y-4 max-w-none">
               {items.map((p) => (
                 <li key={p.slug}>
                   <button
@@ -68,38 +66,34 @@ export default function Work() {
                     onBlur={() => handleLeave(p)}
                     onClick={() => go(p.slug)}
                   >
-                    <span className="block uppercase tracking-[0.08em] text-2xl md:text-3xl
-                                     font-extrabold leading-tight text-neutral-900 group-hover:text-black transition-colors">
+                    <span className="block uppercase tracking-[0.08em] text-[clamp(20px,3.0vw,40px)]
+                                     leading-[1.1] font-extrabold text-neutral-900 group-hover:text-black transition-colors">
                       {p.title}
                     </span>
-                    <div className="h-px w-full bg-neutral-200/70 mt-3 group-hover:bg-neutral-300 transition-colors" />
+                    <div className="mt-3 h-px w-full bg-neutral-200/70 group-hover:bg-neutral-300 transition-colors" />
                   </button>
                 </li>
               ))}
             </ul>
-          </section>
+          </div>
+        </section>
 
-          {/* RIGHT — wave container by default; image on hover (desktop) */}
-          <aside className="relative md:sticky md:top-0 md:h-[100svh] rounded-3xl overflow-hidden z-0">
-            {/* Wave lives in its own container, always rendered */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-              <ThreeBackground />
-            </div>
+        {/* RIGHT: wave only */}
+        <aside className="relative md:sticky md:top-0 md:h-[100svh] overflow-hidden z-0">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <ThreeBackground />
+          </div>
 
-            {/* On desktop hover, show preview image over the wave */}
-            {!isMobile && hovered && (
-              <img
-                src={hovered.cover ?? `/images/projects/${hovered.slug}.jpg`}
-                alt={hovered.title}
-                className="absolute inset-0 z-10 h-full w-full object-cover opacity-0 animate-[fadeIn_220ms_ease_forwards]"
-                loading="eager"
-              />
-            )}
-
-            {/* Frame */}
-            <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.06] rounded-3xl pointer-events-none z-20" />
-          </aside>
-        </div>
+          {/* On desktop hover, show preview image over the wave */}
+          {!isMobile && hovered && (
+            <img
+              src={hovered.cover ?? `/images/projects/${hovered.slug}.jpg`}
+              alt={hovered.title}
+              className="absolute inset-0 z-10 h-full w-full object-cover opacity-0 animate-[fadeIn_220ms_ease_forwards]"
+              loading="eager"
+            />
+          )}
+        </aside>
       </div>
 
       <style>{`
