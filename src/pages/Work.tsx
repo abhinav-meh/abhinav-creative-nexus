@@ -55,9 +55,9 @@ export default function Work() {
         <div className="grid md:grid-cols-[420px_1fr] gap-10 py-14 pb-24 md:py-20">
           
           {/* LEFT — titles in ALL CAPS, no tags */}
-          <section className="md:pr-6">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-8">SELECTED WORK</h1>
-            <ul className="space-y-4 md:space-y-3">
+          <section className="relative z-10 md:pr-6">
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-8 text-neutral-900">SELECTED WORK</h1>
+            <ul className="space-y-4 md:space-y-3 relative z-10">
               {items.map((p) => (
                 <li key={p.slug}>
                   <button
@@ -68,8 +68,8 @@ export default function Work() {
                     onBlur={() => handleLeave(p)}
                     onClick={() => go(p.slug)}
                   >
-                    <span className="block text-2xl md:text-3xl font-extrabold leading-tight uppercase tracking-[0.06em]
-                                     text-neutral-900 group-hover:text-black transition-colors">
+                    <span className="block uppercase tracking-[0.08em] text-2xl md:text-3xl
+                                     font-extrabold leading-tight text-neutral-900 group-hover:text-black transition-colors">
                       {p.title}
                     </span>
                     <div className="h-px w-full bg-neutral-200/70 mt-3 group-hover:bg-neutral-300 transition-colors" />
@@ -80,7 +80,7 @@ export default function Work() {
           </section>
 
           {/* RIGHT — wave container by default; image on hover (desktop) */}
-          <aside className="relative md:sticky md:top-0 md:h-[100svh] rounded-3xl overflow-hidden">
+          <aside className="relative md:sticky md:top-0 md:h-[100svh] rounded-3xl overflow-hidden z-0">
             {/* Wave lives in its own container, always rendered */}
             <div className="absolute inset-0 z-0 pointer-events-none">
               <ThreeBackground />
