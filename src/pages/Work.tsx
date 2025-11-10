@@ -40,7 +40,7 @@ export default function Work() {
                 onMouseLeave={() => !isTouch && setActiveSlug(null)}
                 onFocus={() => !isTouch && setActiveSlug(p.slug)}
                 onBlur={() => !isTouch && setActiveSlug(null)}
-                className="uppercase tracking-widest font-bold text-[clamp(24px,3.5vw,48px)] leading-[1.1]"
+                className="uppercase tracking-tight font-bold text-[clamp(24px,3.5vw,48px)] leading-[1.1]"
               >
                 <a
                   href={`/projects/${p.slug}`}
