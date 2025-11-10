@@ -58,7 +58,7 @@ export default function Work() {
         </section>
 
         {/* RIGHT: wave with preview layer above it */}
-        <section className="relative z-0 md:h-[100svh] overflow-hidden">
+        <section className="relative z-0 h-[100svh] overflow-hidden">
           {/* Particle wave stays behind */}
           <div className="absolute inset-0">
             <ThreeBackground />
