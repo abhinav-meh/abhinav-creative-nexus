@@ -48,9 +48,9 @@ export default function ProjectCard({ title, description, category, number, slug
         className="
           relative overflow-hidden rounded-3xl p-8 md:p-10
           border border-white/35
-          bg-white/18
+          bg-white/22
           backdrop-blur-2xl
-          [-webkit-backdrop-filter:blur(24px)]
+          [-webkit-backdrop-filter:blur(28px)]
           ring-1 ring-inset ring-white/10
           shadow-[0_6px_24px_rgba(17,24,39,0.10)]
           hover:shadow-[0_10px_32px_rgba(17,24,39,0.14)]

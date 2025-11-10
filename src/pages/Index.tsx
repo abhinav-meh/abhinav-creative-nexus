@@ -5,14 +5,14 @@ import ThreeBackground from '@/components/ThreeBackground'
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative bg-gradient-to-b from-white via-white to-white/80">
+    <div className="min-h-screen relative bg-white">
       <ThreeBackground />
       <div className="relative z-10 pointer-events-auto">
         <MinimalHeader />
         <HeroSection />
-        <div className="relative bg-gradient-to-b from-transparent to-white/60">
+        <section className="relative bg-gradient-to-b from-transparent to-white/70">
           <ProjectList />
-        </div>
+        </section>
       </div>
     </div>
   )
