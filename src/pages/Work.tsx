@@ -51,11 +51,11 @@ export default function Work() {
       <SiteNavLeft />
       <SiteNavBottom />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[100svh]">
+      <div className="grid grid-cols-1 md:grid-cols-[55%_45%] min-h-[100svh]">
         {/* LEFT: solid white, text column */}
         <section className="relative bg-white z-10 md:pl-32 md:pr-10 px-6 py-12 md:py-16 flex items-center">
           <div className="w-full">
-            <ul className="space-y-5 md:space-y-4 max-w-none">
+            <ul className="space-y-8 max-w-none">
               {items.map((p) => (
                 <li key={p.slug}>
                   <button
@@ -66,11 +66,10 @@ export default function Work() {
                     onBlur={() => handleLeave(p)}
                     onClick={() => go(p.slug)}
                   >
-                    <span className="block uppercase tracking-[0.08em] text-[clamp(20px,3.0vw,40px)]
-                                     leading-[1.1] font-extrabold text-neutral-900 group-hover:text-black transition-colors">
+                    <span className="block uppercase tracking-widest text-[clamp(20px,3.0vw,40px)]
+                                     leading-[1.1] font-bold text-neutral-900 transition-colors">
                       {p.title}
                     </span>
-                    <div className="mt-3 h-px w-full bg-neutral-200/70 group-hover:bg-neutral-300 transition-colors" />
                   </button>
                 </li>
               ))}
