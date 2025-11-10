@@ -5,9 +5,9 @@ import { Github, Linkedin, FileText } from 'lucide-react'
 
 const Index = () => {
   return (
-    <div className="relative h-screen overflow-hidden bg-white">
+    <div className="relative h-screen overflow-hidden">
       {/* Background particle wave */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <ThreeBackground />
       </div>
 
@@ -16,7 +16,7 @@ const Index = () => {
       <SiteNavBottom />
 
       {/* Hero content */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-center space-y-4 z-10">
+      <section className="relative h-screen flex flex-col items-center justify-center text-center space-y-4 z-10 bg-transparent">
         <h1 className="text-6xl md:text-7xl font-black tracking-tight">
           Abhinav Mehrotra
         </h1>
