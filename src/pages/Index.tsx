@@ -1,6 +1,7 @@
 import ThreeBackground from '@/components/ThreeBackground'
 import SiteNavLeft from '@/components/SiteNavLeft'
 import SiteNavBottom from '@/components/SiteNavBottom'
+import { Dribbble, Linkedin, FileText } from 'lucide-react'
 
 const Index = () => {
   return (
@@ -39,13 +40,21 @@ const Index = () => {
           </a>
         </div>
 
+        {/* Social icons */}
+        <div className="flex items-center gap-3 mt-4">
+          <a href="https://dribbble.com/abhimeh" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors">
+            <Dribbble className="w-5 h-5" />
+          </a>
+          <a href="https://linkedin.com/in/abhimeh" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors">
+            <Linkedin className="w-5 h-5" />
+          </a>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors">
+            <FileText className="w-5 h-5" />
+          </a>
+        </div>
+
         {/* Reveal email hint */}
         <p className="text-xs text-gray-400 mt-4">Press E to reveal email</p>
-
-        {/* Scroll cue */}
-        <div className="absolute bottom-8 text-xs tracking-widest text-gray-400">
-          SCROLL ↓
-        </div>
       </section>
     </div>
   )
