@@ -133,14 +133,14 @@ export default function ThreeBackground() {
       >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
-        <group rotation={[-0.04, 0, 0]} position={[0, 0, 0]}>
+        <group rotation={[-Math.PI / 2, 0, 0]}>
           <ParticleWave 
             amplitude={waveAmplitude}
             speed={waveSpeed}
             particleCount={particleCount}
           />
         </group>
-        <CameraController 
+        <CameraController
           positionY={cameraPositionY}
           positionZ={cameraPositionZ}
           rotationX={cameraRotationX}

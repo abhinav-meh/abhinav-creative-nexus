@@ -105,7 +105,7 @@ export default function GridControlsPanel({
   }, [debouncedFov, onFovChange])
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 pointer-events-auto">
+    <div className="fixed bottom-6 right-6 z-[60] pointer-events-auto">
       {/* Floating Label */}
       {FLAGS.fabLabel && (
         <div 
@@ -124,14 +124,15 @@ export default function GridControlsPanel({
 
       <button
         onClick={() => setOpen(!open)}
-        className="h-16 w-16 rounded-full bg-background border border-border/20 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+        className="h-16 w-16 rounded-full bg-white border border-black/10 shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95"
+        aria-label="Customize Grid"
       >
         <Sliders className="h-7 w-7 mx-auto text-foreground" />
       </button>
 
       {open && (
         <div
-          className="absolute bottom-20 right-0 w-[320px] max-w-[92vw] rounded-xl bg-background shadow-xl border border-border p-6"
+          className="absolute bottom-20 right-0 w-[320px] max-w-[92vw] rounded-xl bg-white shadow-xl border border-black/10 p-6"
           style={{ pointerEvents: 'auto' }}
         >
           <div className="space-y-5">

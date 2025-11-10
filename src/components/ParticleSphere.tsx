@@ -109,6 +109,7 @@ export default function ParticleWave({
   return (
     <points
       ref={pointsRef}
+      position={[0, 0.9, 0]}
       material={material}
     />
   )
