@@ -1,11 +1,13 @@
-import MinimalHeader from '@/components/MinimalHeader'
+import SiteNavLeft from '@/components/SiteNavLeft'
+import SiteNavBottom from '@/components/SiteNavBottom'
 
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
-      <MinimalHeader />
+      <SiteNavLeft />
+      <SiteNavBottom />
       
-      <div className="container mx-auto px-6 py-32 max-w-4xl">
+      <div className="container mx-auto px-6 py-32 max-w-4xl md:pl-32">
         <h1 className="text-hero font-bold mb-12">About</h1>
         
         <div className="space-y-12 text-lg tracking-tight leading-relaxed">

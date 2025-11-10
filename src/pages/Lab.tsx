@@ -1,12 +1,14 @@
 import P5Sandbox from '@/components/P5Sandbox'
-import MinimalHeader from '@/components/MinimalHeader'
+import SiteNavLeft from '@/components/SiteNavLeft'
+import SiteNavBottom from '@/components/SiteNavBottom'
 
 const Lab = () => {
   return (
     <div className="min-h-screen bg-background">
-      <MinimalHeader />
+      <SiteNavLeft />
+      <SiteNavBottom />
       
-      <div className="container mx-auto px-6 py-32">
+      <div className="container mx-auto px-6 py-32 md:pl-32">
         <div className="mb-16 max-w-3xl">
           <h1 className="text-hero font-bold mb-6">Creative Lab</h1>
           <p className="text-xl text-muted-foreground tracking-tight leading-relaxed">

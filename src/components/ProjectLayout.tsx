@@ -2,7 +2,8 @@ import { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { Button } from './ui/button'
-import MinimalHeader from './MinimalHeader'
+import SiteNavLeft from './SiteNavLeft'
+import SiteNavBottom from './SiteNavBottom'
 
 interface ProjectLayoutProps {
   children: ReactNode
@@ -18,13 +19,14 @@ const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayo
 
   return (
     <div className="min-h-screen bg-background">
-      <MinimalHeader />
+      <SiteNavLeft />
+      <SiteNavBottom />
       
-      <div className="container mx-auto px-6 py-32 max-w-5xl">
+      <div className="container mx-auto px-6 py-32 max-w-5xl md:pl-32">
         {/* Back Button */}
         <Button
           variant="ghost"
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/work')}
           className="mb-12 text-muted-foreground hover:text-foreground -ml-4"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
