@@ -50,7 +50,7 @@ export default function ParticleWave({
     uAmp:       { value: amplitude },
     uSpeed:     { value: speed },
     uMonoColor: { value: new THREE.Color('#BDBDBD') },
-    uSizeBase:  { value: 1.6 },
+    uSizeBase:  { value: 1.9 },
   }), [amplitude, speed])
 
   const material = useMemo(
