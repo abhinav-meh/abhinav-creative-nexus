@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function SiteNavLeft() {
   const items = [
-    { label: "Work",   href: "/" },
+    { label: "Work",   href: "/work" },
     { label: "About",  href: "/about" },
     { label: "Lab",    href: "/lab" },
   ];
