@@ -15,7 +15,6 @@ interface ProjectLayoutProps {
 
 const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayoutProps) => {
   const navigate = useNavigate()
-  const isImageIcon = icon && (icon.endsWith('.svg') || icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('.webp'))
 
   return (
     <div className="min-h-screen bg-background overflow-y-auto">
@@ -34,27 +33,11 @@ const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayo
         </Button>
 
         {/* Project Header */}
-        <div className="mb-16 flex items-start gap-8">
-          {icon && (
-            <div className="w-20 h-20 flex items-center justify-center shrink-0">
-              {isImageIcon ? (
-                <img 
-                  src={`/src/assets/${icon}`} 
-                  alt={`${title} icon`}
-                  className="w-full h-full object-contain"
-                />
-              ) : (
-                <span className="text-5xl">{icon}</span>
-              )}
-            </div>
-          )}
+        <div className="mb-16">
+          <h1 className="text-display md:text-hero font-bold mb-4">{title}</h1>
+          <p className="text-xl md:text-2xl text-muted-foreground tracking-tight">{subtitle}</p>
           
-          <div className="flex-1">
-            <h1 className="text-display md:text-hero font-bold mb-4">{title}</h1>
-            <p className="text-xl md:text-2xl text-muted-foreground tracking-tight">{subtitle}</p>
-            
-            {buttons && <div className="mt-6 flex flex-wrap gap-3">{buttons}</div>}
-          </div>
+          {buttons && <div className="mt-6 flex flex-wrap gap-3">{buttons}</div>}
         </div>
 
         {/* Project Content */}
