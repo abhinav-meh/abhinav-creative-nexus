@@ -33,7 +33,8 @@ const Index = () => {
             href="https://gist.github.com/abhinav-meh" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-black hover:opacity-70 transition-opacity"
+            className="hover:opacity-70 transition-opacity"
+            style={{ color: '#737373' }}
           >
             <Github className="w-8 h-8" strokeWidth={1.5} />
           </a>
@@ -41,7 +42,8 @@ const Index = () => {
             href="https://www.linkedin.com/in/abhinavux/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-black hover:opacity-70 transition-opacity"
+            className="hover:opacity-70 transition-opacity"
+            style={{ color: '#737373' }}
           >
             <Linkedin className="w-8 h-8" strokeWidth={1.5} />
           </a>
@@ -49,7 +51,8 @@ const Index = () => {
             href="/resume.pdf" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-black hover:opacity-70 transition-opacity"
+            className="hover:opacity-70 transition-opacity"
+            style={{ color: '#737373' }}
           >
             <FileText className="w-8 h-8" strokeWidth={1.5} />
           </a>
