@@ -1,170 +1,169 @@
-import { Canvas } from '@react-three/fiber'
-import { useEffect, useState } from 'react'
-import { useThree } from '@react-three/fiber'
-import * as THREE from 'three'
+import { Canvas, useFrame } from '@react-three/fiber'
 import ParticleWave from './ParticleSphere'
+import * as THREE from 'three'
+import { useState, useEffect } from 'react'
 import GridControlsPanel from './GridControlsPanel'
+import { useThree } from '@react-three/fiber'
 
-interface CameraControllerProps {
+const DEFAULTS = {
+  amplitude: 0.4,
+  size: 0.08,
+  speed: 0.3,
+  particleCount: 3000,
+}
+
+function CameraController({ 
+  positionY, 
+  positionZ, 
+  rotationX, 
+  fov 
+}: { 
   positionY: number
   positionZ: number
   rotationX: number
   fov: number
-}
-
-function CameraController({ positionY, positionZ, rotationX, fov }: CameraControllerProps) {
+}) {
   const { camera } = useThree()
   
   useEffect(() => {
-    camera.position.set(0, positionY, positionZ)
+    camera.position.y = positionY
+    camera.position.z = positionZ
     camera.rotation.x = rotationX
-    if ('fov' in camera) {
-      (camera as any).fov = fov
+    if ('fov' in camera && camera instanceof THREE.PerspectiveCamera) {
+      camera.fov = fov
       camera.updateProjectionMatrix()
     }
-  }, [camera, positionY, positionZ, rotationX, fov])
+  }, [positionY, positionZ, rotationX, fov, camera])
   
   return null
 }
 
 export default function ThreeBackground() {
-  // Mobile cap for particle density
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
-  const maxParticles = isMobile ? 5000 : 8000
-
+  // Load from localStorage or use defaults
   const [waveAmplitude, setWaveAmplitude] = useState(() => {
-    const saved = localStorage.getItem('waveAmplitude')
-    return saved ? parseFloat(saved) : 0.35
+    const saved = localStorage.getItem('gridControls_amplitude')
+    return saved ? parseFloat(saved) : DEFAULTS.amplitude
   })
   
   const [particleCount, setParticleCount] = useState(() => {
-    const saved = localStorage.getItem('particleCount')
-    const count = saved ? parseInt(saved, 10) : 3600
-    return Math.min(count, maxParticles)
+    const saved = localStorage.getItem('gridControls_particleCount')
+    return saved ? parseInt(saved) : DEFAULTS.particleCount
   })
   
   const [waveSpeed, setWaveSpeed] = useState(() => {
-    const saved = localStorage.getItem('waveSpeed')
-    return saved ? parseFloat(saved) : 0.3
+    const saved = localStorage.getItem('gridControls_speed')
+    return saved ? parseFloat(saved) : DEFAULTS.speed
   })
 
-  const [cameraPositionY, setCameraPositionY] = useState(() => {
-    const saved = localStorage.getItem('cameraPositionY')
-    return saved ? parseFloat(saved) : 1.1
+  // Camera state with localStorage
+  const [positionY, setPositionY] = useState(() => {
+    const saved = localStorage.getItem('gridControls_cameraY')
+    return saved ? parseFloat(saved) : 3.5
   })
-
-  const [cameraPositionZ, setCameraPositionZ] = useState(() => {
-    const saved = localStorage.getItem('cameraPositionZ')
-    return saved ? parseFloat(saved) : 9.0
+  
+  const [positionZ, setPositionZ] = useState(() => {
+    const saved = localStorage.getItem('gridControls_cameraZ')
+    return saved ? parseFloat(saved) : 8
   })
-
-  const [cameraRotationX, setCameraRotationX] = useState(() => {
-    const saved = localStorage.getItem('cameraRotationX')
-    return saved ? parseFloat(saved) : -0.33
+  
+  const [rotationX, setRotationX] = useState(() => {
+    const saved = localStorage.getItem('gridControls_cameraRotX')
+    return saved ? parseFloat(saved) : -0.45
   })
-
+  
   const [fov, setFov] = useState(() => {
-    const saved = localStorage.getItem('fov')
+    const saved = localStorage.getItem('gridControls_fov')
     return saved ? parseFloat(saved) : 60
   })
 
   // Save to localStorage
   useEffect(() => {
-    localStorage.setItem('waveAmplitude', waveAmplitude.toString())
+    localStorage.setItem('gridControls_amplitude', waveAmplitude.toString())
   }, [waveAmplitude])
   
   useEffect(() => {
-    localStorage.setItem('particleCount', particleCount.toString())
+    localStorage.setItem('gridControls_particleCount', particleCount.toString())
   }, [particleCount])
   
   useEffect(() => {
-    localStorage.setItem('waveSpeed', waveSpeed.toString())
+    localStorage.setItem('gridControls_speed', waveSpeed.toString())
   }, [waveSpeed])
 
   useEffect(() => {
-    localStorage.setItem('cameraPositionY', cameraPositionY.toString())
-  }, [cameraPositionY])
+    localStorage.setItem('gridControls_cameraY', positionY.toString())
+  }, [positionY])
 
   useEffect(() => {
-    localStorage.setItem('cameraPositionZ', cameraPositionZ.toString())
-  }, [cameraPositionZ])
+    localStorage.setItem('gridControls_cameraZ', positionZ.toString())
+  }, [positionZ])
 
   useEffect(() => {
-    localStorage.setItem('cameraRotationX', cameraRotationX.toString())
-  }, [cameraRotationX])
+    localStorage.setItem('gridControls_cameraRotX', rotationX.toString())
+  }, [rotationX])
 
   useEffect(() => {
-    localStorage.setItem('fov', fov.toString())
+    localStorage.setItem('gridControls_fov', fov.toString())
   }, [fov])
 
   const handleReset = () => {
-    setWaveAmplitude(0.35)
-    setParticleCount(3600)
-    setWaveSpeed(0.3)
-    setCameraPositionY(1.1)
-    setCameraPositionZ(9.0)
-    setCameraRotationX(-0.33)
+    setWaveAmplitude(DEFAULTS.amplitude)
+    setParticleCount(DEFAULTS.particleCount)
+    setWaveSpeed(DEFAULTS.speed)
+    setPositionY(3.5)
+    setPositionZ(8)
+    setRotationX(-0.45)
     setFov(60)
   }
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
-      <Canvas
-        camera={{ position: [0, cameraPositionY, cameraPositionZ], fov }}
-        gl={{ 
-          alpha: false,
-          antialias: true,
-          powerPreference: 'high-performance'
-        }}
-        onCreated={({ gl, scene, camera }) => {
-          gl.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-          gl.setClearColor('#ffffff', 1)
-          scene.background = new THREE.Color('#ffffff')
-          camera.near = 0.1
-          camera.far = 1000
-          camera.position.set(0, cameraPositionY, cameraPositionZ)
-          camera.rotation.x = cameraRotationX
-          if ('fov' in camera) {
-            (camera as any).fov = fov
-            camera.updateProjectionMatrix()
-          }
-        }}
-        style={{ background: '#ffffff' }}
-      >
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
-        <group rotation={[-Math.PI / 2, 0, 0]}>
-          <ParticleWave 
-            amplitude={waveAmplitude}
-            speed={waveSpeed}
-            particleCount={particleCount}
-          />
-        </group>
-        <CameraController
-          positionY={cameraPositionY}
-          positionZ={cameraPositionZ}
-          rotationX={cameraRotationX}
-          fov={fov}
-        />
-      </Canvas>
-      
+    <>
       <GridControlsPanel
         waveAmplitude={waveAmplitude}
         particleCount={particleCount}
         waveSpeed={waveSpeed}
-        cameraRotationX={cameraRotationX}
-        cameraPositionY={cameraPositionY}
-        cameraPositionZ={cameraPositionZ}
+        cameraRotationX={rotationX}
+        cameraPositionY={positionY}
+        cameraPositionZ={positionZ}
         fov={fov}
         onWaveAmplitudeChange={setWaveAmplitude}
         onParticleCountChange={setParticleCount}
         onWaveSpeedChange={setWaveSpeed}
-        onCameraRotationXChange={setCameraRotationX}
-        onCameraPositionYChange={setCameraPositionY}
-        onCameraPositionZChange={setCameraPositionZ}
+        onCameraRotationXChange={setRotationX}
+        onCameraPositionYChange={setPositionY}
+        onCameraPositionZChange={setPositionZ}
         onFovChange={setFov}
         onReset={handleReset}
       />
-    </div>
+      
+      <div className="fixed inset-0 pointer-events-none z-0 bg-gradient-to-b from-white via-white/80 to-[#f2f2f2]">
+        <Canvas
+          camera={{ position: [0, positionY, positionZ], fov }}
+          gl={{ alpha: false }}
+          style={{ pointerEvents: 'none', background: '#ffffff' }}
+          onCreated={({ scene, gl }) => {
+            scene.background = new THREE.Color('#ffffff')
+            gl.setClearColor('#ffffff', 1)
+            gl.domElement.style.pointerEvents = 'none'
+          }}
+        >
+        <CameraController 
+          positionY={positionY}
+          positionZ={positionZ}
+          rotationX={rotationX} 
+          fov={fov}
+        />
+        <ambientLight intensity={0.3} />
+        <pointLight position={[10, 10, 10]} intensity={0.5} />
+        <group rotation={[-0.25, 0, 0]}>
+          <ParticleWave 
+            amplitude={waveAmplitude}
+            size={DEFAULTS.size}
+            speed={waveSpeed}
+            particleCount={particleCount}
+          />
+        </group>
+      </Canvas>
+      </div>
+    </>
   )
 }

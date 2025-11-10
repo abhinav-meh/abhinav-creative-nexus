@@ -10,9 +10,7 @@ const Index = () => {
       <div className="relative z-10 pointer-events-auto">
         <MinimalHeader />
         <HeroSection />
-        <section className="relative bg-gradient-to-b from-transparent to-white/70">
-          <ProjectList />
-        </section>
+        <ProjectList />
       </div>
     </div>
   )
