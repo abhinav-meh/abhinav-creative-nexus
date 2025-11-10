@@ -45,11 +45,25 @@ export default function ClassicWave() {
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute("scale", new THREE.BufferAttribute(scales, 1));
 
+    const texture = new THREE.TextureLoader().load(
+      "data:image/svg+xml;base64," +
+        btoa(
+          `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+         <circle cx="16" cy="16" r="16" fill="white" />
+       </svg>`
+        )
+    );
+
     const material = new THREE.PointsMaterial({
       color: 0x9ca3af,
       size: 4,
       sizeAttenuation: true,
+      map: texture,
+      alphaTest: 0.5,
+      transparent: true,
     });
+
+    material.needsUpdate = true;
 
     particles = new THREE.Points(geometry, material);
     scene.add(particles);
