@@ -30,7 +30,7 @@ const Index = () => {
         {/* Social icons */}
         <div className="flex space-x-4 pt-4">
           <a 
-            href="https://github.com/abhimeh" 
+            href="https://gist.github.com/abhinav-meh" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="text-black hover:opacity-70 transition-opacity"
@@ -38,7 +38,7 @@ const Index = () => {
             <Github className="w-8 h-8" strokeWidth={1.5} />
           </a>
           <a 
-            href="https://linkedin.com/in/abhimeh" 
+            href="https://www.linkedin.com/in/abhinavux/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="text-black hover:opacity-70 transition-opacity"
