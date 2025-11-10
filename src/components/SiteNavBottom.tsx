@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function SiteNavBottom() {
   const items = [
+    { label: "Home",   href: "/" },
     { label: "Work",   href: "/work" },
     { label: "About",  href: "/about" },
     { label: "Lab",    href: "/lab" },
