@@ -1,14 +1,13 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import projects from "@/data/projects.json";
 import ThreeBackground from "@/components/ThreeBackground";
 import SiteNavLeft from '@/components/SiteNavLeft';
 import SiteNavBottom from '@/components/SiteNavBottom';
 
-type Project = {
-  title: string;
-  slug: string;
-  category?: string;
-  description?: string;
+type Project = { 
+  title: string; 
+  slug: string; 
+  cover?: string;
 };
 
 // Map project slugs to their hero/cover images
@@ -25,10 +24,27 @@ const projectCovers: Record<string, string> = {
 
 export default function Work() {
   const items = useMemo<Project[]>(
-    () => (projects as Project[]),
+    () => (projects as any[]).map(p => ({ 
+      title: p.title, 
+      slug: p.slug, 
+      cover: projectCovers[p.slug]
+    })),
     []
   );
   const [hovered, setHovered] = useState<Project | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const m = window.matchMedia("(max-width: 767px)");
+    const apply = () => setIsMobile(m.matches);
+    apply();
+    m.addEventListener?.("change", apply);
+    return () => m.removeEventListener?.("change", apply);
+  }, []);
+
+  const handleEnter = (p: Project) => !isMobile && setHovered(p);
+  const handleLeave = (p: Project) => !isMobile && setHovered(curr => (curr?.slug === p.slug ? null : curr));
+  const go = (slug: string) => (window.location.href = `/projects/${slug}`);
 
   return (
     <div className="min-h-[100svh] bg-white text-neutral-900 overflow-auto">
@@ -37,31 +53,25 @@ export default function Work() {
       
       <div className="mx-auto w-full max-w-7xl px-6 md:px-10 md:pl-32">
         <div className="grid md:grid-cols-[420px_1fr] gap-10 py-14 pb-24 md:py-20">
-          {/* LEFT: titles */}
+          
+          {/* LEFT — titles in ALL CAPS, no tags */}
           <section className="md:pr-6">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-8">Selected Work</h1>
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-8">SELECTED WORK</h1>
             <ul className="space-y-4 md:space-y-3">
               {items.map((p) => (
                 <li key={p.slug}>
                   <button
                     className="group w-full text-left"
-                    onMouseEnter={() => setHovered(p)}
-                    onFocus={() => setHovered(p)}
-                    onMouseLeave={() => setHovered((curr) => (curr?.slug === p.slug ? null : curr))}
-                    onBlur={() => setHovered((curr) => (curr?.slug === p.slug ? null : curr))}
-                    onClick={() => (window.location.href = `/projects/${p.slug}`)}
+                    onMouseEnter={() => handleEnter(p)}
+                    onMouseLeave={() => handleLeave(p)}
+                    onFocus={() => handleEnter(p)}
+                    onBlur={() => handleLeave(p)}
+                    onClick={() => go(p.slug)}
                   >
-                    <div className="flex items-baseline gap-3">
-                      <span className="text-2xl md:text-3xl font-extrabold leading-tight
-                                       text-neutral-900 group-hover:text-black transition-colors">
-                        {p.title}
-                      </span>
-                      {p.category && (
-                        <span className="text-sm uppercase tracking-wide text-neutral-400">
-                          {p.category}
-                        </span>
-                      )}
-                    </div>
+                    <span className="block text-2xl md:text-3xl font-extrabold leading-tight uppercase tracking-[0.06em]
+                                     text-neutral-900 group-hover:text-black transition-colors">
+                      {p.title}
+                    </span>
                     <div className="h-px w-full bg-neutral-200/70 mt-3 group-hover:bg-neutral-300 transition-colors" />
                   </button>
                 </li>
@@ -69,25 +79,29 @@ export default function Work() {
             </ul>
           </section>
 
-          {/* RIGHT: preview (sticky) - only visible on hover */}
-          {hovered && (
-            <aside className="hidden md:block fixed right-0 top-0 w-[50vw] h-[100svh] z-30">
-              <figure className="absolute inset-0">
-                <img
-                  src={projectCovers[hovered.slug] || `/images/projects/${hovered.slug}.jpg`}
-                  alt={hovered.title}
-                  className="h-full w-full object-cover
-                             opacity-0 animate-[fadeIn_280ms_ease_forwards]"
-                  loading="eager"
-                />
-                <figcaption className="sr-only">{hovered.title}</figcaption>
-              </figure>
-            </aside>
-          )}
+          {/* RIGHT — wave container by default; image on hover (desktop) */}
+          <aside className="relative md:sticky md:top-0 md:h-[100svh] rounded-3xl overflow-hidden">
+            {/* Wave lives in its own container, always rendered */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <ThreeBackground />
+            </div>
+
+            {/* On desktop hover, show preview image over the wave */}
+            {!isMobile && hovered && (
+              <img
+                src={hovered.cover ?? `/images/projects/${hovered.slug}.jpg`}
+                alt={hovered.title}
+                className="absolute inset-0 z-10 h-full w-full object-cover opacity-0 animate-[fadeIn_220ms_ease_forwards]"
+                loading="eager"
+              />
+            )}
+
+            {/* Frame */}
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.06] rounded-3xl pointer-events-none z-20" />
+          </aside>
         </div>
       </div>
 
-      {/* Fade animation */}
       <style>{`
         @keyframes fadeIn { to { opacity: 1 } }
       `}</style>
