@@ -75,7 +75,7 @@ export default function Work() {
                 loading={idx === 0 ? "eager" : "lazy"}
                 decoding="async"
                 className={[
-                  "absolute inset-0 m-auto max-h-[80%] max-w-[90%] object-contain",
+                  "absolute inset-0 w-full h-full object-cover",
                   "transition-[opacity,transform,filter] duration-300 ease-out will-change-transform",
                   !isTouch && activeSlug === p.slug
                     ? "opacity-100 scale-100 blur-0"
