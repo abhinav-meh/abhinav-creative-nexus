@@ -1,6 +1,15 @@
+import { useMemo, useState } from "react";
 import projects from "@/data/projects.json";
+import ThreeBackground from "@/components/ThreeBackground";
 import SiteNavLeft from '@/components/SiteNavLeft';
 import SiteNavBottom from '@/components/SiteNavBottom';
+
+type Project = {
+  title: string;
+  slug: string;
+  category?: string;
+  description?: string;
+};
 
 // Map project slugs to their hero/cover images
 const projectCovers: Record<string, string> = {
@@ -10,10 +19,16 @@ const projectCovers: Record<string, string> = {
   "xuno": "/src/assets/xuno-hero.jpg",
   "dither-er": "/src/assets/dither-er-section-1.jpg",
   "amazeballs": "/src/assets/amazeballs-main-menu.png",
+  "oop-creative-coding": "/OOP_Principles_Creative_Coding_Paper.pdf",
+  "confluence": "/src/assets/confluence-thumbnail.svg",
 };
 
 export default function Work() {
-  const items = projects;
+  const items = useMemo<Project[]>(
+    () => (projects as Project[]),
+    []
+  );
+  const [hovered, setHovered] = useState<Project | null>(null);
 
   return (
     <div className="min-h-[100svh] bg-white text-neutral-900 overflow-auto">
@@ -21,52 +36,72 @@ export default function Work() {
       <SiteNavBottom />
       
       <div className="mx-auto w-full max-w-7xl px-6 md:px-10 md:pl-32">
-        {/* 2-col on desktop, stacked on mobile */}
-        <div className="grid md:grid-cols-[360px_1fr] gap-10 py-14 pb-24 md:py-20">
-          
-          {/* LEFT: static copy (sticky on desktop) */}
-          <aside className="md:sticky md:top-20 md:h-fit">
-            <div className="md:pr-6">
-              <h1 className="text-3xl md:text-5xl font-black tracking-tight">Selected Work</h1>
-              <p className="mt-4 text-base md:text-lg text-neutral-600">
-                A selection of design, research, and tools I've built. Click any tile to explore.
-              </p>
-            </div>
-          </aside>
-
-          {/* RIGHT: project image grid */}
-          <main className="pb-[88px] md:pb-0">
-            <ul
-              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr"
-              aria-label="Projects"
-            >
+        <div className="grid md:grid-cols-[420px_1fr] gap-10 py-14 pb-24 md:py-20">
+          {/* LEFT: titles */}
+          <section className="md:pr-6">
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-8">Selected Work</h1>
+            <ul className="space-y-4 md:space-y-3">
               {items.map((p) => (
-                <li key={p.slug} className="group relative overflow-hidden rounded-2xl border border-black/[0.06] bg-white shadow-sm hover:shadow-md transition-shadow">
-                  <a href={`/projects/${p.slug}`} className="block h-full">
-                    <div className="relative aspect-[4/3]">
-                      {/* cover image */}
-                      <img
-                        src={projectCovers[p.slug] || `/images/projects/${p.slug}.jpg`}
-                        alt={`${p.title} project preview`}
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                      />
-                      {/* subtle overlay + caption */}
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 transition-transform">
-                        <h3 className="text-white drop-shadow-lg text-base font-semibold">
-                          {p.title}
-                        </h3>
-                        <span className="text-white/90 text-xs font-medium">{p.category}</span>
-                      </div>
+                <li key={p.slug}>
+                  <button
+                    className="group w-full text-left"
+                    onMouseEnter={() => setHovered(p)}
+                    onFocus={() => setHovered(p)}
+                    onMouseLeave={() => setHovered((curr) => (curr?.slug === p.slug ? null : curr))}
+                    onBlur={() => setHovered((curr) => (curr?.slug === p.slug ? null : curr))}
+                    onClick={() => (window.location.href = `/projects/${p.slug}`)}
+                  >
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-2xl md:text-3xl font-extrabold leading-tight
+                                       text-neutral-900 group-hover:text-black transition-colors">
+                        {p.title}
+                      </span>
+                      {p.category && (
+                        <span className="text-sm uppercase tracking-wide text-neutral-400">
+                          {p.category}
+                        </span>
+                      )}
                     </div>
-                  </a>
+                    <div className="h-px w-full bg-neutral-200/70 mt-3 group-hover:bg-neutral-300 transition-colors" />
+                  </button>
                 </li>
               ))}
             </ul>
-          </main>
+          </section>
+
+          {/* RIGHT: preview (sticky) */}
+          <aside className="relative md:sticky md:top-0 md:h-[100svh] rounded-3xl overflow-hidden">
+            {/* Default: wave grid when nothing hovered */}
+            {!hovered && (
+              <div className="absolute inset-0 z-0 pointer-events-none">
+                <ThreeBackground />
+              </div>
+            )}
+
+            {/* Hovered preview */}
+            {hovered && (
+              <figure className="absolute inset-0 z-10">
+                <img
+                  src={projectCovers[hovered.slug] || `/images/projects/${hovered.slug}.jpg`}
+                  alt={hovered.title}
+                  className="h-full w-full object-contain md:object-cover
+                             opacity-0 animate-[fadeIn_280ms_ease_forwards]"
+                  loading="eager"
+                />
+                <figcaption className="sr-only">{hovered.title}</figcaption>
+              </figure>
+            )}
+
+            {/* Subtle framing */}
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.06] rounded-3xl pointer-events-none" />
+          </aside>
         </div>
       </div>
+
+      {/* Fade animation */}
+      <style>{`
+        @keyframes fadeIn { to { opacity: 1 } }
+      `}</style>
     </div>
   );
 }
