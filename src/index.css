@@ -3,13 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  /* Lock viewport height & disable scrolling */
   html, body, #root {
+    height: 100%;
     background-color: #ffffff !important;
+  }
+
+  html, body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  /* Dynamic viewport unit for mobile address bar */
+  :root {
+    --vh: 100svh;
   }
 
   * {
     @apply border-border;
   }
+}
+
+/* Utility class for full screen sections */
+.screen {
+  height: 100svh;
+  height: var(--vh);
 }
 
 @layer base {
