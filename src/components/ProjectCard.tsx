@@ -27,7 +27,7 @@ export default function ProjectCard({ title, description, category, number, slug
         className="
           relative overflow-hidden rounded-3xl
           border border-white/35
-          bg-white/18
+          bg-white/14
           backdrop-blur-2xl [-webkit-backdrop-filter:blur(24px)]
           ring-1 ring-inset ring-white/10
           shadow-[0_6px_24px_rgba(17,24,39,0.10)]
@@ -57,11 +57,20 @@ export default function ProjectCard({ title, description, category, number, slug
             mixBlendMode: 'soft-light'
           }}
         />
+        
         {/* Top inner highlight */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background: 'linear-gradient(to bottom, rgba(255,255,255,0.45), rgba(255,255,255,0) 42%)'
+          }}
+        />
+        
+        {/* Frosted noise texture */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.10]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><filter id='n' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 0 0 0 0.25'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")`
           }}
         />
         

@@ -14,7 +14,7 @@ void main() {
   gl_Position = projectionMatrix * mv;
 
   float dist = max(length(mv.xyz), 0.001);
-  gl_PointSize = clamp(uSizeBase * 180.0 / dist, 3.0, 12.0);
+  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 2.2, 5.2);
 }
 `
 
@@ -46,13 +46,21 @@ export default function ParticleWave({
   const pointsRef = useRef<THREE.Points>(null)
   const geometryRef = useRef<THREE.BufferGeometry | null>(null)
   
-  const uniforms = useMemo(() => ({
-    uTime:      { value: 0 },
-    uAmp:       { value: amplitude },
-    uSpeed:     { value: speed },
-    uMonoColor: { value: new THREE.Color('#BDBDBD') },
-    uSizeBase:  { value: 4.8 },
-  }), [amplitude, speed])
+  const uniforms = useMemo(() => {
+    // Base visual size for ~3000 density
+    const BASE_SIZE = 1.35
+    
+    // Adaptive size: shrink as density increases
+    const adaptiveScale = Math.sqrt(3000 / Math.max(1000, particleCount))
+    
+    return {
+      uTime:      { value: 0 },
+      uAmp:       { value: amplitude },
+      uSpeed:     { value: speed },
+      uMonoColor: { value: new THREE.Color('#BDBDBD') },
+      uSizeBase:  { value: BASE_SIZE * adaptiveScale },
+    }
+  }, [amplitude, speed, particleCount])
 
   const material = useMemo(
     () =>
