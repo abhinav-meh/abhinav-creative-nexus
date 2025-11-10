@@ -4,7 +4,7 @@ import SiteNavBottom from '@/components/SiteNavBottom'
 
 const Index = () => {
   return (
-    <div className="relative screen bg-white">
+    <div className="relative h-screen overflow-hidden bg-white">
       {/* Background grid */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <ThreeBackground />

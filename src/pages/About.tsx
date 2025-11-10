@@ -3,7 +3,7 @@ import SiteNavBottom from '@/components/SiteNavBottom'
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-y-auto">
       <SiteNavLeft />
       <SiteNavBottom />
       

@@ -25,7 +25,7 @@ export default function Work() {
   }, [isTouch]);
 
   return (
-    <div className="min-h-[100svh] bg-white text-neutral-900">
+    <div className="h-screen overflow-hidden bg-white text-neutral-900">
       <SiteNavLeft />
       <SiteNavBottom />
       

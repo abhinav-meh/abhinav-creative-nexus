@@ -18,7 +18,7 @@ const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayo
   const isImageIcon = icon && (icon.endsWith('.svg') || icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('.webp'))
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-y-auto">
       <SiteNavLeft />
       <SiteNavBottom />
       
