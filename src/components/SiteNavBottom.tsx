@@ -11,14 +11,14 @@ export default function SiteNavBottom() {
     <nav className="md:hidden fixed bottom-0 inset-x-0 z-40
                     bg-white/85 backdrop-blur-xl border-t border-black/[0.06]
                     pb-[env(safe-area-inset-bottom)]">
-      <ul className="flex items-center justify-around h-16">
+      <ul className="flex items-center justify-around h-20 px-4">
         {items.map(i => (
           <li key={i.href}>
             <NavLink
               to={i.href}
               end
               className={({ isActive }) => `
-                text-sm font-medium transition
+                text-base font-medium transition
                 ${isActive ? 'text-black' : 'text-neutral-700 hover:text-black'}
               `}
             >

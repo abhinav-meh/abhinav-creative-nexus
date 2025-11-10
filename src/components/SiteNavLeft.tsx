@@ -18,14 +18,14 @@ export default function SiteNavLeft() {
         AM
       </NavLink>
       
-      <div className="flex-1 flex flex-col items-center justify-center gap-8">
+      <div className="flex-1 flex flex-col items-center justify-center gap-12">
         {items.map(i => (
           <NavLink
             key={i.href}
             to={i.href}
             end
             className={({ isActive }) => `
-              rotate-[-90deg] text-sm tracking-wide transition
+              rotate-[-90deg] text-base tracking-wide transition
               ${isActive ? 'text-black font-medium' : 'text-neutral-600 hover:text-black'}
             `}
           >
