@@ -82,7 +82,7 @@ export default function ProjectCard({ title, description, category, number, slug
           <div className="flex items-start justify-between gap-6 mb-6">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                <h3 className="text-2xl md:text-3xl font-bold font-condensed tracking-tight-5 group-hover:text-primary transition-colors">
                   {title}
                 </h3>
                 <ArrowUpRight 
@@ -91,7 +91,7 @@ export default function ProjectCard({ title, description, category, number, slug
                 />
               </div>
               
-              <span className={`text-sm font-medium tracking-tight ${categoryStyles[category] || 'text-muted-foreground'}`}>
+              <span className={`text-sm font-medium font-condensed tracking-tight-5 ${categoryStyles[category] || 'text-muted-foreground'}`}>
                 {category}
               </span>
             </div>
@@ -101,7 +101,7 @@ export default function ProjectCard({ title, description, category, number, slug
             </div>
           </div>
 
-          <p className="text-base text-muted-foreground tracking-tight leading-relaxed">
+          <p className="text-base text-muted-foreground font-condensed tracking-tight-5 leading-relaxed">
             {description}
           </p>
         </div>

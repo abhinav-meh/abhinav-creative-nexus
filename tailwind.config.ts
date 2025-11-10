@@ -20,9 +20,11 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Helvetica Neue', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+				condensed: ['Roboto Condensed', 'Helvetica Neue Condensed', 'Arial Narrow', 'sans-serif'],
 			},
 			letterSpacing: {
 				tighter: '-0.05em',
+				'tight-5': '-0.05em',
 			},
 			fontSize: {
 				'hero': ['clamp(3rem, 8vw, 7.5rem)', { lineHeight: '1', letterSpacing: '-0.05em' }],
