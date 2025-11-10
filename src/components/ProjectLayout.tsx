@@ -17,7 +17,7 @@ const ProjectLayout = ({ children, title, subtitle, icon, buttons }: ProjectLayo
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-background overflow-y-auto">
+    <div className="h-screen bg-background overflow-y-auto">
       <SiteNavLeft />
       <SiteNavBottom />
       
