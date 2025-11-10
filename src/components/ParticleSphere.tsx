@@ -14,7 +14,7 @@ void main() {
   gl_Position = projectionMatrix * mv;
 
   float dist = max(length(mv.xyz), 0.001);
-  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 2.6, 6.0);
+  gl_PointSize = clamp(uSizeBase * 180.0 / dist, 3.0, 12.0);
 }
 `
 
@@ -24,8 +24,9 @@ uniform vec3 uMonoColor;
 void main() {
   vec2 p = gl_PointCoord - 0.5;
   float d = length(p);
-  float circle = smoothstep(0.5, 0.0, d);
-  gl_FragColor = vec4(uMonoColor, circle * 0.62);
+  // Sharper circle for crisp edges
+  float circle = smoothstep(0.5, 0.35, d);
+  gl_FragColor = vec4(uMonoColor, circle * 0.75);
 }
 `
 
@@ -50,7 +51,7 @@ export default function ParticleWave({
     uAmp:       { value: amplitude },
     uSpeed:     { value: speed },
     uMonoColor: { value: new THREE.Color('#BDBDBD') },
-    uSizeBase:  { value: 3.0 },
+    uSizeBase:  { value: 4.8 },
   }), [amplitude, speed])
 
   const material = useMemo(
@@ -69,8 +70,11 @@ export default function ParticleWave({
   const positions = useMemo(() => {
     const positions = new Float32Array(particleCount * 3)
     
-    const width = 20
-    const depth = 20
+    // Calculate grid size to fill viewport
+    // Assume camera at ~7-8 units away, FOV 50-55
+    const aspectRatio = window.innerWidth / window.innerHeight
+    const width = 28 * aspectRatio  // Scale with aspect ratio
+    const depth = 28
     const gridSize = Math.sqrt(particleCount)
 
     for (let i = 0; i < particleCount; i++) {

@@ -39,6 +39,17 @@ function CameraController({
 }
 
 export default function ThreeBackground() {
+  // Handle window resize for grid scaling
+  const [viewportSize, setViewportSize] = useState({ width: window.innerWidth, height: window.innerHeight })
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // Load from localStorage or use defaults
   const [waveAmplitude, setWaveAmplitude] = useState(() => {
     const saved = localStorage.getItem('gridControls_amplitude')
@@ -146,11 +157,11 @@ export default function ThreeBackground() {
             scene.background = new THREE.Color('#ffffff')
             gl.domElement.style.pointerEvents = 'none'
             
-            // Tighter framing & gentle look-down that fills hero
-            camera.position.set(0, 1.05, 8.0)
-            camera.rotation.x = -0.30
+            // Closer camera for more immersive feel
+            camera.position.set(0, 1.0, 7.2)
+            camera.rotation.x = -0.28
             if (camera instanceof THREE.PerspectiveCamera) {
-              camera.fov = 55
+              camera.fov = 50
               camera.updateProjectionMatrix()
             }
           }}
@@ -164,6 +175,7 @@ export default function ThreeBackground() {
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={0.5} />
         <ParticleWave 
+          key={`${viewportSize.width}-${viewportSize.height}`}
           position={[0, 0.95, 0]}
           amplitude={waveAmplitude}
           size={DEFAULTS.size}
