@@ -65,7 +65,7 @@ export default function Work() {
           </div>
 
           {/* Preview layer — fades/scales in on hover/focus (desktop only) */}
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 hidden md:block">
             {(projects as Project[]).map((p, idx) => (
               <img
                 key={p.slug}
