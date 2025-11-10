@@ -14,7 +14,7 @@ void main() {
   gl_Position = projectionMatrix * mv;
 
   float dist = max(length(mv.xyz), 0.001);
-  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 2.0, 4.6);
+  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 3.5, 9.0);
 }
 `
 
@@ -24,9 +24,9 @@ uniform vec3 uMonoColor;
 void main() {
   vec2 p = gl_PointCoord - 0.5;
   float d = length(p);
-  // Sharper circle for crisp edges
-  float circle = smoothstep(0.5, 0.35, d);
-  gl_FragColor = vec4(uMonoColor, circle * 0.75);
+  // Sharp, crisp circle edges
+  float circle = smoothstep(0.5, 0.4, d);
+  gl_FragColor = vec4(uMonoColor, circle * 0.8);
 }
 `
 
@@ -47,11 +47,11 @@ export default function ParticleWave({
   const geometryRef = useRef<THREE.BufferGeometry | null>(null)
   
   const uniforms = useMemo(() => {
-    // Base visual size for ~3000 density
-    const BASE_SIZE = 1.35
+    // Base visual size increased for bolder particles (was 1.35, now 2.5)
+    const BASE_SIZE = 2.5
     
-    // Adaptive size: shrink as density increases
-    const adaptiveScale = Math.sqrt(3000 / Math.max(1000, particleCount))
+    // Adaptive size: shrink as density increases (updated reference from 3000 to 6000)
+    const adaptiveScale = Math.sqrt(6000 / Math.max(1000, particleCount))
     
     return {
       uTime:      { value: 0 },

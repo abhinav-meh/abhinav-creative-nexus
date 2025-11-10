@@ -7,9 +7,9 @@ import { useThree } from '@react-three/fiber'
 
 const DEFAULTS = {
   amplitude: 0.4,
-  size: 0.08,
+  size: 0.16,
   speed: 0.3,
-  particleCount: 3000,
+  particleCount: 6000,
 }
 
 function CameraController({ 
@@ -74,7 +74,7 @@ export default function ThreeBackground() {
   
   const [positionZ, setPositionZ] = useState(() => {
     const saved = localStorage.getItem('gridControls_cameraZ')
-    return saved ? parseFloat(saved) : 8
+    return saved ? parseFloat(saved) : 9.5
   })
   
   const [rotationX, setRotationX] = useState(() => {
@@ -84,7 +84,7 @@ export default function ThreeBackground() {
   
   const [fov, setFov] = useState(() => {
     const saved = localStorage.getItem('gridControls_fov')
-    return saved ? parseFloat(saved) : 60
+    return saved ? parseFloat(saved) : 65
   })
 
   // Save to localStorage
@@ -121,9 +121,9 @@ export default function ThreeBackground() {
     setParticleCount(DEFAULTS.particleCount)
     setWaveSpeed(DEFAULTS.speed)
     setPositionY(3.5)
-    setPositionZ(8)
+    setPositionZ(9.5)
     setRotationX(-0.45)
-    setFov(60)
+    setFov(65)
   }
 
   return (
