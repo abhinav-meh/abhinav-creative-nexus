@@ -26,14 +26,17 @@ export default function ProjectCard({ title, description, category, number, slug
       <div
         className="
           relative overflow-hidden rounded-3xl
-          bg-white/12
-          backdrop-blur-[28px] [-webkit-backdrop-filter:blur(28px)]
-          saturate-140 contrast-110
-          border border-white/24
-          ring-1 ring-inset ring-white/12
+          border border-white/20
           shadow-[0_6px_24px_rgba(17,24,39,0.10)]
-          hover:bg-white/18 hover:shadow-[0_10px_32px_rgba(17,24,39,0.14)]
           transition-all duration-300
+          
+          supports-[backdrop-filter]:bg-white/12
+          supports-[backdrop-filter]:backdrop-blur-2xl
+          supports-[backdrop-filter]:[-webkit-backdrop-filter:blur(28px)]
+          supports-[backdrop-filter]:saturate-140
+          supports-[backdrop-filter]:contrast-110
+          
+          bg-white/0
           p-8 md:p-10
         "
         onMouseMove={(e) => {
@@ -50,12 +53,28 @@ export default function ProjectCard({ title, description, category, number, slug
           }}
         />
         
-        {/* Subtle frost noise */}
+        {/* Subtle frost texture */}
         <div 
-          className="pointer-events-none absolute inset-0 opacity-[0.10]"
+          className="pointer-events-none absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage: 'radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px)',
             backgroundSize: '2px 2px'
+          }}
+        />
+        
+        {/* Cursor sheen */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(
+                520px 240px at calc(var(--mx,0.5)*100%) calc(var(--my,0.5)*100%),
+                rgba(255,255,255,0.50) 0%,
+                rgba(255,255,255,0.22) 26%,
+                rgba(255,255,255,0.10) 46%,
+                transparent 62%
+              )`,
+            mixBlendMode: 'soft-light'
           }}
         />
         {/* Content */}

@@ -14,7 +14,7 @@ void main() {
   gl_Position = projectionMatrix * mv;
 
   float dist = max(length(mv.xyz), 0.001);
-  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 2.0, 4.8);
+  gl_PointSize = clamp(uSizeBase * 160.0 / dist, 2.0, 4.6);
 }
 `
 
