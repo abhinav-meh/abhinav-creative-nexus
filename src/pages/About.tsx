@@ -50,10 +50,10 @@ const About = () => {
             </p>
             <div className="flex flex-col gap-2">
               <a 
-                href="mailto:abhinavmehrotra@berkeley.edu" 
+                href="mailto:abhinav.comms@gmail.com" 
                 className="text-primary hover:underline"
               >
-                abhinavmehrotra@berkeley.edu
+                abhinav.comms@gmail.com
               </a>
               <a 
                 href="https://www.linkedin.com/in/abhinavux/" 
