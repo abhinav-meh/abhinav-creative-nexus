@@ -23,32 +23,76 @@ export default function ProjectCard({ title, description, category, number, slug
       to={`/projects/${slug}`}
       className="group block"
     >
-      <div className="border border-border rounded-lg p-8 md:p-10 hover:border-foreground transition-colors">
-        <div className="flex items-start justify-between gap-6 mb-6">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-3">
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight group-hover:text-primary transition-colors">
-                {title}
-              </h3>
-              <ArrowUpRight 
-                size={24} 
-                className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0" 
-              />
+      <div
+        className="
+          relative overflow-hidden rounded-3xl
+          border border-white/35
+          bg-white/18
+          backdrop-blur-2xl [-webkit-backdrop-filter:blur(24px)]
+          ring-1 ring-inset ring-white/10
+          shadow-[0_6px_24px_rgba(17,24,39,0.10)]
+          hover:shadow-[0_10px_32px_rgba(17,24,39,0.14)]
+          transition
+          p-8 md:p-10
+        "
+        onMouseMove={(e) => {
+          const r = e.currentTarget.getBoundingClientRect()
+          e.currentTarget.style.setProperty('--mx', ((e.clientX - r.left)/r.width).toString())
+          e.currentTarget.style.setProperty('--my', ((e.clientY - r.top)/r.height).toString())
+        }}
+      >
+        {/* Cursor-tracked sheen */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(
+                520px 240px at calc(var(--mx,0.5)*100%) calc(var(--my,0.5)*100%),
+                rgba(255,255,255,0.55) 0%,
+                rgba(255,255,255,0.25) 26%,
+                rgba(255,255,255,0.10) 46%,
+                transparent 62%
+              )
+            `,
+            mixBlendMode: 'soft-light'
+          }}
+        />
+        {/* Top inner highlight */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.45), rgba(255,255,255,0) 42%)'
+          }}
+        />
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <div className="flex items-start justify-between gap-6 mb-6">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                  {title}
+                </h3>
+                <ArrowUpRight 
+                  size={24} 
+                  className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0" 
+                />
+              </div>
+              
+              <span className={`text-sm font-medium tracking-tight ${categoryStyles[category] || 'text-muted-foreground'}`}>
+                {category}
+              </span>
             </div>
-            
-            <span className={`text-sm font-medium tracking-tight ${categoryStyles[category] || 'text-muted-foreground'}`}>
-              {category}
-            </span>
+
+            <div className="text-4xl font-light text-muted-foreground/20 tracking-tighter">
+              {number.toString().padStart(2, '0')}
+            </div>
           </div>
 
-          <div className="text-4xl font-light text-muted-foreground/20 tracking-tighter">
-            {number.toString().padStart(2, '0')}
-          </div>
+          <p className="text-base text-muted-foreground tracking-tight leading-relaxed">
+            {description}
+          </p>
         </div>
-
-        <p className="text-base text-muted-foreground tracking-tight leading-relaxed">
-          {description}
-        </p>
       </div>
     </Link>
   )

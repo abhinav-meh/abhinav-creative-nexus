@@ -135,15 +135,24 @@ export default function ThreeBackground() {
         onReset={handleReset}
       />
       
-      <div className="fixed inset-0 pointer-events-none z-0 bg-gradient-to-b from-white via-white/80 to-[#f2f2f2]">
+      <div className="fixed inset-0 pointer-events-none z-0">
         <Canvas
           camera={{ position: [0, positionY, positionZ], fov }}
           gl={{ alpha: false }}
           style={{ pointerEvents: 'none', background: '#ffffff' }}
-          onCreated={({ scene, gl }) => {
-            scene.background = new THREE.Color('#ffffff')
+          onCreated={({ scene, gl, camera }) => {
+            gl.setPixelRatio(Math.min(window.devicePixelRatio, 2))
             gl.setClearColor('#ffffff', 1)
+            scene.background = new THREE.Color('#ffffff')
             gl.domElement.style.pointerEvents = 'none'
+            
+            // Tighter framing & gentle look-down that fills hero
+            camera.position.set(0, 1.05, 8.0)
+            camera.rotation.x = -0.30
+            if (camera instanceof THREE.PerspectiveCamera) {
+              camera.fov = 55
+              camera.updateProjectionMatrix()
+            }
           }}
         >
         <CameraController 
@@ -154,14 +163,13 @@ export default function ThreeBackground() {
         />
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={0.5} />
-        <group rotation={[-0.25, 0, 0]}>
-          <ParticleWave 
-            amplitude={waveAmplitude}
-            size={DEFAULTS.size}
-            speed={waveSpeed}
-            particleCount={particleCount}
-          />
-        </group>
+        <ParticleWave 
+          position={[0, 0.95, 0]}
+          amplitude={waveAmplitude}
+          size={DEFAULTS.size}
+          speed={waveSpeed}
+          particleCount={particleCount}
+        />
       </Canvas>
       </div>
     </>

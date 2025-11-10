@@ -116,7 +116,7 @@ export default function GridControlsPanel({
 
   return (
     <TooltipProvider>
-      <div className="fixed bottom-6 right-6 z-50 pointer-events-auto flex items-end gap-3">
+      <div className="fixed bottom-6 right-6 z-[70] pointer-events-auto flex items-end gap-3">
         {/* Floating Label */}
         <div 
           className={`
@@ -137,11 +137,10 @@ export default function GridControlsPanel({
               <PopoverTrigger asChild>
                 <Button
                   size="icon"
-                  className="h-16 w-16 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 bg-primary/90 hover:bg-primary backdrop-blur-sm group"
+                  className="h-16 w-16 rounded-full bg-white border border-black/10 shadow-lg hover:shadow-xl transition active:scale-95"
                   onMouseEnter={() => setShowLabel(true)}
                 >
-                  <Sliders className="h-7 w-7 text-primary-foreground group-hover:rotate-90 transition-transform duration-300" />
-                  <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                  <Sliders className="h-7 w-7" />
                 </Button>
               </PopoverTrigger>
             </TooltipTrigger>
@@ -154,7 +153,8 @@ export default function GridControlsPanel({
           align="end"
           side="top"
           sideOffset={20}
-          className="w-[90vw] sm:w-[400px] pointer-events-auto bg-background/95 backdrop-blur-md border shadow-lg rounded-xl p-6 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95"
+          className="w-[90vw] sm:w-[400px] bg-white shadow-xl border border-black/10 rounded-xl p-6"
+          style={{ pointerEvents: 'auto' }}
         >
           <div className="space-y-6">
             <div className="flex items-center justify-between">
