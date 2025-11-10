@@ -10,7 +10,17 @@ const Index = () => {
       <div className="relative z-10 pointer-events-auto">
         <MinimalHeader />
         <HeroSection />
-        <ProjectList />
+        <section className="relative">
+          {/* Subtle backdrop plate that gives blur texture to sample */}
+          <div 
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0
+                       bg-[radial-gradient(900px_420px_at_50%_0%,rgba(0,0,0,0.06),transparent_60%)]"
+          />
+          <div className="relative z-10">
+            <ProjectList />
+          </div>
+        </section>
       </div>
     </div>
   )

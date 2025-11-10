@@ -25,17 +25,16 @@ export default function ProjectCard({ title, description, category, number, slug
     >
       <div
         className="
-          relative overflow-hidden rounded-2xl
-          bg-white/10 backdrop-blur-xl
-          border border-white/20
-          shadow-[inset_0_0_0.5px_rgba(255,255,255,0.4),0_4px_20px_rgba(0,0,0,0.05)]
-          saturate-150 contrast-110
+          relative overflow-hidden rounded-3xl
+          bg-white/12
+          backdrop-blur-[28px] [-webkit-backdrop-filter:blur(28px)]
+          saturate-140 contrast-110
+          border border-white/24
+          ring-1 ring-inset ring-white/12
+          shadow-[0_6px_24px_rgba(17,24,39,0.10)]
+          hover:bg-white/18 hover:shadow-[0_10px_32px_rgba(17,24,39,0.14)]
           transition-all duration-300
-          hover:bg-white/20 hover:shadow-[inset_0_0_0.5px_rgba(255,255,255,0.5),0_6px_30px_rgba(0,0,0,0.08)]
           p-8 md:p-10
-          before:absolute before:inset-0 
-          before:bg-gradient-to-br before:from-white/20 before:to-transparent 
-          before:opacity-30 before:pointer-events-none
         "
         onMouseMove={(e) => {
           const r = e.currentTarget.getBoundingClientRect()
@@ -43,6 +42,22 @@ export default function ProjectCard({ title, description, category, number, slug
           e.currentTarget.style.setProperty('--my', ((e.clientY - r.top)/r.height).toString())
         }}
       >
+        {/* Top inner highlight */}
+        <div 
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.42), rgba(255,255,255,0) 44%)'
+          }}
+        />
+        
+        {/* Subtle frost noise */}
+        <div 
+          className="pointer-events-none absolute inset-0 opacity-[0.10]"
+          style={{
+            backgroundImage: 'radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px)',
+            backgroundSize: '2px 2px'
+          }}
+        />
         {/* Content */}
         <div className="relative z-10">
           <div className="flex items-start justify-between gap-6 mb-6">
