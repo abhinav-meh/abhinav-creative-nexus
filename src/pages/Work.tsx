@@ -1,50 +1,28 @@
-import { useMemo, useState, useEffect } from "react";
-import projects from "@/data/projects.json";
+import { useEffect, useMemo, useState } from "react";
 import ThreeBackground from "@/components/ThreeBackground";
 import SiteNavLeft from '@/components/SiteNavLeft';
 import SiteNavBottom from '@/components/SiteNavBottom';
+import projects from "@/data/projects.json";
 
-type Project = { 
-  title: string; 
-  slug: string; 
-  cover?: string;
-};
-
-// Map project slugs to their hero/cover images
-const projectCovers: Record<string, string> = {
-  "tempo": "/src/assets/tempo-ui-home.png",
-  "begig": "/src/assets/begig-client-dashboard.jpg",
-  "woz": "/src/assets/woz-overview.jpg",
-  "xuno": "/src/assets/xuno-hero.jpg",
-  "dither-er": "/src/assets/dither-er-section-1.jpg",
-  "amazeballs": "/src/assets/amazeballs-main-menu.png",
-  "oop-creative-coding": "/OOP_Principles_Creative_Coding_Paper.pdf",
-  "confluence": "/src/assets/confluence-thumbnail.svg",
+type Project = {
+  slug: string;
+  title: string;
+  preview: string;
 };
 
 export default function Work() {
-  const items = useMemo<Project[]>(
-    () => (projects as any[]).map(p => ({ 
-      title: p.title, 
-      slug: p.slug, 
-      cover: projectCovers[p.slug]
-    })),
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
+
+  // Detect touch (no hover) to disable previews on mobile/tablet
+  const isTouch = useMemo(
+    () => (typeof window !== "undefined" ? matchMedia("(hover: none)").matches : false),
     []
   );
-  const [hovered, setHovered] = useState<Project | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
 
+  // Ensure we don't "stick" a preview when the device changes orientation
   useEffect(() => {
-    const m = window.matchMedia("(max-width: 767px)");
-    const apply = () => setIsMobile(m.matches);
-    apply();
-    m.addEventListener?.("change", apply);
-    return () => m.removeEventListener?.("change", apply);
-  }, []);
-
-  const handleEnter = (p: Project) => !isMobile && setHovered(p);
-  const handleLeave = (p: Project) => !isMobile && setHovered(curr => (curr?.slug === p.slug ? null : curr));
-  const go = (slug: string) => (window.location.href = `/projects/${slug}`);
+    if (isTouch) setActiveSlug(null);
+  }, [isTouch]);
 
   return (
     <div className="min-h-[100svh] bg-white text-neutral-900">
@@ -52,52 +30,62 @@ export default function Work() {
       <SiteNavBottom />
       
       <div className="grid grid-cols-1 md:grid-cols-[55%_45%] min-h-[100svh]">
-        {/* LEFT: solid white, text column */}
-        <section className="relative bg-white z-10 md:pl-32 md:pr-10 px-6 py-12 md:py-16 flex items-center">
-          <div className="w-full">
-            <ul className="space-y-8 max-w-none">
-              {items.map((p) => (
-                <li key={p.slug}>
-                  <button
-                    className="group w-full text-left"
-                    onMouseEnter={() => handleEnter(p)}
-                    onMouseLeave={() => handleLeave(p)}
-                    onFocus={() => handleEnter(p)}
-                    onBlur={() => handleLeave(p)}
-                    onClick={() => go(p.slug)}
-                  >
-                    <span className="block uppercase tracking-widest text-[clamp(20px,3.0vw,40px)]
-                                     leading-[1.1] font-bold text-neutral-900 transition-colors">
-                      {p.title}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* LEFT: solid white, titles always visible */}
+        <section className="relative z-10 bg-white md:pl-32 md:pr-10 px-6 py-12 md:py-16 flex items-center">
+          <ul className="w-full space-y-8 md:space-y-10">
+            {(projects as Project[]).map((p) => (
+              <li
+                key={p.slug}
+                onMouseEnter={() => !isTouch && setActiveSlug(p.slug)}
+                onMouseLeave={() => !isTouch && setActiveSlug(null)}
+                onFocus={() => !isTouch && setActiveSlug(p.slug)}
+                onBlur={() => !isTouch && setActiveSlug(null)}
+                className="uppercase tracking-widest font-bold text-[clamp(24px,3.5vw,48px)] leading-[1.1]"
+              >
+                <a
+                  href={`/projects/${p.slug}`}
+                  className="outline-none focus:underline underline-offset-4 text-neutral-900 hover:text-black transition-colors"
+                  aria-describedby={`p-${p.slug}`}
+                >
+                  {p.title}
+                </a>
+                <span id={`p-${p.slug}`} className="sr-only">
+                  View {p.title}
+                </span>
+              </li>
+            ))}
+          </ul>
         </section>
 
-        {/* RIGHT: wave only */}
-        <aside className="relative md:sticky md:top-0 md:h-[100svh] overflow-hidden z-0">
-          <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* RIGHT: wave with preview layer above it */}
+        <section className="relative z-0 md:h-[100svh] overflow-hidden">
+          {/* Particle wave stays behind */}
+          <div className="absolute inset-0">
             <ThreeBackground />
           </div>
 
-          {/* On desktop hover, show preview image over the wave */}
-          {!isMobile && hovered && (
-            <img
-              src={hovered.cover ?? `/images/projects/${hovered.slug}.jpg`}
-              alt={hovered.title}
-              className="absolute inset-0 z-10 h-full w-full object-cover opacity-0 animate-[fadeIn_220ms_ease_forwards]"
-              loading="eager"
-            />
-          )}
-        </aside>
+          {/* Preview layer — fades/scales in on hover/focus (desktop only) */}
+          <div className="absolute inset-0">
+            {(projects as Project[]).map((p, idx) => (
+              <img
+                key={p.slug}
+                src={p.preview}
+                alt=""
+                aria-hidden="true"
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className={[
+                  "absolute inset-0 m-auto max-h-[80%] max-w-[90%] object-contain",
+                  "transition-[opacity,transform,filter] duration-300 ease-out will-change-transform",
+                  !isTouch && activeSlug === p.slug
+                    ? "opacity-100 scale-100 blur-0"
+                    : "opacity-0 scale-[0.96] blur-[2px] pointer-events-none",
+                ].join(" ")}
+              />
+            ))}
+          </div>
+        </section>
       </div>
-
-      <style>{`
-        @keyframes fadeIn { to { opacity: 1 } }
-      `}</style>
     </div>
   );
 }
