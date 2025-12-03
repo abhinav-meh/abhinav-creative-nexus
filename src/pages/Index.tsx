@@ -21,7 +21,7 @@ const Index = () => {
           Abhinav Mehrotra
         </h1>
         <h2 className="text-2xl md:text-3xl font-light text-gray-600">
-          Creative Technologist &amp; Product Designer
+          Product Designer &amp; Developer
         </h2>
         <p className="max-w-xl text-gray-500 text-base md:text-lg px-6">
           Researching, prototyping, designing and testing by day. Coding, no-coding, launching products by night.
