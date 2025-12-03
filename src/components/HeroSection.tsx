@@ -53,7 +53,7 @@ export default function HeroSection() {
         </h1>
         
         <p className="text-display font-light mb-8 text-muted-foreground">
-          Creative Technologist & Product Designer
+          Product Designer & Developer
         </p>
         
         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-12 text-muted-foreground tracking-tight leading-relaxed">
