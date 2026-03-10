@@ -5,7 +5,7 @@ import SiteNavBottom from '@/components/SiteNavBottom'
 import { Github, Linkedin, FileText } from 'lucide-react'
 
 const Index = () => {
-  return (
+  const navigate = useNavigate()
     <div className="relative h-screen overflow-hidden">
       {/* Background particle wave */}
       <div className="fixed inset-0 z-0 pointer-events-none">
