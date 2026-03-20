@@ -43,6 +43,7 @@ const App = () => (
             <Route path="/projects/oop-creative-coding" element={<OOPCreativeCoding />} />
             <Route path="/projects/confluence" element={<Confluence />} />
             <Route path="/projects/tempo" element={<Tempo />} />
+            <Route path="/projects/psycomark" element={<Psycomark />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -54,5 +54,12 @@
     "category": "Tool",
     "slug": "confluence",
     "preview": "/assets/confluence-preview.webp"
+  },
+  {
+    "title": "Psycomark",
+    "description": "An NLP research project for detecting conspiracy theories in social media using RoBERTa-based classification and named entity recognition for psychological marker extraction.",
+    "category": "Research",
+    "slug": "psycomark",
+    "preview": "/assets/psycomark-preview.webp"
   }
 ]
