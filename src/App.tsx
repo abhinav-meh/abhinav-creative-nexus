@@ -17,6 +17,7 @@ import Xuno from "./pages/projects/Xuno";
 import OOPCreativeCoding from "./pages/projects/OOPCreativeCoding";
 import Confluence from "./pages/projects/Confluence";
 import Tempo from "./pages/projects/Tempo";
+import Psycomark from "./pages/projects/Psycomark";
 
 const queryClient = new QueryClient();
 
