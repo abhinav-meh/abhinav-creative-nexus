@@ -1,4 +1,5 @@
 import ProjectLayout from '@/components/ProjectLayout'
+import ImageLightbox from '@/components/ImageLightbox'
 import { Button } from '@/components/ui/button'
 import { ExternalLink } from 'lucide-react'
 import begigLogo from '@/assets/begig-logo.svg'
@@ -72,64 +73,15 @@ const Begig = () => {
                 <h2 className="text-3xl font-semibold mb-8 text-foreground text-center">Client Experience</h2>
                 
                 <div className="mb-16">
-                  <img 
+                  <ImageLightbox 
                     src={clientSignup} 
                     alt="Client signup with tech skills selection"
                     className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
-                    onError={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
-                      e.currentTarget.style.minHeight = '400px';
-                      e.currentTarget.style.display = 'flex';
-                      e.currentTarget.style.alignItems = 'center';
-                      e.currentTarget.style.justifyContent = 'center';
-                      e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Client Signup Screenshot</span>';
-                    }}
-                  />
-                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
-                    Clients can specify exactly what tech skills they're hiring for during the onboarding process
-                  </p>
-                </div>
-
-                <div className="mb-16">
-                  <img 
-                    src={clientGigPosting} 
-                    alt="Comprehensive gig posting form"
-                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
-                  />
-                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
-                    Detailed gig posting form allows clients to specify requirements, budget, timeline, and project scope
-                  </p>
-                </div>
-
-                <div className="mb-16">
-                  <img 
-                    src={clientDashboard} 
-                    alt="Client dashboard showing project overview"
-                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
-                  />
-                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
-                    Main dashboard provides overview of all posted gigs, received proposals, and ongoing projects
-                  </p>
-                </div>
-
-                <div className="mb-16">
-                  <img 
-                    src={clientGigDetails} 
-                    alt="Detailed gig management interface"
-                    className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
-                  />
-                  <p className="text-muted-foreground text-center max-w-3xl mx-auto">
-                    Each gig has a dedicated management interface for tracking progress, managing proposals, and communication
-                  </p>
-                </div>
-              </div>
-
-              {/* Freelancer Experience Section */}
               <div className="mb-16">
                 <h2 className="text-3xl font-semibold mb-8 text-foreground text-center">Freelancer Experience</h2>
                 
                 <div className="mb-16">
-                  <img 
+                  <ImageLightbox 
                     src={freelancerSignup} 
                     alt="Freelancer onboarding with skills and experience"
                     className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
@@ -140,7 +92,7 @@ const Begig = () => {
                 </div>
 
                 <div className="mb-16">
-                  <img 
+                  <ImageLightbox 
                     src={freelancerDashboard} 
                     alt="Freelancer dashboard with recommended gigs"
                     className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
@@ -151,7 +103,7 @@ const Begig = () => {
                 </div>
 
                 <div className="mb-16">
-                  <img 
+                  <ImageLightbox 
                     src={freelancerProposal} 
                     alt="Proposal creation interface with milestones"
                     className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
@@ -162,7 +114,7 @@ const Begig = () => {
                 </div>
 
                 <div className="mb-16">
-                  <img 
+                  <ImageLightbox 
                     src={freelancerPayment} 
                     alt="Payment expectation setting interface"
                     className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"

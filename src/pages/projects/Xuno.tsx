@@ -1,4 +1,5 @@
 import ProjectLayout from '@/components/ProjectLayout'
+import ImageLightbox from '@/components/ImageLightbox'
 import xunoHero from "@/assets/xuno-hero.jpg"
 import xunoSection2 from "@/assets/xuno-section-2.jpg"
 import xunoSection3 from "@/assets/xuno-section-3.jpg"
@@ -41,58 +42,12 @@ const Xuno = () => {
 
               <div className="mb-12">
                 <h2 className="text-3xl font-semibold mb-8 text-center">Platform Overview</h2>
-                <img 
+                <ImageLightbox 
                   src={xunoHero} 
                   alt="XUNO platform hero section showing personalized e-commerce solutions"
-                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
-                  onError={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
-                    e.currentTarget.style.minHeight = '400px';
-                    e.currentTarget.style.display = 'flex';
-                    e.currentTarget.style.alignItems = 'center';
-                    e.currentTarget.style.justifyContent = 'center';
-                    e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Platform Overview Screenshot</span>';
-                  }}
-                />
-                <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
-                  XUNO's main platform showcasing personalized e-commerce solutions that increase revenue opportunities and strengthen customer relationships
-                </p>
-              </div>
-
-              <div className="mb-12">
-                <h2 className="text-3xl font-semibold mb-8 text-center">Revenue Optimization Features</h2>
-                <img 
-                  src={xunoSection2} 
-                  alt="XUNO revenue optimization features including personalized upsells and premium marketplace"
-                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
-                  onError={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
-                    e.currentTarget.style.minHeight = '400px';
-                    e.currentTarget.style.display = 'flex';
-                    e.currentTarget.style.alignItems = 'center';
-                    e.currentTarget.style.justifyContent = 'center';
-                    e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Revenue Features Screenshot</span>';
-                  }}
-                />
-                <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
-                  Advanced features for e-commerce publishers including personalized upsells, premium marketplace integration, and tailored customer experiences
-                </p>
-              </div>
-
-              <div className="mb-12">
-                <h2 className="text-3xl font-semibold mb-8 text-center">How XUNO Works</h2>
-                <img 
-                  src={xunoSection3} 
+                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg" 
                   alt="XUNO workflow showing 4-step process and business benefits with machine learning capabilities"
-                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"
-                  onError={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgb(39 39 42)';
-                    e.currentTarget.style.minHeight = '400px';
-                    e.currentTarget.style.display = 'flex';
-                    e.currentTarget.style.alignItems = 'center';
-                    e.currentTarget.style.justifyContent = 'center';
-                    e.currentTarget.innerHTML = '<span style="color: rgb(161 161 170); font-size: 14px;">Workflow Diagram Screenshot</span>';
-                  }}
+                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"}
                 />
                 <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
                   The complete XUNO workflow from customer interaction to personalized engagement, powered by cutting-edge machine learning and seamless integrations

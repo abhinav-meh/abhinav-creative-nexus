@@ -1,4 +1,5 @@
 import ProjectLayout from '@/components/ProjectLayout'
+import ImageLightbox from '@/components/ImageLightbox'
 import tempoAffinityMap from '@/assets/tempo-affinity-map.jpg'
 import tempoLogo from '@/assets/tempo-logo.svg'
 import tempoWireframeWelcome from '@/assets/tempo-wireframe-welcome.webp'
@@ -107,7 +108,7 @@ const Tempo = () => {
             </p>
             <div className="flex justify-center">
               <div className="w-[90%] border-2 border-border rounded-lg p-4">
-                <img 
+                <ImageLightbox 
                   src={tempoAffinityMap} 
                   alt="Affinity map showing categorized user research insights including time management struggles, work-induced stress, missed deadlines, productivity strategies, career aspirations, and support systems" 
                   className="rounded-lg w-full"
@@ -161,7 +162,7 @@ const Tempo = () => {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframeWelcome} 
                   alt="Welcome screen wireframe" 
                   className="rounded w-full"
@@ -169,7 +170,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Welcome</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe1} 
                   alt="User information input wireframe" 
                   className="rounded w-full"
@@ -177,7 +178,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">User Info</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe2} 
                   alt="Weekly schedule setup wireframe" 
                   className="rounded w-full"
@@ -185,7 +186,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Schedule Setup</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe3} 
                   alt="Schedule input with time blocks wireframe" 
                   className="rounded w-full"
@@ -193,7 +194,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Time Blocks</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe4} 
                   alt="Goals setting wireframe" 
                   className="rounded w-full"
@@ -201,7 +202,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Goals</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe5} 
                   alt="Time dedication slider wireframe" 
                   className="rounded w-full"
@@ -209,7 +210,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Time Dedication</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe6} 
                   alt="Energy levels selection wireframe" 
                   className="rounded w-full"
@@ -217,7 +218,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Energy Levels</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe7} 
                   alt="Loading screen wireframe" 
                   className="rounded w-full"
@@ -225,7 +226,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Loading</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe8} 
                   alt="Dashboard home screen wireframe" 
                   className="rounded w-full"
@@ -233,7 +234,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Dashboard</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe9} 
                   alt="Calendar view wireframe" 
                   className="rounded w-full"
@@ -241,7 +242,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Calendar</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe10} 
                   alt="Tasks view wireframe" 
                   className="rounded w-full"
@@ -249,7 +250,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Tasks</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe11} 
                   alt="Focus mode with Pomodoro timer wireframe" 
                   className="rounded w-full"
@@ -257,7 +258,7 @@ const Tempo = () => {
                 <p className="text-sm text-muted-foreground mt-2 text-center">Focus Mode</p>
               </div>
               <div className="border border-border rounded-lg p-3">
-                <img 
+                <ImageLightbox 
                   src={tempoWireframe12} 
                   alt="Profile screen wireframe" 
                   className="rounded w-full"
@@ -381,7 +382,7 @@ const Tempo = () => {
               
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiSplash} 
                     alt="Tempo splash screen with logo and tagline" 
                     className="rounded w-full"
@@ -389,7 +390,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Splash Screen</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiOnboarding1} 
                     alt="User name input onboarding screen" 
                     className="rounded w-full"
@@ -397,7 +398,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Get Started</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiOnboarding2} 
                     alt="Weekly schedule setup screen" 
                     className="rounded w-full"
@@ -405,7 +406,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Schedule Setup</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiOnboarding3} 
                     alt="Schedule with class and work blocks" 
                     className="rounded w-full"
@@ -413,7 +414,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Schedule Details</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiOnboarding4} 
                     alt="Goals setting screen" 
                     className="rounded w-full"
@@ -421,7 +422,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Set Goals</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiOnboarding5} 
                     alt="Time dedication slider" 
                     className="rounded w-full"
@@ -429,7 +430,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Time Dedication</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiOnboarding6} 
                     alt="Energy levels selection" 
                     className="rounded w-full"
@@ -437,7 +438,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Energy Levels</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiLoading} 
                     alt="Personalization loading screen" 
                     className="rounded w-full"
@@ -445,7 +446,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Loading</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiHome} 
                     alt="Home dashboard with tasks and schedule" 
                     className="rounded w-full"
@@ -453,7 +454,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Home Dashboard</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiCalendar} 
                     alt="Calendar view with time blocks" 
                     className="rounded w-full"
@@ -461,7 +462,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Calendar View</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiTasks} 
                     alt="Tasks screen with To Do, Doing, and Done sections" 
                     className="rounded w-full"
@@ -469,7 +470,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Tasks</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiFocusStart} 
                     alt="Focus mode with Pomodoro timer ready to start" 
                     className="rounded w-full"
@@ -477,7 +478,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Focus Mode</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiFocusActive} 
                     alt="Focus mode with active Pomodoro timer" 
                     className="rounded w-full"
@@ -485,7 +486,7 @@ const Tempo = () => {
                   <p className="text-sm text-muted-foreground mt-2 text-center">Focus Active</p>
                 </div>
                 <div className="border border-border rounded-lg p-3">
-                  <img 
+                  <ImageLightbox 
                     src={tempoUiProfile} 
                     alt="Profile screen with energy status and settings" 
                     className="rounded w-full"
