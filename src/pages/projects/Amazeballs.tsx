@@ -131,6 +131,51 @@ const Amazeballs = () => {
                   </div>
                 </div>
               </div>
+
+              <div className="bg-card/50 rounded-lg p-8 border border-border mb-8">
+                <h2 className="text-2xl font-semibold mb-6">Exhibition & Demo</h2>
+                <p className="text-muted-foreground mb-6">
+                  The Amazeballs project was showcased at a live exhibition, where attendees could experience the wearable controller and gameplay firsthand.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
+                    <img 
+                      src={expoController} 
+                      alt="Wearable controller close-up showing Arduino and sensor modules on hand"
+                      className="w-full h-auto"
+                    />
+                    <div className="p-4">
+                      <h3 className="font-semibold mb-2">Controller Close-up</h3>
+                      <p className="text-sm text-muted-foreground">Detailed view of the sensor and microcontroller modules</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
+                    <img 
+                      src={expoGameplay} 
+                      alt="Live gameplay demo with wearable controller navigating maze on screen"
+                      className="w-full h-auto"
+                    />
+                    <div className="p-4">
+                      <h3 className="font-semibold mb-2">Live Gameplay</h3>
+                      <p className="text-sm text-muted-foreground">Navigating the maze in real-time using motion controls</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-card/30 rounded-lg overflow-hidden border border-border">
+                    <img 
+                      src={expoWearable} 
+                      alt="Wearable controller with 3D-printed purple enclosure worn on wrist"
+                      className="w-full h-auto"
+                    />
+                    <div className="p-4">
+                      <h3 className="font-semibold mb-2">Wearable Form Factor</h3>
+                      <p className="text-sm text-muted-foreground">Ergonomic design with custom 3D-printed enclosure and straps</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
     </ProjectLayout>
   )
 }
