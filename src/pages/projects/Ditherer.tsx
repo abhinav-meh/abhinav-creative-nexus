@@ -1,4 +1,5 @@
 import ProjectLayout from '@/components/ProjectLayout'
+import ImageLightbox from '@/components/ImageLightbox'
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -111,7 +112,7 @@ const Ditherer = () => {
         <h2 className="text-3xl font-bold text-center mb-12">Interface Preview</h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <div className="space-y-4">
-            <img 
+            <ImageLightbox 
               src={dithererSection2} 
               alt="Dither-er upload interface"
               className="rounded-lg shadow-lg w-full"
@@ -121,7 +122,7 @@ const Ditherer = () => {
             </p>
           </div>
           <div className="space-y-4">
-            <img 
+            <ImageLightbox 
               src={dithererSection1} 
               alt="Dither-er processing interface"
               className="rounded-lg shadow-lg w-full"
