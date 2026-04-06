@@ -4,6 +4,9 @@ import amazeballsLevel from '@/assets/amazeballs-level.png'
 import amazeballsLevel2 from '@/assets/amazeballs-level-2.png'
 import controllerDevelopment from '@/assets/amazeballs-controller-development.jpg'
 import wearableController from '@/assets/amazeballs-wearable-controller.jpg'
+import expoController from '@/assets/amazeballs-expo-1.webp'
+import expoGameplay from '@/assets/amazeballs-expo-2.webp'
+import expoWearable from '@/assets/amazeballs-expo-3.webp'
 
 const Amazeballs = () => {
   return (
