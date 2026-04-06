@@ -7,74 +7,72 @@ import xunoLogo from "@/assets/xuno-logo.svg"
 
 const Xuno = () => {
   return (
-    <ProjectLayout
-      title="XUNO"
-      subtitle="Data Powered Advertising"
-      icon={xunoLogo}
-    >
-              <p className="text-lg text-muted-foreground mb-8">
-                XUNO is a comprehensive web design project for a data-powered advertising platform. 
-                The design focuses on showcasing personalized e-commerce solutions and revenue optimization features 
-                through clean, modern interfaces and intuitive user experiences.
-              </p>
-              
-              <div className="bg-card/50 rounded-lg p-8 border border-border mb-8">
-                <h2 className="text-2xl font-semibold mb-4">Project Context</h2>
-                <p className="text-muted-foreground mb-4">
-                  This project involved creating a complete web design system for a data-powered advertising platform, 
-                  focusing on clean interfaces and user-friendly experiences for e-commerce optimization.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <strong className="text-foreground">Role:</strong> UI/UX Designer
-                  </div>
-                  <div>
-                    <strong className="text-foreground">Timeline:</strong> 2 months
-                  </div>
-                  <div>
-                    <strong className="text-foreground">Tools:</strong> Figma
-                  </div>
-                  <div>
-                    <strong className="text-foreground">Type:</strong> Web Design
-                  </div>
-                </div>
-              </div>
+    <ProjectLayout title="XUNO" subtitle="Data Powered Advertising" icon={xunoLogo}>
+      <p className="text-lg text-muted-foreground mb-8">
+        XUNO is a comprehensive web design project for a data-powered advertising platform. 
+        The design focuses on showcasing personalized e-commerce solutions and revenue optimization features 
+        through clean, modern interfaces and intuitive user experiences.
+      </p>
+      
+      <div className="bg-card/50 rounded-lg p-8 border border-border mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Project Context</h2>
+        <p className="text-muted-foreground mb-4">
+          This project involved creating a complete web design system for a data-powered advertising platform, 
+          focusing on clean interfaces and user-friendly experiences for e-commerce optimization.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div><strong className="text-foreground">Role:</strong> UI/UX Designer</div>
+          <div><strong className="text-foreground">Timeline:</strong> 2 months</div>
+          <div><strong className="text-foreground">Tools:</strong> Figma</div>
+          <div><strong className="text-foreground">Type:</strong> Web Design</div>
+        </div>
+      </div>
 
-              <div className="mb-12">
-                <h2 className="text-3xl font-semibold mb-8 text-center">Platform Overview</h2>
-                <ImageLightbox 
-                  src={xunoHero} 
-                  alt="XUNO platform hero section showing personalized e-commerce solutions"
-                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg" 
-                  alt="XUNO workflow showing 4-step process and business benefits with machine learning capabilities"
-                  className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg"}
-                />
-                <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
-                  The complete XUNO workflow from customer interaction to personalized engagement, powered by cutting-edge machine learning and seamless integrations
-                </p>
-              </div>
+      <div className="mb-12">
+        <h2 className="text-3xl font-semibold mb-8 text-center">Platform Overview</h2>
+        <ImageLightbox src={xunoHero} alt="XUNO platform hero section showing personalized e-commerce solutions" className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg" />
+        <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
+          XUNO's main platform showcasing personalized e-commerce solutions that increase revenue opportunities and strengthen customer relationships
+        </p>
+      </div>
 
-              <div className="bg-card/50 rounded-lg p-8 border border-border">
-                <h2 className="text-2xl font-semibold mb-6">Design Features</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Clean Interface Design</h3>
-                    <p className="text-muted-foreground text-sm">Modern, intuitive layouts focused on user experience and accessibility</p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Responsive Design</h3>
-                    <p className="text-muted-foreground text-sm">Mobile-first approach ensuring optimal experience across all devices</p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Visual Hierarchy</h3>
-                    <p className="text-muted-foreground text-sm">Clear information organization with professional typography and color palette</p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">User Flow Design</h3>
-                    <p className="text-muted-foreground text-sm">Seamless user journeys optimized for conversion and engagement</p>
-                  </div>
-                </div>
-              </div>
+      <div className="mb-12">
+        <h2 className="text-3xl font-semibold mb-8 text-center">Revenue Optimization Features</h2>
+        <ImageLightbox src={xunoSection2} alt="XUNO revenue optimization features including personalized upsells and premium marketplace" className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg" />
+        <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
+          Advanced features for e-commerce publishers including personalized upsells, premium marketplace integration, and tailored customer experiences
+        </p>
+      </div>
+
+      <div className="mb-12">
+        <h2 className="text-3xl font-semibold mb-8 text-center">How XUNO Works</h2>
+        <ImageLightbox src={xunoSection3} alt="XUNO workflow showing 4-step process and business benefits with machine learning capabilities" className="w-4/5 max-w-4xl mx-auto rounded-lg border border-border mb-6 shadow-lg" />
+        <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
+          The complete XUNO workflow from customer interaction to personalized engagement, powered by cutting-edge machine learning and seamless integrations
+        </p>
+      </div>
+
+      <div className="bg-card/50 rounded-lg p-8 border border-border">
+        <h2 className="text-2xl font-semibold mb-6">Design Features</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-foreground">Clean Interface Design</h3>
+            <p className="text-muted-foreground text-sm">Modern, intuitive layouts focused on user experience and accessibility</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-foreground">Responsive Design</h3>
+            <p className="text-muted-foreground text-sm">Mobile-first approach ensuring optimal experience across all devices</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-foreground">Visual Hierarchy</h3>
+            <p className="text-muted-foreground text-sm">Clear information organization with professional typography and color palette</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-foreground">User Flow Design</h3>
+            <p className="text-muted-foreground text-sm">Seamless user journeys optimized for conversion and engagement</p>
+          </div>
+        </div>
+      </div>
     </ProjectLayout>
   )
 }
