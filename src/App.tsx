@@ -20,6 +20,7 @@ import Tempo from "./pages/projects/Tempo";
 import Psycomark from "./pages/projects/Psycomark";
 import VisualVinyl from "./pages/projects/VisualVinyl";
 import Aur from "./pages/projects/Aur";
+import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <div>
+        <CustomCursor />
         <Toaster />
         <Sonner />
         <BrowserRouter>

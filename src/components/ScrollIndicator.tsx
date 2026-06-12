@@ -2,11 +2,15 @@ import { ChevronDown } from 'lucide-react'
 
 export default function ScrollIndicator() {
   return (
-    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-16 flex flex-col items-center gap-2 animate-bounce">
-      <span className="text-xs tracking-tighter text-muted-foreground text-center">
+    <div className="absolute inset-x-0 bottom-12 flex flex-col items-center gap-2 animate-bounce pointer-events-none">
+      <span className="text-xs text-muted-foreground tracking-[0.2em]">
         SCROLL
       </span>
-      <ChevronDown size={20} className="text-muted-foreground" />
+
+      <ChevronDown
+        size={20}
+        className="text-muted-foreground"
+      />
     </div>
   )
 }
