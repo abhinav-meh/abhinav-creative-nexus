@@ -18,6 +18,8 @@ import OOPCreativeCoding from "./pages/projects/OOPCreativeCoding";
 import Confluence from "./pages/projects/Confluence";
 import Tempo from "./pages/projects/Tempo";
 import Psycomark from "./pages/projects/Psycomark";
+import VisualVinyl from "./pages/projects/VisualVinyl";
+import Aur from "./pages/projects/Aur";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
             <Route path="/projects/confluence" element={<Confluence />} />
             <Route path="/projects/tempo" element={<Tempo />} />
             <Route path="/projects/psycomark" element={<Psycomark />} />
+            <Route path="/projects/visualvinyl" element={<VisualVinyl />} />
+            <Route path="/projects/aur" element={<Aur />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

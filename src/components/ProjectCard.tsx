@@ -13,7 +13,8 @@ const categoryStyles: Record<string, string> = {
   'Design': 'text-design',
   'Development': 'text-development',
   'Research': 'text-research',
-  'Tool': 'text-tool'
+  'Tool': 'text-tool',
+  'Brand Design': 'text-brand-design',
 }
 
 export default function ProjectCard({ title, description, category, number, slug }: ProjectCardProps) {

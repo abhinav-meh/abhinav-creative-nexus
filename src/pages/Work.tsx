@@ -32,7 +32,7 @@ export default function Work() {
       <div className="grid grid-cols-1 md:grid-cols-[55%_45%] min-h-[100svh]">
         {/* LEFT: solid white, titles always visible */}
         <section className="relative z-10 bg-white md:pl-32 md:pr-10 px-6 py-12 md:py-16 flex items-center">
-          <ul className="w-full space-y-8 md:space-y-10">
+          <ul className="flex w-full flex-col gap-6 md:gap-[clamp(0.75rem,2.2vh,2rem)]">
             {(projects as Project[]).map((p) => (
               <li
                 key={p.slug}
@@ -40,7 +40,7 @@ export default function Work() {
                 onMouseLeave={() => !isTouch && setActiveSlug(null)}
                 onFocus={() => !isTouch && setActiveSlug(p.slug)}
                 onBlur={() => !isTouch && setActiveSlug(null)}
-                className="uppercase tracking-tight font-bold text-[clamp(24px,3.5vw,48px)] leading-[1.1]"
+                className="uppercase tracking-tight font-bold text-[clamp(22px,6vw,36px)] md:text-[clamp(20px,3vw,42px)] leading-[1.1]"
               >
                 <a
                   href={`/projects/${p.slug}`}

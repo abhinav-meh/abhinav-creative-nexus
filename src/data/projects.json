@@ -1,65 +1,79 @@
 [
-  {
-    "title": "Tempo",
-    "description": "A mobile app designed to help users manage their time and focus on what matters most through intentional task planning and distraction-free focus sessions.",
-    "category": "Design",
-    "slug": "tempo",
-    "preview": "/assets/tempo-preview.webp"
-  },
-  {
-    "title": "Begig",
-    "description": "A freelancing platform connecting clients with talented freelancers. Features include gig posting, proposal management, secure payments, and project tracking.",
-    "category": "Development",
-    "slug": "begig",
-    "preview": "/assets/begig-preview.webp"
-  },
-  {
-    "title": "Woz",
-    "description": "An AI-powered Wizard of Oz testing platform for conversational interfaces. Enables researchers to simulate AI responses and gather insights before building the actual system.",
-    "category": "Research",
-    "slug": "woz",
-    "preview": "/assets/woz-preview.webp"
-  },
-  {
-    "title": "XUNO",
-    "description": "A comprehensive design system and component library for building consistent, accessible web applications with modern UI patterns.",
-    "category": "Design",
-    "slug": "xuno",
-    "preview": "/assets/xuno-preview.webp"
-  },
-  {
-    "title": "Dither-er",
-    "description": "An interactive web tool for applying dithering effects to images. Experiment with various algorithms and export high-quality dithered artwork.",
-    "category": "Tool",
-    "slug": "dither-er",
-    "preview": "/assets/dither-er-preview.webp"
-  },
-  {
-    "title": "OOP Principles in Creative Coding",
-    "description": "An academic paper exploring how object-oriented programming principles can be applied to creative coding practices and generative art.",
-    "category": "Research",
-    "slug": "oop-creative-coding",
-    "preview": "/assets/oop-creative-coding-preview.webp"
-  },
-  {
-    "title": "Amazeballs",
-    "description": "An immersive maze game with innovative wearable controller integration. Navigate through procedurally generated mazes using custom hardware.",
-    "category": "Development",
-    "slug": "amazeballs",
-    "preview": "/assets/amazeballs-preview.webp"
-  },
-  {
-    "title": "Confluence",
-    "description": "A collaborative platform exploring the intersection of design and development workflows. Tools for seamless team communication and asset management.",
-    "category": "Tool",
-    "slug": "confluence",
-    "preview": "/assets/confluence-preview.webp"
-  },
-  {
-    "title": "Psycomark",
-    "description": "An NLP research project for detecting conspiracy theories in social media using RoBERTa-based classification and named entity recognition for psychological marker extraction.",
-    "category": "Research",
-    "slug": "psycomark",
-    "preview": "/assets/psycomark-preview.webp"
-  }
+{
+"title": "VisualVinyl",
+"description": "A color-to-music conversion device that uses openCV for image processing and generates corresponding audio.",
+"category": "Creative Technology",
+"slug": "visualvinyl",
+"preview": "/assets/visual-vinyl-preview.webp"
+},
+{
+"title": "Aur",
+"description": "A series of lamps inspired by the crevices found in nature.",
+"category": "Brand Design",
+"slug": "aur",
+"preview": "/assets/aur-preview.webp"
+},
+{
+"title": "Tempo",
+"description": "A mobile app designed to help users manage their time and focus on what matters most through intentional task planning and distraction-free focus sessions.",
+"category": "UX Design",
+"slug": "tempo",
+"preview": "/assets/tempo-preview.webp"
+},
+{
+"title": "Begig",
+"description": "A freelancing platform connecting clients with talented freelancers. Features include gig posting, proposal management, secure payments, and project tracking.",
+"category": "Design Engineering",
+"slug": "begig",
+"preview": "/assets/begig-preview.webp"
+},
+{
+"title": "Woz",
+"description": "A comprehensive analytics platform for conversational AI, providing insights into chatbot performance, customer sentiment, and engagement metrics across multiple product lines.",
+"category": "Design Engineering",
+"slug": "woz",
+"preview": "/assets/woz-preview.webp"
+},
+{
+"title": "XUNO",
+"description": "A comprehensive design system and component library for building consistent, accessible web applications with modern UI patterns.",
+"category": "UX Design",
+"slug": "xuno",
+"preview": "/assets/xuno-preview.webp"
+},
+{
+"title": "Dither-er",
+"description": "An interactive web tool for applying dithering effects to images. Experiment with various algorithms and export high-quality dithered artwork.",
+"category": "Tool",
+"slug": "dither-er",
+"preview": "/assets/dither-er-preview.webp"
+},
+{
+"title": "OOP Principles in Creative Coding",
+"description": "An academic paper exploring how object-oriented programming principles can be applied to creative coding practices and generative art.",
+"category": "Research",
+"slug": "oop-creative-coding",
+"preview": "/assets/oop-creative-coding-preview.webp"
+},
+{
+"title": "Amazeballs",
+"description": "An immersive maze game with innovative wearable controller integration. Navigate through procedurally generated mazes using custom hardware.",
+"category": "Game Development",
+"slug": "amazeballs",
+"preview": "/assets/amazeballs-preview.webp"
+},
+{
+"title": "Confluence",
+"description": "A collaborative platform exploring the intersection of design and development workflows. Tools for seamless team communication and asset management.",
+"category": "Creative Technology",
+"slug": "confluence",
+"preview": "/assets/confluence-preview.webp"
+},
+{
+"title": "Psycomark",
+"description": "An NLP research project for detecting conspiracy theories in social media using RoBERTa-based classification and named entity recognition for psychological marker extraction.",
+"category": "Research",
+"slug": "psycomark",
+"preview": "/assets/psycomark-preview.webp"
+}
 ]

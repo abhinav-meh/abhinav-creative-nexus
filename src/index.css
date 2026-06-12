@@ -2,6 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Light theme as default */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 10%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 10%;
+
+  --primary: 199 89% 48%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 10%;
+
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 10%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 199 89% 48%;
+
+  --radius: 0.5rem;
+
+  /* Typography */
+  --letter-spacing-tight: -0.05em;
+
+  /* Minimal shadows */
+  --shadow-minimal: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  --shadow-card: 0 2px 8px 0 rgb(0 0 0 / 0.08);
+
+  /* Category colors */
+  --design: 199 89% 48%;
+  --development: 142 76% 36%;
+  --research: 262 83% 58%;
+  --tool: 25 95% 53%;
+}
+
+.dark {
+  --background: 224 71% 4%;
+  --foreground: 213 31% 91%;
+
+  --card: 224 71% 4%;
+  --card-foreground: 213 31% 91%;
+
+  --popover: 224 71% 4%;
+  --popover-foreground: 213 31% 91%;
+
+  --primary: 199 89% 48%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 222 47% 11%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 223 47% 11%;
+  --muted-foreground: 215 20% 65%;
+
+  --accent: 216 34% 17%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 216 34% 17%;
+  --input: 216 34% 17%;
+  --ring: 199 89% 48%;
+
+  --radius: 0.5rem;
+}
+
 @layer base {
   html, body, #root {
     height: 100%;
@@ -16,95 +94,7 @@
   * {
     @apply border-border;
   }
-}
 
-/* Utility class for full screen sections */
-.screen {
-  height: 100svh;
-  height: var(--vh);
-}
-
-@layer base {
-  :root {
-    /* Light theme as default */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-
-    --primary: 199 89% 48%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 10%;
-
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 10%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 199 89% 48%;
-
-    --radius: 0.5rem;
-
-    /* Typography */
-    --letter-spacing-tight: -0.05em;
-    
-    /* Minimal shadows */
-    --shadow-minimal: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-    --shadow-card: 0 2px 8px 0 rgb(0 0 0 / 0.08);
-    
-    /* Category colors */
-    --design: 199 89% 48%;
-    --development: 142 76% 36%;
-    --research: 262 83% 58%;
-    --tool: 25 95% 53%;
-  }
-
-  .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 213 31% 91%;
-
-    --primary: 199 89% 48%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 222 47% 11%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-    --ring: 199 89% 48%;
-
-    --radius: 0.5rem;
-  }
-}
-
-@layer base {
   body {
     @apply bg-background text-foreground;
     font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -116,4 +106,10 @@
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.05em;
   }
+}
+
+/* Utility class for full screen sections */
+.screen {
+  height: 100svh;
+  height: var(--vh);
 }
